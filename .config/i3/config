@@ -15,12 +15,16 @@
 # start a terminal
 # bindsym $mod+Return exec terminal
 bindsym $mod+Return exec termite 
+# YYY: ubuntu
+# bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_recency
+# YYY: ubuntu
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -60,11 +64,24 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+
+
 ################################################################################################
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# YYY: ubu
+#bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+
+
 
 # Start Applications
 

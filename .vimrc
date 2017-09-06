@@ -511,3 +511,4 @@ endfunction
 
 
 noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
+" let g:enable_ycm_at_startup = 0

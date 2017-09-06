@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/juli/.oh-my-zsh
+  export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -103,6 +103,7 @@ alias x="exit"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
 alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
+alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 
 # This command must run each time terminal opens for 
 # using ssh-add
