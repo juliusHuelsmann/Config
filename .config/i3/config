@@ -15,7 +15,6 @@
 # start a terminal
 # bindsym $mod+Return exec terminal
 bindsym $mod+Return exec termite 
-# YYY: ubuntu
 # bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -23,8 +22,6 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_recency
-# YYY: ubuntu
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -75,10 +72,6 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
-# YYY: ubu
-#bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 
 
@@ -468,7 +461,8 @@ exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #
 exec_always xcompmgr -c -f -n
 exec_always xmodmap ~/.Xmodmap
-exec_always $(disableUnwantedDevicesOnStartup)
+exec source .zshrc
+exec $(disableUnwantedDevicesOnStartup)
 
 exec killall xflux
 exec xflux -l 52 -g 13.4
