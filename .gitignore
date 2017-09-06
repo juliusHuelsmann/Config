@@ -11,3 +11,9 @@
 !/.config/qutebrowser/qutebrowser.conf
 !/.config/i3/
 !/.config/i3/config
+
+
+
+!/scripts/
+!/scripts/*
+
