@@ -1,0 +1,9 @@
+# Ignore everything!
+*
+
+# Configuration files and gitignore
+!.gitignore
+!.vimrc
+!.zshrc
+!.config/qutebrowser/qutebrowser.conf
+!.config/i3/config
