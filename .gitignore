@@ -11,6 +11,8 @@
 !/.config/qutebrowser/qutebrowser.conf
 !/.config/i3/
 !/.config/i3/config
+!/.config/termite/
+!/.config/termite/config
 
 
 
