@@ -16,6 +16,13 @@ This repository contains
 
 notify-send "string" # for sending information (e.g. on git updates, battery power)
 
+## Finding out class of application
+- for e.g.  window binding to workspace, For assign [class=..] $workspace10
+
+1.  open application, 
+2. open xprop via terminal, 
+3. click on the app, class = 2nd vlaue
+
 
 
 ## Useful Commands / Installations

@@ -361,3 +361,7 @@ function disableUnwantedDevicesOnStartup() {
 # Sets the Mail Environemnt Variable 
 # (was done during the installation of procmail for using the mutt client)
 MAIL=/var/spool/mail/juli && export MAIL
+
+
+
+

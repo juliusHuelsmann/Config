@@ -437,7 +437,7 @@ bindsym $mod+shift+x  exec --no-startup-id blurlock
 
 #exec_always feh --bg-scale ~/.i3/NxmAzdu-storm-clouds-wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/ice.jpg
-exec_always feh --bg-scale ~/.i3/wallpaper.jpg
+exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/w.jpg
 exec blueman-applet
 exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
@@ -445,9 +445,13 @@ exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 
 # window binding to workspace
 # For assign [class=..] $workspace10
-# Find out class: open application, open xprop via terminal, click on the app, class = 2nd vlaue
+# Find out class: open application, 
+# open xprop via terminal, click on the app, class = 2nd vlaue
 #
 #
 exec_always xcompmgr -c -f -n
 exec_always xmodmap ~/.Xmodmap
 exec_always $(disableUnwantedDevicesOnStartup)
+
+exec killall xflux
+exec xflux -l 52 -g 13.4
