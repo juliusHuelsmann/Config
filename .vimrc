@@ -47,6 +47,11 @@ Plugin 'morhetz/gruvbox'
 Bundle 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+
+" live
+Plugin 'shime/vim-livedown'
+
+
 "
 " Information on how to add plugins:
 "
@@ -75,6 +80,15 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                    Livedown:                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:livedown_autorun=1
+"let g:livedown_open = 1
+"let g:livedown_port = 1337
+"let g:livedown_browser = "chromium-browser"
+ 
 
 
 
