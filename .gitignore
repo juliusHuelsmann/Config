@@ -7,13 +7,25 @@
 !.zshrc
 
 !/.config/
+# qutebrowser
 !/.config/qutebrowser/
 !/.config/qutebrowser/qutebrowser.conf
+# basic i3
 !/.config/i3/
 !/.config/i3/config
+# termite
 !/.config/termite/
 !/.config/termite/config
+# vim color config
+!/.config/i3status/
+!/.config/i3status/contrib/
+!/.config/i3status/contrib/*
 
+
+# vim color config
+!/.vim/
+!/.vim/colors/
+!/.vim/colors/*
 
 
 !/scripts/
