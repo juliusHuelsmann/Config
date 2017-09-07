@@ -462,7 +462,7 @@ exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 exec_always xcompmgr -c -f -n
 exec_always xmodmap ~/.Xmodmap
 exec source .zshrc
-exec $(disableUnwantedDevicesOnStartup)
+exec disableUnwantedDevicesOnStartup
 
 exec killall xflux
 exec xflux -l 52 -g 13.4
