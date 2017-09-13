@@ -10,6 +10,7 @@
 # qutebrowser
 !/.config/qutebrowser/
 !/.config/qutebrowser/qutebrowser.conf
+!/.config/qutebrowser/keys.conf
 # basic i3
 !/.config/i3/
 !/.config/i3/config
