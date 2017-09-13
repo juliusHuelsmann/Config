@@ -96,3 +96,9 @@ nbdime mergetool
 
 
 ```
+
+
+
+## Vim
+- ctags -R
+- <Ctrl> ] goes to the definition :)
