@@ -3,6 +3,7 @@
 "                                Plugin Managers                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set statusline = ""
 
 
 
@@ -32,6 +33,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-latex/vim-latex'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
+
+" Display methods and class variables
+Plugin 'majutsushi/tagbar'
 
 "" not that relevant Plugin 'ervandew/supertab'
 
@@ -380,6 +384,106 @@ endfunction
 autocmd VimEnter * call StartUp() 
 
 
+function! OpenHeader() 
+
+  let file = expand('%:p')
+  "let file = expand('%')
+  let splitForEnding = split(file, '\.')
+
+
+  if len(splitForEnding)
+
+    let ending = splitForEnding[-1]
+    let rec = ""
+
+    if ending == "h" || ending == "hpp"
+
+      let newFile = join(splitForEnding[0:-2])
+      let newFile = join([newFile,".cpp"], "")
+      "echom "Looking for cpp file" newFile
+
+
+      let rec = ReconstructFile(newFile, "/include/", "/src/")
+      "echom "reconstructed " rec 
+    elseif ending == "c" || ending == "cpp" 
+
+
+      let newFile = join(splitForEnding[0:-2])
+      let newFile = join([newFile,".h"], "")
+      "echom "Looking for h file" newFile
+
+
+      let rec = ReconstructFile(newFile, "/src/", "/include/")
+      "echom "reconstructed " rec 
+
+    else 
+      echom "Sorry, the corresponding file could not be found."
+      return
+    endif
+
+      "join([rec, ""], "")
+      "echom "recovered" rec
+      if (filereadable(rec))
+
+        vsp
+        :execute "e " . fnameescape(rec) 
+      else 
+        echom "Sorry, the corresponding file could not be found."
+      endif
+  endif
+endfunction
+
+nnoremap <leader>o :call OpenHeader() <CR>
+function! ReconstructFile(str, find, replace)
+
+  let str = a:str
+  let find = a:find
+  let replace = a:replace
+  let verbose = 0
+
+  " Replace string in the following form: /include/
+  
+  " 1) Replace last find
+  " 2) Check if valid -> return
+  " 3) Remove last find  -> call ReconstructFile(str-, find, replace) 
+
+
+  " reverse all strings
+  let str =  join(reverse(split(str, '.\zs')), '')
+  let findRev =  join(reverse(split(find, '.\zs')), '')
+  let replRev = join(reverse(split(replace, '.\zs')), '')
+  let voidReplacement ='/'
+
+  let p1Rev =substitute(str, findRev, replRev, "")
+  let p1 = join(reverse(split(p1Rev, '.\zs')), '')
+
+
+  if filereadable(p1)
+    if verbose
+      echom "found " p1
+    endif
+    return p1
+  endif
+
+  
+  let p2Rev = substitute(str, findRev, voidReplacement, "")
+
+  " corner case: not replaceable
+  if p2Rev == str
+
+    if verbose
+      echom "interrupt "  
+    endif
+    return ""
+  endif
+
+  let p2 = join(reverse(split(p2Rev, '.\zs')), '')
+  if verbose
+    echom "recursion " p2
+  endif
+  return ReconstructFile(p2, find, replace) 
+
+endfunction
 
 
 inoremap <Leader>s :sort<CR>
@@ -396,15 +500,26 @@ syntax on
 "
 " syntastic
 "
-set statusline=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
+let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_cpp_compiler = 'gcc'
+let g:syntastic_cpp_compiler_options = '-std=c++14'
+
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" for enabling syntastic wiht ycm enabled
+let g:ycm_show_diagnostics_ui = 0 
 
 
 " vimlatex
@@ -524,5 +639,11 @@ endfunction
 
 
 
+
+
+
 noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
-" let g:enable_ycm_at_startup = 0
+let g:enable_ycm_at_startup = 1
+
+
+autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
