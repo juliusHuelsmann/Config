@@ -26,7 +26,8 @@
 # vim color config
 !/.vim/
 !/.vim/colors/
-!/.vim/colors/*
+!/.vim/colors/corporation_modified.vim
+!/.vim/colors/hybrid.vim
 
 
 !/scripts/

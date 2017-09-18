@@ -51,9 +51,10 @@ floating_modifier $mod
 
 
 
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
+##############################################################################
+#                                     sound-section -                        #
+# DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! #
+##############################################################################
 
 exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
@@ -272,7 +273,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
+  bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -280,7 +281,7 @@ mode "$mode_system" {
     bindsym r exec --no-startup-id i3exit reboot, mode "default"
     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-    # exit system mode: "Enter" or "Escape"
+# exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -288,25 +289,25 @@ mode "$mode_system" {
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym odiaeresis resize grow width 5 px or 5 ppt
+# These bindings trigger as soon as you enter the resize mode
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+  bindsym j resize shrink width 5 px or 5 ppt
+    bindsym k resize grow height 5 px or 5 ppt
+    bindsym l resize shrink height 5 px or 5 ppt
+    bindsym odiaeresis resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # exit resize mode: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+# exit resize mode: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # Lock screen
@@ -331,38 +332,65 @@ exec_always --no-startup-id fix_xcursor
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	status_command i3status | ~/.config/i3status/contrib/wrapper.py | ~/.config/i3status/contrib/wrapper.pi | ~/.config/i3status/contrib/net-speed.sh
-	#status_command i3status
-	position top
-	
+
+  
+  status_command i3status
+
+  # XXX: tray output disable
+  tray_output none
+
+#
+#  status_command i3status \
+#    | ~/.config/i3status/contrib/wrapper.py \
+#    | ~/.config/i3status/contrib/net-speed.sh
+#
+
+    #| ~/.config/i3status/contrib/wrapper.pi \
+#status_command i3status
+    position top
 
 
-	separator_symbol "  "
+
+#separator_symbol "  "
+    separator_symbol " "
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 ##	tray_output primary
 ##	tray_output eDP1
 
-	bindsym button4 nop
-	bindsym button5 nop
-	#font xft:Noto Sans 8.5
-	font xft:Courier New 9.0
-	strip_workspace_numbers yes
+    bindsym button4 nop
+    bindsym button5 nop
+#font xft:Noto Sans 8.5
+    font xft:Courier New 8.0
+    strip_workspace_numbers yes
 
-	colors {
+    colors {
 ##		background $transparent
-		background #1f1f2e
-		#background #001a33
-		#background #2B2C2B
-                statusline #F9FAF9
-		separator  #0099cc
+#background #1f1f2e
+      #background #060d13
+      background #000000
+#background #001a33
+#background #2B2C2B
+        statusline #F9FAF9
+        separator  #0099cc
 #		separator  #454947
-#                                 border  backgr. text
-		focused_workspace  #425E8F #476FB3 #2B2C2B
-		active_workspace   #595B5B #353836 #FDF6E3
-		inactive_workspace #595B5B #353836 #EEE8D5
-		urgent_workspace   #16A085 #FDF6E3 #E5201D
-	}
+#
+#		# nice blue: 425E8F, lighter: 476FB3
+
+#                       border  backgr. text
+        focused_workspace  #b2b3b2 #d8d9d8 #2B2C2B
+
+# XXX: when is a workspace active?
+        active_workspace   #595B5B #353836 #FDF6E3
+
+# workspaces that are containing stuff but are not being focuced
+# right now. 
+        inactive_workspace #595B5B #353836 #EEE8D5
+
+# evoked for instance on leader + shift + 0
+        urgent_workspace   #595B5B #001a00 #FDF6E3  # simple black config
+#urgent_workspace   #595B5B #38507a #001a00 # blue config 
+    }
 }
 
 
@@ -407,34 +435,34 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+  bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+  bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 
@@ -449,7 +477,7 @@ bindsym $mod+shift+x  exec --no-startup-id blurlock
 #exec_always feh --bg-scale ~/.i3/ice.jpg
 exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/w.jpg
-exec blueman-applet
+#exec blueman-applet
 exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 
 

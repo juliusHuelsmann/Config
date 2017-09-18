@@ -1,14 +1,6 @@
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Plugin Managers                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set statusline = ""
-
-
-
-
-
 
 
 """""""""""
@@ -50,7 +42,8 @@ Plugin 'blueyed/vim-diminactive'
 Plugin 'morhetz/gruvbox'
 Bundle 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
+"semantic highlighting
+Plugin 'jaxbot/semantic-highlight.vim'
 
 " live
 Plugin 'shime/vim-livedown'
@@ -346,7 +339,28 @@ set listchars=tab:>-
 
 " This colorscheme has been adapted by me for adapting the blue lines for
 " the display of my x230. 
-colorscheme corporation_modified
+"colorscheme corporation_modified
+
+
+colorscheme blaquemagick 
+colorscheme hybrid
+
+"## best
+">>>>> blaquemagick
+">>>> strage
+">>>> moonscape
+"
+"
+"# best colorful
+">>>>> hybrid
+">>>> spartan
+">>> bubblegum
+">>> genericdc
+">>>> alduin
+">>off
+"skull
+
+
 "highlight LineNr ctermfg=12
 "highlight ColorColumn ctermbg=0 
 
@@ -515,8 +529,8 @@ let g:syntastic_cpp_compiler_options = '-std=c++14'
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 " for enabling syntastic wiht ycm enabled
 let g:ycm_show_diagnostics_ui = 0 
@@ -610,7 +624,8 @@ noremap <Right> <nop>
 noremap <Up> <nop>
 noremap <Down> <nop>
 
-set statusline +=%f\ %=%c/80\ %l/%L
+"set statusline +=%f\ %=%c/80\ %l/%L
+"set statusline +=%t\ %=%c/80\ %l/%L
 
 
 
@@ -647,3 +662,20 @@ let g:enable_ycm_at_startup = 1
 
 
 autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
+
+
+"let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80', '#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb', '#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9', '#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8' , '#f0f4c3', '#ffb74d' ]
+"let g:semanticTermColors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ,14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+"
+
+
+
+"folds
+
+" normally every fold is open
+set foldmethod=syntax
+auto BufRead * normal zR
+nnoremap <leader>ff :%g ) {/ normal! zf%
+
+
+
