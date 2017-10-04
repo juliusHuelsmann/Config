@@ -336,8 +336,8 @@ bar {
   
   status_command i3status
 
-  # XXX: tray output disable
-  tray_output none
+  # XXX: tray output disable icon
+  #tray_output none
 
 #
 #  status_command i3status \
@@ -475,8 +475,9 @@ bindsym $mod+shift+x  exec --no-startup-id blurlock
 
 #exec_always feh --bg-scale ~/.i3/NxmAzdu-storm-clouds-wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/ice.jpg
-exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/w.jpg
+#exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
+exec_always feh --bg-scale ~/.config/i3/irie.png
 #exec blueman-applet
 exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 
