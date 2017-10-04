@@ -678,4 +678,5 @@ auto BufRead * normal zR
 nnoremap <leader>ff :%g ) {/ normal! zf%
 
 
+nnoremap <leader>w :w<space>!sudo<space>tee<space>% <CR>
 
