@@ -611,6 +611,7 @@ iabbrev @@ huelsmann@campus.tu-berlin.de
 
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
 
 nnoremap <leader>2" viW<esc>a"<esc>hBi"<esc>lel
 nnoremap <leader>#' viW<esc>a'<esc>hBi'<esc>lel
