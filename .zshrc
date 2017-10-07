@@ -351,9 +351,19 @@ function disableUnwantedDevicesOnStartup() {
 
   idTouchpad=$(searchInputDevice "TouchPad")
   idScreen=$(searchInputDevice "Finger")
-  echo "Info: devices with ids $idScreen and $idTouchpad disabled."
-  xinput disable $idTouchpad
-  xinput disable $idScreen
+  idOSXTouchpad=$(searchInputDevice "bcm5974")
+  if [ "$idTouchpad" -ne "" ]; then 
+    echo "Info: device 'THINK touch' with id $idTouchpad disabled."
+    xinput disable $idTouchpad
+  fi
+  if [ "$idScreen" -ne "" ]; then 
+    echo "Info: device 'THINK screen' with id $idScreen disabled."
+    xinput disable $idScreen
+  fi
+  if [ "$idOSXTouchpad" -ne "" ]; then 
+    echo "Info: device 'OSX touch' with id $idOSXTouchpad disabled."
+    xinput disable $idOSXTouchpad
+  fi
 }
 
 

@@ -97,6 +97,9 @@ nbdime mergetool
 
 ```
 
+## 
+gem install json github
+gh issues open --after=2009-09-14
 
 
 ## Vim
