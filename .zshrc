@@ -101,6 +101,7 @@ alias dsense="cdsense;vim";
 
 alias lt="ls -lt"
 alias x="exit"
+alias c="clear"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
 alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
