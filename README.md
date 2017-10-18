@@ -102,6 +102,17 @@ gem install json github
 gh issues open --after=2009-09-14
 
 
+.Xmodmap
+clear Lock
+keycode 66 = ISO_Level3_Shift
+
+    // the following lines contain altered stuff
+    key <AC06> {	[	  h,	H,	Left,	Left ]	};
+    key <AC07> {	[	  j,	J,	Down,	Down ]	};
+    key <AC08> {	[	  k,	K,	Up,	Up ]	};
+    key <AC09> {	[	  l,	L,	Right,	Right ]	};
+
+
 ## Vim
 - ctags -R
 - <Ctrl> ] goes to the definition :)
