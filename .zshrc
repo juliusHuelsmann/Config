@@ -111,6 +111,22 @@ alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 # using ssh-add
 
 
+function bright() {
+
+  let brightness=500
+  echo "echo $brightness > /sys/class/backlight/intel_backlight/brightness" | sudo zsh
+}
+function rbright() {
+  brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
+  let brightness=$brightness-500
+  if (($brightness < 1)); then
+    let brightness=1
+  fi
+  echo "echo $brightness > /sys/class/backlight/intel_backlight/brightness" | sudo zsh
+}
+
+
+
 
 function diffdir() {
 

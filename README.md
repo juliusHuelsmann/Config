@@ -105,3 +105,14 @@ gh issues open --after=2009-09-14
 ## Vim
 - ctags -R
 - <Ctrl> ] goes to the definition :)
+
+
+## Remap keys
+/usr/share/X11/xkb/symbols/ #< change keyboard
+```bash
+
+```
+change .Xmodmap in home dir
+
+
+
