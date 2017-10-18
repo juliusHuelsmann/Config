@@ -337,7 +337,7 @@ bar {
   status_command i3status
 
   # XXX: tray output disable icon
-  tray_output none
+  #tray_output none
 
 #
 #  status_command i3status \
