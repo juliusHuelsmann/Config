@@ -495,3 +495,6 @@ exec disableUnwantedDevicesOnStartup
 
 exec killall xflux
 exec xflux -l 52 -g 13.4
+
+exec setxkbmap -layout de
+
