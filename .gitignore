@@ -22,7 +22,9 @@
 !/.config/i3status/config
 !/.config/i3status/contrib/
 !/.config/i3status/contrib/*
-
+# dunst
+!/.config/dunst/
+!/.config/dunst/*
 
 # vim color config
 !/.vim/
