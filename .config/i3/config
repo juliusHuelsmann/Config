@@ -74,10 +74,16 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 #bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
-bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
+#bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
+#bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
 
 
+#XXX: test messages for checking if keys work
+bindsym XF86MonBrightnessUp exec --no-startup-id notify-send 'dunst nolo '
+bindsym XF86MonBrightnessDown exec --no-startup-id notify-send 'dunst nolo '
+bindsym $mod+Shift+m exec --no-startup-id notify-send 'dunst nolo '
+
+bindsym XF86Messenger exec --no-startup-id notify-send 'dunst nolo '
 
 # Start Applications
 
@@ -256,6 +262,7 @@ for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
+
 #for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
@@ -324,7 +331,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-exec --no-startup-id killall dunst; dunst &; exec notify-send 'dunst launched :=)'
+exec --no-startup-id killall dunst; dunst &
+exec --no-startup-id dunst &
+exec --no-startup-id notify-send 'dunst launched :=)'
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_custom

@@ -48,6 +48,9 @@ Plugin 'jaxbot/semantic-highlight.vim'
 " live
 Plugin 'shime/vim-livedown'
 
+" git gutter 
+Plugin 'gitgutter/Vim'
+
 
 "
 " Information on how to add plugins:
