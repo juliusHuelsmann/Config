@@ -585,12 +585,16 @@ noremap <Leader>rc :!<space>phpctags<space>-R<CR>
 
 
 " resize the split
-nnoremap <silent> h- :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
-nnoremap <silent> h+ :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
+"nnoremap <silent> h- :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
+"nnoremap <silent> h+ :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
+nnoremap <silent> -h :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
+nnoremap <silent> +h :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
 
-nnoremap <silent> v+ :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
-nnoremap <silent> v- :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
+"nnoremap <silent> v+ :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
+"nnoremap <silent> v- :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
 
+nnoremap <silent> +v :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
+nnoremap <silent> -v :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
 
 " open fold while using space in normal mode
 nnoremap <space> za

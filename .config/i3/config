@@ -74,16 +74,14 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 #bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-#bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
-#bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
 
 
-#XXX: test messages for checking if keys work
-bindsym XF86MonBrightnessUp exec --no-startup-id notify-send 'dunst nolo '
-bindsym XF86MonBrightnessDown exec --no-startup-id notify-send 'dunst nolo '
-bindsym $mod+Shift+m exec --no-startup-id notify-send 'dunst nolo '
+# check the keybord
+# bindsym XF86MonBrightnessUp exec --no-startup-id notify-send 'brighness up'
+# bindsym XF86MonBrightnessDown exec --no-startup-id notify-send 'brightness down'
 
-bindsym XF86Messenger exec --no-startup-id notify-send 'dunst nolo '
 
 # Start Applications
 
@@ -492,6 +490,7 @@ bindsym $mod+shift+x  exec --no-startup-id blurlock
 exec_always feh --bg-scale ~/.config/i3/irie.png
 #exec blueman-applet
 exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
+exec_always --no-startup-id killall redshift; redshift; i3-msg 'hallo' 
 
 
 # window binding to workspace
