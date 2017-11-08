@@ -112,6 +112,7 @@ alias dsense="cdsense;vim";
 alias lt="ls -lt"
 alias x="exit"
 alias c="clear"
+alias cdreading="cd /mnt/data/repos/Readings"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
 alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
@@ -120,6 +121,34 @@ alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 # This command must run each time terminal opens for 
 # using ssh-add
 
+function pushu() {
+  # push reading
+ 
+  if [ -z "$1" ]; then
+    notify-send "What is it I want to insert as requested utility!?" 
+  else
+    k=" * [ ] $1" 
+    notify-send "Pushed: '$k'" 
+    cdreading
+    echo -e $k >> utilitiesNeeded.mdpp
+    git commit -am "semi-auto pushed utility needed."
+    git push
+  fi
+}
+function pushr() {
+  # push reading
+ 
+  if [ -z "$1" ]; then
+    notify-send "What is it I want to read!?" 
+  else
+    k=" * [ ] $1" 
+    notify-send "Pushed: '$k'" 
+    cdreading
+    echo -e $k >> readingQueue.mdpp
+    git commit -am "semi-auto pushed reading."
+    git push
+  fi
+}
 
 function bright() {
 
