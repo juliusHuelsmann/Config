@@ -86,9 +86,19 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sz="source ~/.zshrc"
+alias ct="daemonize termite -d $(pwd)"
 alias cdRepo="cd /mnt/data/repos"
 alias cdrep="cd /mnt/data/repos; addSshAgent; "
 alias cdrepo="cdRepo"
+ws4="/mnt/data/repos/4-ws1718"
+ws4Raw="/mnt/data/repos/4-ws1718Raw"
+alias cds="cd /mnt/data/repos/4-ws1718"
+alias cdsr="cd /mnt/data/repos/4-ws1718Raw"
+alias uni="cdsr; daemonize termite -d $ws4"
+alias netsec="cd $ws4Raw/netsec; daemonize termite -d $ws4/netsec"
+alias seclab="cd $ws4Raw/seclab; daemonize termite -d $ws4/seclab"
+alias osd="cd $ws4Raw/osd; daemonize termite -d $ws4/osd"
 repo=/mnt/data/repos
 dima=$repo/dima/SenseNative
 bahn=$repo/deutscheBahn/ipa
@@ -398,3 +408,4 @@ MAIL=/var/spool/mail/juli && export MAIL
 
 
 
+export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/

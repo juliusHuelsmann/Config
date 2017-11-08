@@ -2,6 +2,12 @@
 "                                Plugin Managers                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" XXX:  ALE: better syntastic
+"       FZF: better CMD + p
+"
+" mkdir -p ~/.vim/pack/git-plugins/start
+" git clone https://github.com/w0rp/ale.git ~/.vim/pack/git-plugins/start/ale
+
 
 """""""""""
 "  Vundle "
@@ -20,8 +26,9 @@ Plugin 'VundleVim/Vundle.vim'
 " 2: nerdtree tabs
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'vim-latex/vim-latex'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
@@ -193,8 +200,9 @@ noremap <c-m> <esc>:tabnext<CR>
 
 " TODO: open tab :newtab
 " TODO: Close tab
-" TOOD: find in files more easily
-
+" TODO: : find in files more easily
+" TODO: Ctrl+N for autocomplete
+" TODO: spell checker 
 
 
 
@@ -209,6 +217,10 @@ set shiftround
 set expandtab
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" general stuff "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hlsearch
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -536,7 +548,8 @@ let g:syntastic_cpp_auto_refresh_includes = 1
 "set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 " for enabling syntastic wiht ycm enabled
-let g:ycm_show_diagnostics_ui = 0 
+"XXX:
+"let g:ycm_show_diagnostics_ui = 0 
 
 
 " vimlatex
@@ -619,9 +632,11 @@ iabbrev @@ huelsmann@campus.tu-berlin.de
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
+nnoremap <leader>h viw<esc>a`<esc>hbi`<esc>lel
 
 nnoremap <leader>2" viW<esc>a"<esc>hBi"<esc>lel
 nnoremap <leader>#' viW<esc>a'<esc>hBi'<esc>lel
+nnoremap <leader>H viW<esc>a`<esc>hBi`<esc>lel
 
 inoremap jk <esc>
 " XXX: remove this, like a lot of commands
@@ -666,9 +681,11 @@ endfunction
 
 
 noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
-let g:enable_ycm_at_startup = 1
+" XXX:
+"let g:enable_ycm_at_startup = 0
 
 
+autocmd BufReadPre,FileReadPre *.{md} :LivedownPreview
 autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
 
 
@@ -687,4 +704,11 @@ nnoremap <leader>ff :%g ) {/ normal! zf%
 
 
 nnoremap <leader>w :w<space>!sudo<space>tee<space>% <CR>
+
+
+
+" Sytnastics replacment
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 
