@@ -112,6 +112,8 @@ alias dsense="cdsense;vim";
 alias lt="ls -lt"
 alias x="exit"
 alias c="clear"
+alias uuu="pushu"
+alias rrr="pushr"
 alias cdreading="cd /mnt/data/repos/Readings"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
@@ -127,26 +129,34 @@ function pushu() {
   if [ -z "$1" ]; then
     notify-send "What is it I want to insert as requested utility!?" 
   else
-    k=" * [ ] $1" 
+    ret=$(pwd)
+    k=" * [ ] $*" 
     notify-send "Pushed: '$k'" 
     cdreading
     echo -e $k >> utilitiesNeeded.mdpp
     git commit -am "semi-auto pushed utility needed."
+    eval $(ssh-agent)
+    ssh-add
     git push
+    cd $ret
   fi
 }
 function pushr() {
   # push reading
  
-  if [ -z "$1" ]; then
+  if [ -z "$*" ]; then
     notify-send "What is it I want to read!?" 
   else
-    k=" * [ ] $1" 
+    ret=$(pwd)
+    k=" * [ ] $*" 
     notify-send "Pushed: '$k'" 
     cdreading
     echo -e $k >> readingQueue.mdpp
     git commit -am "semi-auto pushed reading."
+    eval $(ssh-agent)
+    ssh-add
     git push
+    cd $ret
   fi
 }
 
