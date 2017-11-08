@@ -87,7 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sz="source ~/.zshrc"
-alias ct="daemonize termite -d $(pwd)"
 alias cdRepo="cd /mnt/data/repos"
 alias cdrep="cd /mnt/data/repos; addSshAgent; "
 alias cdrepo="cdRepo"
@@ -113,6 +112,8 @@ alias lt="ls -lt"
 alias x="exit"
 alias c="clear"
 alias uuu="pushu"
+alias uuv="pushuv"
+alias uuos="pushos"
 alias rrr="pushr"
 alias cdreading="cd /mnt/data/repos/Readings"
 #alias push="ssh-add; git push"
@@ -122,6 +123,22 @@ alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 
 # This command must run each time terminal opens for 
 # using ssh-add
+#
+
+function pushuv() {
+  if [ -z "$1" ]; then
+    notify-send "What is it I want to insert as requested utility!?" 
+  else
+  pushu "[VIM]" $*
+  fi
+}
+function pushos() {
+  if [ -z "$1" ]; then
+    notify-send "What is it I want to insert as requested utility!?" 
+  else
+  pushu "[OS]" $*
+  fi
+}
 
 function pushu() {
   # push reading
@@ -221,11 +238,20 @@ function diffdir() {
     cd $currdir   
 }
 
+#
+# Daemonize a command / sequence of commands
+function ct() {
+    k=$(pwd)
+    (termite $k &) &
+ 
+}
+
 
 #
 # Daemonize a command / sequence of commands
 function daemonize() {
-    ("$@" &) &
+    ("$*" &) &
+ 
 }
 
 
