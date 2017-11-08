@@ -474,3 +474,4 @@ MAIL=/var/spool/mail/juli && export MAIL
 
 
 export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
+export PATH=$PATH:/home/juli/.gem/ruby/2.4.0/bin

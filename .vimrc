@@ -53,7 +53,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jaxbot/semantic-highlight.vim'
 
 " live
-Plugin 'shime/vim-livedown'
+" Plugin 'shime/vim-livedown'
+" XXX: use an alternative
+" https://github.com/joeyespo/grip
+" https://github.com/yoshuawuyts/vmd
+" https://github.com/ianks/octodown
+Plugin 'ianks/octodown'
 
 " git gutter 
 Plugin 'gitgutter/Vim'
@@ -685,7 +690,9 @@ noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
 "let g:enable_ycm_at_startup = 0
 
 
-autocmd BufReadPre,FileReadPre *.{md} :LivedownPreview
+" XXX: vim enter: make vertical alignment for i3, call qutebrowser, open new
+" window with the output of octodown --live-reload
+autocmd VimEnter *.{md,mdpp} let b:dispatch = 'octodown --live-reload %'
 autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
 
 
