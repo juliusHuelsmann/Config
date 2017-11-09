@@ -2,6 +2,12 @@
 "                                Plugin Managers                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" XXX:  ALE: better syntastic
+"       FZF: better CMD + p
+"
+" mkdir -p ~/.vim/pack/git-plugins/start
+" git clone https://github.com/w0rp/ale.git ~/.vim/pack/git-plugins/start/ale
+
 
 """""""""""
 "  Vundle "
@@ -20,8 +26,9 @@ Plugin 'VundleVim/Vundle.vim'
 " 2: nerdtree tabs
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'vim-latex/vim-latex'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
@@ -46,7 +53,15 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jaxbot/semantic-highlight.vim'
 
 " live
-Plugin 'shime/vim-livedown'
+" Plugin 'shime/vim-livedown'
+" XXX: use an alternative
+" https://github.com/joeyespo/grip
+" https://github.com/yoshuawuyts/vmd
+" https://github.com/ianks/octodown
+Plugin 'ianks/octodown'
+
+" git gutter 
+Plugin 'gitgutter/Vim'
 
 
 "
@@ -190,8 +205,9 @@ noremap <c-m> <esc>:tabnext<CR>
 
 " TODO: open tab :newtab
 " TODO: Close tab
-" TOOD: find in files more easily
-
+" TODO: : find in files more easily
+" TODO: Ctrl+N for autocomplete
+" TODO: spell checker 
 
 
 
@@ -206,6 +222,10 @@ set shiftround
 set expandtab
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" general stuff "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hlsearch
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -533,7 +553,8 @@ let g:syntastic_cpp_auto_refresh_includes = 1
 "set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 " for enabling syntastic wiht ycm enabled
-let g:ycm_show_diagnostics_ui = 0 
+"XXX:
+"let g:ycm_show_diagnostics_ui = 0 
 
 
 " vimlatex
@@ -582,12 +603,16 @@ noremap <Leader>rc :!<space>phpctags<space>-R<CR>
 
 
 " resize the split
-nnoremap <silent> h- :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
-nnoremap <silent> h+ :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
+"nnoremap <silent> h- :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
+"nnoremap <silent> h+ :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
+nnoremap <silent> -h :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
+nnoremap <silent> +h :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
 
-nnoremap <silent> v+ :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
-nnoremap <silent> v- :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
+"nnoremap <silent> v+ :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
+"nnoremap <silent> v- :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
 
+nnoremap <silent> +v :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
+nnoremap <silent> -v :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
 
 " open fold while using space in normal mode
 nnoremap <space> za
@@ -612,9 +637,11 @@ iabbrev @@ huelsmann@campus.tu-berlin.de
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
+nnoremap <leader>h viw<esc>a`<esc>hbi`<esc>lel
 
 nnoremap <leader>2" viW<esc>a"<esc>hBi"<esc>lel
 nnoremap <leader>#' viW<esc>a'<esc>hBi'<esc>lel
+nnoremap <leader>H viW<esc>a`<esc>hBi`<esc>lel
 
 inoremap jk <esc>
 " XXX: remove this, like a lot of commands
@@ -659,9 +686,13 @@ endfunction
 
 
 noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
-let g:enable_ycm_at_startup = 1
+" XXX:
+"let g:enable_ycm_at_startup = 0
 
 
+" XXX: vim enter: make vertical alignment for i3, call qutebrowser, open new
+" window with the output of octodown --live-reload
+autocmd VimEnter *.{md,mdpp} let b:dispatch = 'octodown --live-reload %'
 autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
 
 
@@ -680,4 +711,11 @@ nnoremap <leader>ff :%g ) {/ normal! zf%
 
 
 nnoremap <leader>w :w<space>!sudo<space>tee<space>% <CR>
+
+
+
+" Sytnastics replacment
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 

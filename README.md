@@ -102,6 +102,35 @@ gem install json github
 gh issues open --after=2009-09-14
 
 
+
+
+
 ## Vim
 - ctags -R
 - <Ctrl> ] goes to the definition :)
+
+
+## Remap keys
+
+### Old proceeding:
+/usr/share/X11/xkb/symbols/ #< change keyboard
+```bash
+    // the following lines contain altered stuff
+    key <AC06> {	[	  h,	H,	Left,	Left ]	};
+    key <AC07> {	[	  j,	J,	Down,	Down ]	};
+    key <AC08> {	[	  k,	K,	Up,	Up ]	};
+    key <AC09> {	[	  l,	L,	Right,	Right ]	};
+```
+and insert the following into the Xmodmap
+change .Xmodmap in home dir
+```bash
+.Xmodmap
+clear Lock
+keycode 66 = ISO_Level3_Shift
+```
+
+execute xmodmap .Xmodmap each time on login.
+
+
+new proceeding:
+just be sure to execute xmodmap .Xmodmap, and pull the xmodmap from repo :)

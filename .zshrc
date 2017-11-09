@@ -86,9 +86,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sz="source ~/.zshrc"
 alias cdRepo="cd /mnt/data/repos"
 alias cdrep="cd /mnt/data/repos; addSshAgent; "
 alias cdrepo="cdRepo"
+ws4="/mnt/data/repos/4-ws1718"
+ws4Raw="/mnt/data/repos/4-ws1718Raw"
+alias cds="cd /mnt/data/repos/4-ws1718"
+alias cdsr="cd /mnt/data/repos/4-ws1718Raw"
+alias uni="cdsr; daemonize termite -d $ws4"
+alias netsec="cd $ws4Raw/netsec; daemonize termite -d $ws4/netsec"
+alias seclab="cd $ws4Raw/seclab; daemonize termite -d $ws4/seclab"
+alias osd="cd $ws4Raw/osd; daemonize termite -d $ws4/osd"
 repo=/mnt/data/repos
 dima=$repo/dima/SenseNative
 bahn=$repo/deutscheBahn/ipa
@@ -101,6 +110,12 @@ alias dsense="cdsense;vim";
 
 alias lt="ls -lt"
 alias x="exit"
+alias c="clear"
+alias uuu="pushu"
+alias uuv="pushuv"
+alias uuos="pushos"
+alias rrr="pushr"
+alias cdreading="cd /mnt/data/repos/Readings"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
 alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
@@ -108,6 +123,74 @@ alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 
 # This command must run each time terminal opens for 
 # using ssh-add
+#
+
+function pushuv() {
+  if [ -z "$1" ]; then
+    notify-send "What is it I want to insert as requested utility!?" 
+  else
+  pushu "[VIM]" $*
+  fi
+}
+function pushos() {
+  if [ -z "$1" ]; then
+    notify-send "What is it I want to insert as requested utility!?" 
+  else
+  pushu "[OS]" $*
+  fi
+}
+
+function pushu() {
+  # push reading
+ 
+  if [ -z "$1" ]; then
+    notify-send "What is it I want to insert as requested utility!?" 
+  else
+    ret=$(pwd)
+    k=" * [ ] $*" 
+    notify-send "Pushed: '$k'" 
+    cdreading
+    echo -e $k >> utilitiesNeeded.mdpp
+    git commit -am "semi-auto pushed utility needed."
+    eval $(ssh-agent)
+    ssh-add
+    git push
+    cd $ret
+  fi
+}
+function pushr() {
+  # push reading
+ 
+  if [ -z "$*" ]; then
+    notify-send "What is it I want to read!?" 
+  else
+    ret=$(pwd)
+    k=" * [ ] $*" 
+    notify-send "Pushed: '$k'" 
+    cdreading
+    echo -e $k >> readingQueue.mdpp
+    git commit -am "semi-auto pushed reading."
+    eval $(ssh-agent)
+    ssh-add
+    git push
+    cd $ret
+  fi
+}
+
+function bright() {
+
+  let brightness=500
+  echo "echo $brightness > /sys/class/backlight/intel_backlight/brightness" | sudo zsh
+}
+function rbright() {
+  brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
+  let brightness=$brightness-500
+  if (($brightness < 1)); then
+    let brightness=1
+  fi
+  echo "echo $brightness > /sys/class/backlight/intel_backlight/brightness" | sudo zsh
+}
+
 
 
 
@@ -155,11 +238,20 @@ function diffdir() {
     cd $currdir   
 }
 
+#
+# Daemonize a command / sequence of commands
+function ct() {
+    k=$(pwd)
+    (termite $k &) &
+ 
+}
+
 
 #
 # Daemonize a command / sequence of commands
 function daemonize() {
-    ("$@" &) &
+    ("$*" &) &
+ 
 }
 
 
@@ -368,6 +460,9 @@ function disableUnwantedDevicesOnStartup() {
 
 
 
+function genHash() {
+  echo -n $1 | iconv -t utf16le | openssl md4
+}
 
 
 # Sets the Mail Environemnt Variable 
@@ -377,3 +472,6 @@ MAIL=/var/spool/mail/juli && export MAIL
 
 
 
+
+export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
+export PATH=$PATH:/home/juli/.gem/ruby/2.4.0/bin

@@ -1,0 +1,15 @@
+
+
+# Arch linux distro
+* [x] control brightness
+* [x] remap the hjkl key to arrows 
+* [ ] qutebrowser new config
+* [x] install and setup flux alternative (working greate :)) `redshift` in normal pacman repo
+* [x] ns3 change alighnment: v V for vertical and horizontal alignment 
+* [x] vim config bug: delay for pressing h sucks
+* [ ] kde plasma (neon = distro, but maybe put it on top of gentoo)
+
+
+
+* [ ] Network Manager CLI
+* [ ] Network Manager pw
