@@ -95,9 +95,9 @@ ws4Raw="/mnt/data/repos/4-ws1718Raw"
 alias cds="cd /mnt/data/repos/4-ws1718"
 alias cdsr="cd /mnt/data/repos/4-ws1718Raw"
 alias uni="cdsr; daemonize termite -d $ws4"
-alias netsec="cd $ws4Raw/netsec; daemonize termite -d $ws4/netsec"
-alias seclab="cd $ws4Raw/seclab; daemonize termite -d $ws4/seclab"
-alias osd="cd $ws4Raw/osd; daemonize termite -d $ws4/osd"
+alias netsec="cd $ws4Raw/netsec; daemonize termite -d '$ws4/netsec'"
+alias seclab="cd $ws4Raw/seclab; daemonize termite -d '$ws4/seclab'"
+alias osd="cd $ws4Raw/osd; daemonize termite -d '$ws4/osd'"
 repo=/mnt/data/repos
 dima=$repo/dima/SenseNative
 bahn=$repo/deutscheBahn/ipa
@@ -250,8 +250,8 @@ function ct() {
 #
 # Daemonize a command / sequence of commands
 function daemonize() {
-    ("$*" &) &
- 
+    #("$*" &) &
+    ("$@" &) &
 }
 
 
