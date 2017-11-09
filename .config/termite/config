@@ -7,6 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
+# font = GoMono 8
 font = Monospace 10
 scrollback_lines = 10000
 search_wrap = true
@@ -69,6 +70,7 @@ color14 = #93e0e3
 color15 = #ffffff
 
 [hints]
+#font = Cousine 9
 font = Cousine 12
 #foreground = #dcdccc
 #background = #3f3f3f
