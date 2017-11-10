@@ -5,9 +5,9 @@
 ! "Number of lines" Set from: Default
 ! rofi.lines:                          15
 ! "Number of columns" Set from: Default
-rofi.columns:                        2
+rofi.columns:                        3
 ! "Font to use" Set from: Default
-! rofi.font:                           mono 12
+ rofi.font:                           mono 11 
 ! "Border width" Set from: Default
 ! rofi.bw:                             1
 ! "Location on screen" Set from: Default
@@ -21,7 +21,7 @@ rofi.columns:                        2
 ! "Always show number of lines" Set from: Default
 ! rofi.fixed-num-lines:                true
 ! "Whether to load and show icons" Set from: Default
-! rofi.show-icons:                     false
+! rofi.show-icons:                     false 
 ! "Terminal to use" Set from: Default
 ! rofi.terminal:                       rofi-sensible-terminal
 ! "Ssh client to use" Set from: Default
@@ -266,3 +266,15 @@ rofi.columns:                        2
 ! rofi.me-accept-entry:                MouseD1
 ! "Accept hovered row with custom action" Set from: Default
 ! rofi.me-accept-custom:               Control+MouseD1
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #333333, #444444, #111111
+! hier 
+rofi.color-normal: #000002, #FFFFFF, #111111, #111111, #111111
+
+rofi.color-active: #FFFFFF, #008ed4, #002b37, #003642, #008ed4
+rofi.color-urgent: #ffe6b3, #da4281, #002b37, #003642, #da4281
