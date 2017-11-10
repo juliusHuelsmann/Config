@@ -271,10 +271,10 @@ rofi.columns:                        3
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
-rofi.color-enabled: true
-rofi.color-window: #333333, #444444, #111111
+rofi.color-enabled: true 
+rofi.color-window: #000000, #313134, #111111
 ! hier 
-rofi.color-normal: #000002, #FFFFFF, #111111, #111111, #111111
-
-rofi.color-active: #FFFFFF, #008ed4, #002b37, #003642, #008ed4
+rofi.color-normal: #000002, #FFFFFF, #111111, #111111, #16935B
+rofi.color-active: #FFFFFF, #FFFFFF, #002b37, #003642, #008ed4
 rofi.color-urgent: #ffe6b3, #da4281, #002b37, #003642, #da4281
+
