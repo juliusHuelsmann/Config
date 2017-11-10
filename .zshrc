@@ -112,6 +112,8 @@ alias lt="ls -lt"
 alias x="exit"
 alias c="clear"
 alias uuu="pushu"
+alias ttt="pusht"
+alias nnn="pushn"
 alias uuv="pushuv"
 alias uuos="pushos"
 alias rrr="pushr"
@@ -140,6 +142,24 @@ function pushos() {
   fi
 }
 
+function pusht() {
+  # push reading
+ 
+  if [ -z "$1" ]; then
+    notify-send "Which task?" 
+  else
+    ret=$(pwd)
+    k=" * [ ] $*" 
+    notify-send "Pushed: '$k'" 
+    cdreading
+    echo -e $k >> tasks.mdpp
+    git commit -am "semi-auto pushed task needed."
+    eval $(ssh-agent)
+    ssh-add
+    git push
+    cd $ret
+  fi
+}
 function pushu() {
   # push reading
  
@@ -152,6 +172,24 @@ function pushu() {
     cdreading
     echo -e $k >> utilitiesNeeded.mdpp
     git commit -am "semi-auto pushed utility needed."
+    eval $(ssh-agent)
+    ssh-add
+    git push
+    cd $ret
+  fi
+}
+function pushn() {
+  # push notes 
+ 
+  if [ -z "$*" ]; then
+    notify-send "Tell me what to note down sir!" 
+  else
+    ret=$(pwd)
+    k=" - $*" 
+    notify-send "Pushed: '$k'" 
+    cdreading
+    echo -e $k >> notes.mdpp
+    git commit -am "semi-auto pushed reading."
     eval $(ssh-agent)
     ssh-add
     git push
