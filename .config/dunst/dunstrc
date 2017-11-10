@@ -1,6 +1,6 @@
 
 [global]
-    font = Envy Code R 20 
+    font = Envy Code R 15 
  
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -64,7 +64,8 @@
  
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
-    transparency = 1¬.0
+    # transparency = 1¬.0
+    transparency = 1 
  
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -111,7 +112,7 @@
     #  * foreground: use the same color as the foreground
     #  * frame: use the same color as the frame.
     #  * anything else will be interpreted as a X color
-    separator_color = "#333333"
+    separator_color = "#f2f2f2"
  
     # print a notification on startup
     # This is mainly for error detection, since dbus (re-)starts dunst
@@ -125,8 +126,8 @@
     browser = /usr/bin/firefox -new-tab
  
 [frame]
-    width = 3
-    color = "#549cc3"
+    width = 1
+    color = "#f8f8f8"
  
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
@@ -150,18 +151,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#333333"
-    foreground = "#1DCC9F"
+    background = "#a6a6a6"
+    foreground = "#000000"
     timeout = 10
  
 [urgency_normal]
-    background = "#222222"
-    foreground = "#1DCC9F"
+    background = "#000000"
+    foreground = "#FFFFF9"
     timeout = 10
  
 [urgency_critical]
-    background = "#333333>"
-    foreground = "#F1113F"
+    background = "#ff1234"
+    foreground = "#000000"
     timeout = 0
  
  
@@ -200,7 +201,7 @@
  
 [notify-send]
    appname = notify-send
-   format = "<span weight='normal' letter_spacing='1000' color='#DFD616'>%s</span>\n%b"   
+   format = "<span weight='normal' letter_spacing='1000' color='#FFFFF9'>%s</span>\n%b"   
    urgency = normal   
 
 [irc_hilight]

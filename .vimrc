@@ -722,3 +722,5 @@ let g:ale_sign_warning = '--'
 
 nnoremap <leader>x :%!xxd<CR> 
 
+set cursorline
+set cursorcolumn

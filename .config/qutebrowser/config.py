@@ -1376,8 +1376,8 @@ c.url.start_pages = ['https://www.startpage.com/']
 # config.bind('K', 'tab-prev')
 # config.bind('L', 'forward')
 config.bind('H', 'tab-prev')
-config.bind('J', 'back')
-config.bind('K', 'forward')
+config.bind('J', 'forward')
+config.bind('K', 'back')
 config.bind('L', 'tab-next')
 
 # config.bind('M', 'bookmark-add')
