@@ -9,8 +9,9 @@
 !/.config/
 # qutebrowser
 !/.config/qutebrowser/
-!/.config/qutebrowser/qutebrowser.conf
-!/.config/qutebrowser/keys.conf
+!/.config/qutebrowser/qutebrowser.conf    #< legacy
+!/.config/qutebrowser/keys.conf           #< legacy
+!/.config/qutebrowser/config.py
 # basic i3
 !/.config/i3/
 !/.config/i3/config
