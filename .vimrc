@@ -71,7 +71,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 
 " Optional:
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 
 " assuming you want to use snipmate snippet engine
 

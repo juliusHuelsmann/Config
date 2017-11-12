@@ -40,10 +40,9 @@
 
 # vim snippets
 #
-!/.vim/bundle/
-!/.vim/bundle/vim-snippets/
-!/.vim/bundle/vim-snippets/snippets/
-!/.vim/bundle/vim-snippets/snippets/*
+!/.vim/snippets/
+!/.vim/snippets/vim-snippets/
+!/.vim/snippets/*
 
 !/scripts/
 !/scripts/*
