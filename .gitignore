@@ -41,7 +41,6 @@
 # vim snippets
 #
 !/.vim/snippets/
-!/.vim/snippets/vim-snippets/
 !/.vim/snippets/*
 
 !/scripts/
