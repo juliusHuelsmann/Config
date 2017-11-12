@@ -449,7 +449,8 @@ function! OpenHeader()
 
 
       let rec = ReconstructFile(newFile, "/include/", "/src/")
-      "echom "reconstructed " rec 
+      "echom "reconstructed " rec  
+      "echom "hier " newFile
     elseif ending == "c" || ending == "cpp" 
 
 
@@ -499,10 +500,20 @@ function! ReconstructFile(str, find, replace)
   let replRev = join(reverse(split(replace, '.\zs')), '')
   let voidReplacement ='/'
 
+ 
+  let replRev0 = replRev .  substitute(replRev, "/", "", "")
+  " corner case for 2 src
+  let p0Rev =substitute(str, findRev, replRev0, "")
+  let p0 = join(reverse(split(p0Rev, '.\zs')), '')
+  if filereadable(p0)
+    if verbose
+      echom "found " p0
+    endif
+    return p0
+  endif
+
   let p1Rev =substitute(str, findRev, replRev, "")
   let p1 = join(reverse(split(p1Rev, '.\zs')), '')
-
-
   if filereadable(p1)
     if verbose
       echom "found " p1
