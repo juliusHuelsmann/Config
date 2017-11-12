@@ -65,6 +65,17 @@ Plugin 'gitgutter/Vim'
 
 
 "
+" Snippets
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" Optional:
+Plugin 'honza/vim-snippets'
+
+" assuming you want to use snipmate snippet engine
+
+"
 " Information on how to add plugins:
 "
 " plugin from http://vim-scripts.org/vim/scripts.html
