@@ -43,7 +43,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shawncplus/phpcomplete.vim'
 
 " Plugin for changing the color of the inactive buffers
-Plugin 'blueyed/vim-diminactive'
+" Plugin 'blueyed/vim-diminactive'
 
 " color gedoens
 Plugin 'morhetz/gruvbox'
@@ -742,7 +742,20 @@ let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 
 
+nnoremap <leader>tn :tabnew<CR>:NERDTree<CR><c-w>l
 nnoremap <leader>x :%!xxd<CR> 
 
 set cursorline
 set cursorcolumn
+
+
+" vin autocommands for changing the layout of 
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * :setlocal syntax=ON | setlocal cursorline cursorcolumn
+autocmd WinLeave,Bufleave,FocusLost,CmdwinLeave * :setlocal syntax=off | setlocal nocursorline nocursorcolumn 
+autocmd WinLeave,FocusLost,CmdwinLeave NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+autocmd WinLeave,FocusLost,CmdwinLeave ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
+autocmd WinLeave,FocusLost,CmdwinLeave __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+
+
+
+

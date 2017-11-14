@@ -4,6 +4,7 @@
 " blaque magick by xero harrison (http://blaquemagick.xero.nu)
 
 set background=dark
+
 hi clear
 
 if exists("syntax_on")
@@ -62,3 +63,7 @@ hi! link Question        DiffChange
 hi! link TabLine         StatusLineNC
 hi! link TabLineFill     StatusLineNC
 hi! link VimHiGroup      VimGroup
+
+
+
+

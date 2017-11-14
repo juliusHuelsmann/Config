@@ -163,7 +163,10 @@ let s:palette.cterm.blue       = { 'dark' : s:cterm_blue       , 'light' : "17" 
 let s:palette.cterm.purple     = { 'dark' : s:cterm_purple     , 'light' : "53"  }
 let s:palette.cterm.darkcolumn = { 'dark' : "234"              , 'light' : "244" }
 let s:palette.cterm.addbg      = { 'dark' : "65"               , 'light' : "194" }
-let s:palette.cterm.addfg      = { 'dark' : "193"              , 'light' : "22"  }
+ let s:palette.cterm.addfg      = { 'dark' : "193"              , 'light' : "22"  }
+
+" change reverted: 
+"let s:palette.cterm.addfg      = { 'dark' : "7"              , 'light' : "22"  }
 let s:palette.cterm.changebg   = { 'dark' : "60"               , 'light' : "189" }
 let s:palette.cterm.changefg   = { 'dark' : "189"              , 'light' : "53"  }
 let s:palette.cterm.delbg      = { 'dark' : s:cterm_delbg      , 'light' : "224" }
@@ -298,7 +301,9 @@ exe "hi! ErrorMsg"      .s:fg_background  .s:bg_red         .s:fmt_stnd
 exe "hi! VertSplit"     .s:fg_window      .s:bg_none        .s:fmt_none
 exe "hi! Folded"        .s:fg_comment     .s:bg_darkcolumn  .s:fmt_none
 exe "hi! FoldColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
-exe "hi! SignColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
+
+"XXX: this is just the col on th eleft 2nd: .s:bg_darkcolumn 
+exe "hi! SignColumn"    .s:fg_none        .s:bg_none         .s:fmt_none
 "   Incsearch"
 exe "hi! LineNr"        .s:fg_selection   .s:bg_none        .s:fmt_none
 exe "hi! CursorLineNr"  .s:fg_yellow      .s:bg_none        .s:fmt_none
@@ -451,3 +456,5 @@ let &background = s:style
 " THE SOFTWARE.
 
 " }}}
+"
+highlight Normal ctermbg=None
