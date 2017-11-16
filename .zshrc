@@ -178,6 +178,20 @@ function pushu() {
     cd $ret
   fi
 }
+
+function gcatasks() {
+  k=$(catasks $*)
+  notify-send "$k" 
+
+}
+function catasks() {
+ k="$*"
+ if [ -z "$*" ]; then
+  k=5;
+ fi
+ cat /mnt/data/repos/Readings/tasks.mdpp | tail -n $k
+}
+
 function pushn() {
   # push notes 
  

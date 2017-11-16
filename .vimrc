@@ -756,6 +756,11 @@ autocmd WinLeave,FocusLost,CmdwinLeave NERD_tree* :set syntax=ON | setlocal nocu
 autocmd WinLeave,FocusLost,CmdwinLeave ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
 autocmd WinLeave,FocusLost,CmdwinLeave __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
 
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * :setlocal syntax=ON | setlocal cursorline cursorcolumn
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+
 
 
 
