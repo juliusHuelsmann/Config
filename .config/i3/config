@@ -481,6 +481,7 @@ bindsym $mod+shift+x  exec --no-startup-id blurlock
 #exec_always feh --bg-scale ~/.i3/w.jpg
 #exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
 exec_always feh --bg-scale ~/.config/i3/irie.png
+exec_always feh --bg-scale ~/.config/i3/bg.png
 #exec blueman-applet
 #exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #redshift: fluxalternative:

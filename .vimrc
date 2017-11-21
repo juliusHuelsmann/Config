@@ -35,6 +35,9 @@ Plugin 'kien/ctrlp.vim'
 
 " Display methods and class variables
 Plugin 'majutsushi/tagbar'
+Plugin 'https://git.llvm.org/git/llvm'
+" https://git.llvm.org/git/llvm
+"Plugin 'llvm-mirror/lldb'
 
 "" not that relevant Plugin 'ervandew/supertab'
 
@@ -428,8 +431,7 @@ function! StartUp()
 endfunction
 autocmd VimEnter * call StartUp() 
 
-
-function! OpenHeader() 
+function! GetHeader() 
 
   let file = expand('%:p')
   "let file = expand('%')
@@ -469,17 +471,41 @@ function! OpenHeader()
 
       "join([rec, ""], "")
       "echom "recovered" rec
+      "
       if (filereadable(rec))
 
-        vsp
-        :execute "e " . fnameescape(rec) 
+        return fnameescape(rec) 
       else 
         echom "Sorry, the corresponding file could not be found."
+        return
       endif
   endif
 endfunction
 
 nnoremap <leader>o :call OpenHeader() <CR>
+
+function! ReplaceWithHeader() 
+  let name = GetHeader()
+  if len(name)
+    :execute "e " . name 
+  endif
+
+  return
+endfunction
+
+function! OpenHeader() 
+  let name = GetHeader()
+
+  if len(name)
+    vsp
+    :execute "e " . name 
+  endif
+
+  return
+endfunction
+
+nnoremap <leader>o :call OpenHeader() <CR>
+nnoremap <leader>r :call ReplaceWithHeader() <CR>
 function! ReconstructFile(str, find, replace)
 
   let str = a:str
@@ -727,7 +753,8 @@ autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
 "folds
 
 " normally every fold is open
-set foldmethod=syntax
+"set foldmethod=syntax
+" set foldmethod=indent " specified in vimenter
 auto BufRead * normal zR
 nnoremap <leader>ff :%g ) {/ normal! zf%
 
@@ -748,15 +775,16 @@ nnoremap <leader>x :%!xxd<CR>
 set cursorline
 set cursorcolumn
 
+set foldmethod=indent
 
 " vin autocommands for changing the layout of 
-autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * :setlocal syntax=ON | setlocal cursorline cursorcolumn
-autocmd WinLeave,Bufleave,FocusLost,CmdwinLeave * :setlocal syntax=off | setlocal nocursorline nocursorcolumn 
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
+autocmd WinLeave,Bufleave,FocusLost,CmdwinLeave * silent :setlocal foldmethod=manual|  :setlocal syntax=off | setlocal nocursorline nocursorcolumn 
 autocmd WinLeave,FocusLost,CmdwinLeave NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
 autocmd WinLeave,FocusLost,CmdwinLeave ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
 autocmd WinLeave,FocusLost,CmdwinLeave __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
 
-autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * :setlocal syntax=ON | setlocal cursorline cursorcolumn
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
 autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
 autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
 autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
