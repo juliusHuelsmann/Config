@@ -43,6 +43,7 @@
 
 !/scripts/
 !/scripts/*
+!/scripts/scripts/*
 
 
 !README.md
