@@ -125,13 +125,28 @@ alias puh="git add .; git commit -am \"provided partial solution for comparison\
 alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 
 # local 
-alias ssharcht='ssh -X juli@192.168.178.67'
-alias ssharchx='ssh -X juli@192.168.178.32'
-alias sshosx='ssh -X x@192.168.178.20'
+localarcht=juli@192.168.178.67
+localarchx=juli@192.168.178.32
+localosx=x@192.168.178.20
+
+alias ssharcht='ssh -X $localarcht'
+alias ssharchx='ssh -X $localarchx'
+alias sshosx='ssh -X $localosx'
 
 # This command must run each time terminal opens for 
 # using ssh-add
 #
+
+function scposx() {
+  scp $1 $localosx:$2
+}
+function scparcht() {
+  scp $1 $localarcht:$2
+}
+function scparchx() {
+  scp $1 $localarchx:$2
+}
+
 
 function pushuv() {
   if [ -z "$1" ]; then
