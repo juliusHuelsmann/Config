@@ -426,10 +426,9 @@ function copyFromSmartphone(){
 }
 
 function sentryUpgrade() {
-
-  
   export SENTRY_SECRET_KEY="phz2reaw4sj@m6a*9bwd!h0cv(0&tl53%5*5vqmn6@o7m3rgjx"
-  docker run \
+  export SENTRY_SECRET_KEY="vu1&uu*^q*a5*%76&85zg772vv8^%ci53!5&#8)^b_!=(1625%"
+  sudo docker run \
     --link sentry-redis:redis \
     --link sentry-postgres:postgres \
     --link sentry-smtp:smtp \
@@ -439,9 +438,10 @@ function sentryUpgrade() {
 
 function sentryDeployRun() {
   export SENTRY_SECRET_KEY="phz2reaw4sj@m6a*9bwd!h0cv(0&tl53%5*5vqmn6@o7m3rgjx"
+  export SENTRY_SECRET_KEY="9m!vvhl-!g-3&__uiksagt!ncwu)__2enb!f*z^*mjro6rmngx"
 
   # run web client
-  docker run \
+  sudo docker run \
     --link sentry-redis:redis \
     --link sentry-postgres:postgres \
     --link sentry-smtp:smtp \
@@ -453,7 +453,7 @@ function sentryDeployRun() {
     run web
 
   # run worker
-  docker run \
+  sudo docker run \
     --link sentry-redis:redis \
     --link sentry-postgres:postgres \
     --link sentry-smtp:smtp \
@@ -463,7 +463,7 @@ function sentryDeployRun() {
     sentry-onpremise \
     run worker
 
-  docker run \
+  sudo docker run \
     --link sentry-redis:redis \
     --link sentry-postgres:postgres \
     --link sentry-smtp:smtp \
@@ -477,8 +477,8 @@ function sentryDeployRun() {
 
 function sentryRun() {
 
-  docker start sentry-postgres sentry-redis sentry-smtp
-  docker start sentry-worker-01 sentry-cron sentry-web-01
+  sudo docker start sentry-postgres sentry-redis sentry-smtp
+  sudo docker start sentry-worker-01 sentry-cron sentry-web-01
 }
 
 
