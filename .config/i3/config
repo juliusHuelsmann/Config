@@ -499,8 +499,8 @@ exec_always xmodmap ~/.Xmodmap
 exec source .zshrc
 exec disableUnwantedDevicesOnStartup
 
-exec killall xflux
-exec xflux -l 52 -g 13.4
+# exec killall xflux
+# exec xflux -l 52 -g 13.4
 
 exec setxkbmap -layout de
 
