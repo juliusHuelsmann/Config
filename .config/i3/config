@@ -75,8 +75,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 #bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-bindsym XF86MonBrightnessUp exec --no-startup-id /mnt/data/scripts/brightUp.sh
-bindsym XF86MonBrightnessDown exec --no-startup-id /mnt/data/scripts/brightDown.sh
+bindsym XF86MonBrightnessUp exec --no-startup-id "/mnt/data/scripts/brightUp.sh; sudo /mnt/data/scripts/brightUp.sh"
+bindsym XF86MonBrightnessDown exec --no-startup-id "/mnt/data/scripts/brightDown.sh;  sudo /mnt/data/scripts/brightDown.sh"
 
 
 # check the keybord
