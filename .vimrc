@@ -429,7 +429,6 @@ function! StartUp()
   :execute "normal! \<C-w>l"
   echo "hey."
 endfunction
-autocmd VimEnter * call StartUp() 
 
 function! GetHeader() 
 
@@ -776,6 +775,8 @@ set cursorline
 set cursorcolumn
 
 set foldmethod=indent
+
+autocmd VimEnter *.{cpp,hpp,c,h,php,java,py,md,tex} call StartUp() 
 
 " vin autocommands for changing the layout of 
 autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
