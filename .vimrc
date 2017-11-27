@@ -417,366 +417,379 @@ match ErrorMsg '\%>80v.\+'
 "
 "
 
+function! OpenNerdTree()
+      NERDTreeTabsToggle
+      :execute "normal! \<C-w>l"
+endfunction
 
 
 "
 " Startup function:
 "   (1) start NERDTre
 "   (1) start NERDTreee
-function! StartUp()
-  "NERDTree
-  NERDTreeTabsToggle
-  :execute "normal! \<C-w>l"
-  echo "hey."
-endfunction
+  function! BehaviorOnStartup()
 
-function! GetHeader() 
-
-  let file = expand('%:p')
-  "let file = expand('%')
-  let splitForEnding = split(file, '\.')
-
-
-  if len(splitForEnding)
-
-    let ending = splitForEnding[-1]
-    let rec = ""
-
-    if ending == "h" || ending == "hpp"
-
-      let newFile = join(splitForEnding[0:-2])
-      let newFile = join([newFile,".cpp"], "")
-      "echom "Looking for cpp file" newFile
-
-
-      let rec = ReconstructFile(newFile, "/include/", "/src/")
-      "echom "reconstructed " rec  
-      "echom "hier " newFile
-    elseif ending == "c" || ending == "cpp" 
-
-
-      let newFile = join(splitForEnding[0:-2])
-      let newFile = join([newFile,".h"], "")
-      "echom "Looking for h file" newFile
-
-
-      let rec = ReconstructFile(newFile, "/src/", "/include/")
-      "echom "reconstructed " rec 
-
-    else 
-      echom "Sorry, the corresponding file could not be found."
-      return
+    if @% == ""
+      " No filename for current buffer
+      call OpenNerdTree()
+    elseif filereadable(@%) == 0
+      " File doesn't exist yet
+      call OpenNerdTree()
+    elseif line('$') == 1 && col('$') == 1
+      " File is empty
     endif
+  endfunction
 
-      "join([rec, ""], "")
-      "echom "recovered" rec
-      "
-      if (filereadable(rec))
+  function! GetHeader() 
 
-        return fnameescape(rec) 
+    let file = expand('%:p')
+    "let file = expand('%')
+    let splitForEnding = split(file, '\.')
+
+
+    if len(splitForEnding)
+
+      let ending = splitForEnding[-1]
+      let rec = ""
+
+      if ending == "h" || ending == "hpp"
+
+        let newFile = join(splitForEnding[0:-2])
+        let newFile = join([newFile,".cpp"], "")
+        "echom "Looking for cpp file" newFile
+
+
+        let rec = ReconstructFile(newFile, "/include/", "/src/")
+        "echom "reconstructed " rec  
+        "echom "hier " newFile
+      elseif ending == "c" || ending == "cpp" 
+
+
+        let newFile = join(splitForEnding[0:-2])
+        let newFile = join([newFile,".h"], "")
+        "echom "Looking for h file" newFile
+
+
+        let rec = ReconstructFile(newFile, "/src/", "/include/")
+        "echom "reconstructed " rec 
+
       else 
         echom "Sorry, the corresponding file could not be found."
         return
       endif
-  endif
-endfunction
 
-nnoremap <leader>o :call OpenHeader() <CR>
+        "join([rec, ""], "")
+        "echom "recovered" rec
+        "
+        if (filereadable(rec))
 
-function! ReplaceWithHeader() 
-  let name = GetHeader()
-  if len(name)
-    :execute "e " . name 
-  endif
-
-  return
-endfunction
-
-function! OpenHeader() 
-  let name = GetHeader()
-
-  if len(name)
-    vsp
-    :execute "e " . name 
-  endif
-
-  return
-endfunction
-
-nnoremap <leader>o :call OpenHeader() <CR>
-nnoremap <leader>r :call ReplaceWithHeader() <CR>
-function! ReconstructFile(str, find, replace)
-
-  let str = a:str
-  let find = a:find
-  let replace = a:replace
-  let verbose = 0
-
-  " Replace string in the following form: /include/
-  
-  " 1) Replace last find
-  " 2) Check if valid -> return
-  " 3) Remove last find  -> call ReconstructFile(str-, find, replace) 
-
-
-  " reverse all strings
-  let str =  join(reverse(split(str, '.\zs')), '')
-  let findRev =  join(reverse(split(find, '.\zs')), '')
-  let replRev = join(reverse(split(replace, '.\zs')), '')
-  let voidReplacement ='/'
-
- 
-  let replRev0 = replRev .  substitute(replRev, "/", "", "")
-  " corner case for 2 src
-  let p0Rev =substitute(str, findRev, replRev0, "")
-  let p0 = join(reverse(split(p0Rev, '.\zs')), '')
-  if filereadable(p0)
-    if verbose
-      echom "found " p0
+          return fnameescape(rec) 
+        else 
+          echom "Sorry, the corresponding file could not be found."
+          return
+        endif
     endif
-    return p0
-  endif
+  endfunction
 
-  let p1Rev =substitute(str, findRev, replRev, "")
-  let p1 = join(reverse(split(p1Rev, '.\zs')), '')
-  if filereadable(p1)
-    if verbose
-      echom "found " p1
+  nnoremap <leader>o :call OpenHeader() <CR>
+
+  function! ReplaceWithHeader() 
+    let name = GetHeader()
+    if len(name)
+      :execute "e " . name 
     endif
-    return p1
-  endif
+
+    return
+  endfunction
+
+  function! OpenHeader() 
+    let name = GetHeader()
+
+    if len(name)
+      vsp
+      :execute "e " . name 
+    endif
+
+    return
+  endfunction
+
+  nnoremap <leader>o :call OpenHeader() <CR>
+  nnoremap <leader>r :call ReplaceWithHeader() <CR>
+  function! ReconstructFile(str, find, replace)
+
+    let str = a:str
+    let find = a:find
+    let replace = a:replace
+    let verbose = 0
+
+    " Replace string in the following form: /include/
+    
+    " 1) Replace last find
+    " 2) Check if valid -> return
+    " 3) Remove last find  -> call ReconstructFile(str-, find, replace) 
+
+
+    " reverse all strings
+    let str =  join(reverse(split(str, '.\zs')), '')
+    let findRev =  join(reverse(split(find, '.\zs')), '')
+    let replRev = join(reverse(split(replace, '.\zs')), '')
+    let voidReplacement ='/'
 
   
-  let p2Rev = substitute(str, findRev, voidReplacement, "")
-
-  " corner case: not replaceable
-  if p2Rev == str
-
-    if verbose
-      echom "interrupt "  
+    let replRev0 = replRev .  substitute(replRev, "/", "", "")
+    " corner case for 2 src
+    let p0Rev =substitute(str, findRev, replRev0, "")
+    let p0 = join(reverse(split(p0Rev, '.\zs')), '')
+    if filereadable(p0)
+      if verbose
+        echom "found " p0
+      endif
+      return p0
     endif
-    return ""
-  endif
 
-  let p2 = join(reverse(split(p2Rev, '.\zs')), '')
-  if verbose
-    echom "recursion " p2
-  endif
-  return ReconstructFile(p2, find, replace) 
+    let p1Rev =substitute(str, findRev, replRev, "")
+    let p1 = join(reverse(split(p1Rev, '.\zs')), '')
+    if filereadable(p1)
+      if verbose
+        echom "found " p1
+      endif
+      return p1
+    endif
 
-endfunction
+    
+    let p2Rev = substitute(str, findRev, voidReplacement, "")
 
+    " corner case: not replaceable
+    if p2Rev == str
 
-inoremap <Leader>s :sort<CR>
+      if verbose
+        echom "interrupt "  
+      endif
+      return ""
+    endif
 
-"
-" syntax highlighting
-syntax on
+    let p2 = join(reverse(split(p2Rev, '.\zs')), '')
+    if verbose
+      echom "recursion " p2
+    endif
+    return ReconstructFile(p2, find, replace) 
 
+  endfunction
 
 
+  inoremap <Leader>s :sort<CR>
 
+  "
+  " syntax highlighting
+  syntax on
 
 
-"
-" syntastic
-"
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_cpp_compiler = 'gcc'
-let g:syntastic_cpp_compiler_options = '-std=c++14'
 
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" for enabling syntastic wiht ycm enabled
-"XXX:
-"let g:ycm_show_diagnostics_ui = 0 
+  "
+  " syntastic
+  "
 
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_cpp_compiler = 'clang++'
+  let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
-" vimlatex
-"REQIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+  let g:syntastic_cpp_checkers = ['gcc']
+  let g:syntastic_cpp_compiler = 'gcc'
+  let g:syntastic_cpp_compiler_options = '-std=c++14'
 
-set shellslash
-"
-" " IMPORTANT: grep will sometimes skip displaying the file name if you
-" " search in a singe file. This will confuse Latex-Suite. Set your grep
-" " program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-"
-" " OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-"
-" " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" " The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
+  let g:syntastic_cpp_check_header = 1
+  let g:syntastic_cpp_auto_refresh_includes = 1
 
-noremap <Leader>lr <Leader>ll<CR>:e#<CR>
+  "set statusline+=%#warningmsg#
+  "set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
+  " for enabling syntastic wiht ycm enabled
+  "XXX:
+  "let g:ycm_show_diagnostics_ui = 0 
 
 
-set wildignore+=*.a,*.o
-set wildignore+=*.png,*.jpg,*.gif
-set wildignore+=.git,*.DS_Store
-set wildignore+=*~,*.swp,*.tmp
+  " vimlatex
+  "REQIRED. This makes vim invoke Latex-Suite when you open a tex file.
+  filetype plugin on
 
+  set shellslash
+  "
+  " " IMPORTANT: grep will sometimes skip displaying the file name if you
+  " " search in a singe file. This will confuse Latex-Suite. Set your grep
+  " " program to always generate a file-name.
+  set grepprg=grep\ -nH\ $*
+  "
+  " " OPTIONAL: This enables automatic indentation as you type.
+  filetype indent on
+  "
+  " " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+  " " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+  " " The following changes the default filetype back to 'tex':
+  let g:tex_flavor='latex'
+  let g:Tex_DefaultTargetFormat='pdf'
 
-" turn on the ability to use project specific vimrc files
-" disable unsafe commands 
-set exrc
-set secure 
+  noremap <Leader>lr <Leader>ll<CR>:e#<CR>
 
 
-set exrc
+  set wildignore+=*.a,*.o
+  set wildignore+=*.png,*.jpg,*.gif
+  set wildignore+=.git,*.DS_Store
+  set wildignore+=*~,*.swp,*.tmp
 
-set exrc
 
-" re php-tag folder
-noremap <Leader>rc :!<space>phpctags<space>-R<CR> 
+  " turn on the ability to use project specific vimrc files
+  " disable unsafe commands 
+  set exrc
+  set secure 
 
-:hi ColorColumn ctermbg=black
 
+  set exrc
 
-" resize the split
-"nnoremap <silent> h- :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
-"nnoremap <silent> h+ :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
-nnoremap <silent> -h :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
-nnoremap <silent> +h :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
+  set exrc
 
-"nnoremap <silent> v+ :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
-"nnoremap <silent> v- :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
+  " re php-tag folder
+  noremap <Leader>rc :!<space>phpctags<space>-R<CR> 
 
-nnoremap <silent> +v :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
-nnoremap <silent> -v :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
+  :hi ColorColumn ctermbg=black
 
-" open fold while using space in normal mode
-nnoremap <space> za
-"
-set showmatch
 
-" wrap the displaying of lines
-set wrap 
+  " resize the split
+  "nnoremap <silent> h- :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
+  "nnoremap <silent> h+ :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
+  nnoremap <silent> -h :<C-U>exe "resize " . (winheight(0)  - 5 * v:count1)<CR>
+  nnoremap <silent> +h :<C-U>exe "resize " . (winheight(0)  + 5 * v:count1)<CR>
 
-noremap <Leader>- ddp
-noremap <Leader>_ ddkP 
+  "nnoremap <silent> v+ :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
+  "nnoremap <silent> v- :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
 
-set timeoutlen=500
+  nnoremap <silent> +v :<C-U>exe "vertical resize " . (winwidth(0) + 5 * v:count1)<CR>
+  nnoremap <silent> -v :<C-U>exe "vertical resize " . (winwidth(0) - 5* v:count1)<CR>
 
-" edit vimrc and apply vimrc (resp. source vimrc)
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+  " open fold while using space in normal mode
+  nnoremap <space> za
+  "
+  set showmatch
 
-iabbrev adn and
-iabbrev @@ huelsmann@campus.tu-berlin.de
+  " wrap the displaying of lines
+  set wrap 
 
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
-nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
-nnoremap <leader>h viw<esc>a`<esc>hbi`<esc>lel
+  noremap <Leader>- ddp
+  noremap <Leader>_ ddkP 
 
-nnoremap <leader>2" viW<esc>a"<esc>hBi"<esc>lel
-nnoremap <leader>#' viW<esc>a'<esc>hBi'<esc>lel
-nnoremap <leader>H viW<esc>a`<esc>hBi`<esc>lel
+  set timeoutlen=500
 
-inoremap jk <esc>
-" XXX: remove this, like a lot of commands
-" tend to use <esc>...
-inoremap <esc> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap <Up> <nop>
-noremap <Down> <nop>
+  " edit vimrc and apply vimrc (resp. source vimrc)
+  nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+  nnoremap <leader>sv :source $MYVIMRC<cr>
 
-"set statusline +=%f\ %=%c/80\ %l/%L
-"set statusline +=%t\ %=%c/80\ %l/%L
+  iabbrev adn and
+  iabbrev @@ huelsmann@campus.tu-berlin.de
 
+  nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+  nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+  nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
+  nnoremap <leader>h viw<esc>a`<esc>hbi`<esc>lel
 
+  nnoremap <leader>2" viW<esc>a"<esc>hBi"<esc>lel
+  nnoremap <leader>#' viW<esc>a'<esc>hBi'<esc>lel
+  nnoremap <leader>H viW<esc>a`<esc>hBi`<esc>lel
 
-" Highlight all instances of word under cursor, when idle.
-" Useful when studying strange source code.
-" Type z/ to toggle highlighting on/off.
-nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    augroup end
-    setl updatetime=500
-    echo 'Highlight current word: ON'
-    return 1
-  endif
-endfunction
+  inoremap jk <esc>
+  " XXX: remove this, like a lot of commands
+  " tend to use <esc>...
+  inoremap <esc> <nop>
+  noremap <Left> <nop>
+  noremap <Right> <nop>
+  noremap <Up> <nop>
+  noremap <Down> <nop>
 
+  "set statusline +=%f\ %=%c/80\ %l/%L
+  "set statusline +=%t\ %=%c/80\ %l/%L
 
 
 
+  " Highlight all instances of word under cursor, when idle.
+  " Useful when studying strange source code.
+  " Type z/ to toggle highlighting on/off.
+  nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+  function! AutoHighlightToggle()
+    let @/ = ''
+    if exists('#auto_highlight')
+      au! auto_highlight
+      augroup! auto_highlight
+      setl updatetime=4000
+      echo 'Highlight current word: off'
+      return 0
+    else
+      augroup auto_highlight
+        au!
+        au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+      augroup end
+      setl updatetime=500
+      echo 'Highlight current word: ON'
+      return 1
+    endif
+  endfunction
 
 
-noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
-" XXX:
-"let g:enable_ycm_at_startup = 0
 
 
-" XXX: vim enter: make vertical alignment for i3, call qutebrowser, open new
-" window with the output of octodown --live-reload
-autocmd VimEnter *.{md,mdpp} let b:dispatch = 'octodown --live-reload %'
-autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
 
 
-"let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80', '#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb', '#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9', '#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8' , '#f0f4c3', '#ffb74d' ]
-"let g:semanticTermColors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ,14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
-"
+  noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
+  " XXX:
+  "let g:enable_ycm_at_startup = 0
 
 
+  " XXX: vim enter: make vertical alignment for i3, call qutebrowser, open new
+  " window with the output of octodown --live-reload
+  autocmd VimEnter *.{md,mdpp} let b:dispatch = 'octodown --live-reload %'
+  autocmd BufReadPre,FileReadPre *.{cpp,php,h} :TagbarOpen
 
-"folds
 
-" normally every fold is open
-"set foldmethod=syntax
-" set foldmethod=indent " specified in vimenter
-auto BufRead * normal zR
-nnoremap <leader>ff :%g ) {/ normal! zf%
+  "let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80', '#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb', '#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9', '#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8' , '#f0f4c3', '#ffb74d' ]
+  "let g:semanticTermColors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ,14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  "
 
 
-nnoremap <leader>w :w<space>!sudo<space>tee<space>% <CR>
 
+  "folds
 
+  " normally every fold is open
+  "set foldmethod=syntax
+  " set foldmethod=indent " specified in vimenter
+  auto BufRead * normal zR
+  nnoremap <leader>ff :%g ) {/ normal! zf%
 
-" Sytnastics replacment
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
 
+  nnoremap <leader>w :w<space>!sudo<space>tee<space>% <CR>
 
-nnoremap <leader>tn :tabnew<CR>:NERDTree<CR><c-w>l
-nnoremap <leader>x :%!xxd<CR> 
 
-set cursorline
-set cursorcolumn
 
-set foldmethod=indent
+  " Sytnastics replacment
+  let g:ale_sign_column_always = 1
+  let g:ale_sign_error = '>>'
+  let g:ale_sign_warning = '--'
 
-autocmd VimEnter *.{cpp,hpp,c,h,php,java,py,md,tex} call StartUp() 
+
+  nnoremap <leader>tn :tabnew<CR>:NERDTree<CR><c-w>l
+  nnoremap <leader>x :%!xxd<CR> 
+
+  set cursorline
+  set cursorcolumn
+
+  set foldmethod=indent
+
+
+  " open Tree only in case the vimenter is performed on an empty file
+  autocmd VimEnter * call BehaviorOnStartup() 
+  autocmd VimEnter *.{cpp,hpp,c,h,php,java,py,md,tex} call OpenNerdTree() 
 
 " vin autocommands for changing the layout of 
 autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
