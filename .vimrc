@@ -701,13 +701,16 @@ endfunction
   nnoremap <leader>H viW<esc>a`<esc>hBi`<esc>lel
 
   inoremap jk <esc>
+  "vnoremap jk <esc> " not considered useful
   " XXX: remove this, like a lot of commands
   " tend to use <esc>...
-  inoremap <esc> <nop>
-  noremap <Left> <nop>
-  noremap <Right> <nop>
-  noremap <Up> <nop>
-  noremap <Down> <nop>
+  "
+  
+  "inoremap <esc> <nop>
+  "noremap <Left> <nop>
+  "noremap <Right> <nop>
+  "noremap <Up> <nop>
+  "noremap <Down> <nop>
 
   "set statusline +=%f\ %=%c/80\ %l/%L
   "set statusline +=%t\ %=%c/80\ %l/%L
@@ -781,8 +784,8 @@ endfunction
   nnoremap <leader>tn :tabnew<CR>:NERDTree<CR><c-w>l
   nnoremap <leader>x :%!xxd<CR> 
 
-  set cursorline
-  set cursorcolumn
+"  set cursorline
+"  set cursorcolumn
 
   set foldmethod=indent
 
@@ -804,5 +807,22 @@ autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter ControlP :set synt
 autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
 
 
+filetype plugin on
+au FileType php setl ofu=phpcomplete#CompletePHP
+au FileType ruby,eruby setl ofu=rubycomplete#Complete
+au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
+au FileType c setl ofu=ccomplete#CompleteCpp
+au FileType css setl ofu=csscomplete#CompleteCSS
 
 
+
+:hi CursorLine   cterm=NONE ctermbg=52
+:hi CursorColumn cterm=NONE ctermbg=52
+
+let g:gitgutter_max_signs = 999
+
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|CVS$\|build|\.svn$\|target$\|build\|cmake-build-debug\|ignore\|local\|migrate\|thirdparty\|src/libs/\|settings/benchmark\|settings/configs\|settings/data\|settings/documentation',
+  \ 'file': '\.class$\|\.so$',
+  \ }

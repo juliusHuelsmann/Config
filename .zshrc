@@ -96,9 +96,11 @@ alias cds="cd /mnt/data/repos/4-ws1718"
 alias cdsr="cd /mnt/data/repos/4-ws1718Raw"
 alias uni="cdsr; daemonize termite -d $ws4"
 alias aim="cd $ws4Raw/aim; daemonize termite -d '$ws4/aim'"
+alias bkits="cd $ws4Raw/bkits; daemonize termite -d '$ws4/bkits'"
 alias netsec="cd $ws4Raw/netsec; daemonize termite -d '$ws4/netsec'"
 alias seclab="cd $ws4Raw/seclab; daemonize termite -d '$ws4/seclab'"
 alias osd="cd $ws4Raw/osd; daemonize termite -d '$ws4/osd'"
+alias bri="sudo chown juli /sys/class/backlight/intel_backlight/brightness"
 repo=/mnt/data/repos
 dima=$repo/dima/SenseNative
 bahn=$repo/deutscheBahn/ipa
@@ -112,7 +114,9 @@ alias dsense="cdsense;vim";
 alias lt="ls -lt"
 alias x="exit"
 alias c="clear"
+alias cx="clear; exit"
 alias uuu="pushu"
+alias u2d="pushur"
 alias ttt="pusht"
 alias nnn="pushn"
 alias uuv="pushuv"
@@ -175,6 +179,24 @@ function pusht() {
     cdreading
     echo -e $k >> tasks.mdpp
     git commit -am "semi-auto pushed task needed."
+    eval $(ssh-agent)
+    ssh-add
+    git push
+    cd $ret
+  fi
+}
+function pushur() {
+  # push reading
+ 
+  if [ -z "$1" ]; then
+    notify-send "what's so urgent?" 
+  else
+    ret=$(pwd)
+    k=" * [ ] $*" 
+    notify-send "Pushed: '$k'" 
+    cdreading
+    echo -e $k >> u2d.mdpp
+    git commit -am "semi-auto pushed utility needed."
     eval $(ssh-agent)
     ssh-add
     git push
@@ -548,3 +570,6 @@ MAIL=/var/spool/mail/juli && export MAIL
 
 export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
 export PATH=$PATH:/home/juli/.gem/ruby/2.4.0/bin
+export PATH=$PATH:/usr/local/spark/bin
+
+export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark

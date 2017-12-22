@@ -73,15 +73,17 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-bindsym XF86MonBrightnessUp exec --no-startup-id "/mnt/data/scripts/brightUp.sh; sudo /mnt/data/scripts/brightUp.sh"
-bindsym XF86MonBrightnessDown exec --no-startup-id "/mnt/data/scripts/brightDown.sh;  sudo /mnt/data/scripts/brightDown.sh"
+bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUp.sh)"
+bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
+#bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
+#bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
 
 
 # check the keybord
 # bindsym XF86MonBrightnessUp exec --no-startup-id notify-send 'brighness up'
-# bindsym XF86MonBrightnessDown exec --no-startup-id notify-send 'brightness down'
+ #bindsym XF86MonBrightnessDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh; notify-send 'brightness down'
 
 
 # Start Applications
