@@ -508,3 +508,4 @@ exec disableUnwantedDevicesOnStartup
 
 exec setxkbmap -layout de
 
+exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
