@@ -23,6 +23,7 @@ bindsym $mod+Shift+q kill
 # start program launcher
 # bindsym $mod+d exec --no-startup-id dmenu_recency
 bindsym $mod+d exec --no-startup-id rofi -show run 
+bindsym $mod+c exec --no-startup-id rofi -show
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -181,7 +182,7 @@ bindsym $mod+Ctrl+k workspace prev
 # bindsym $mod+Alt_L+Right move workspace to output right
 #bindsym $mod+c move workspace to output left
 #bindsym $mod+c move workspace to output above 
-bindsym $mod+c move workspace to output left 
+# bindsym $mod+c move workspace to output left 
 
 
 # Workspace names
@@ -406,13 +407,16 @@ bar {
 #		# nice blue: 425E8F, lighter: 476FB3
 
 #                       border  backgr. text
+        focused_workspace  #000000 #000000 #000000
         focused_workspace  #b2b3b2 #d8d9d8 #2B2C2B
 
 # XXX: when is a workspace active?
+        active_workspace #000000 #000000 #000000
         active_workspace   #595B5B #353836 #FDF6E3
 
 # workspaces that are containing stuff but are not being focuced
 # right now. 
+        inactive_workspace #000000 #000000 #000000
         inactive_workspace #595B5B #353836 #EEE8D5
 
 # evoked for instance on leader + shift + 0
@@ -500,6 +504,7 @@ mode "$mode_gaps_outer" {
 # bindsym $mod+shift+x exec i3lock
 bindsym $mod+shift+x  exec --no-startup-id blurlock
 
+bindsym $mod+o exec --no-startup-id ~/.config/i3/listInteresting.sh
 
 #exec_always feh --bg-scale ~/.i3/NxmAzdu-storm-clouds-wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/ice.jpg
