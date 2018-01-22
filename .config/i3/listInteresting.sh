@@ -12,8 +12,16 @@ for i in $files; do
     echo -e "\ni=$i\n"
     cmd=$(ls -t | grep .pdf)
     while IFS= read -r j; do 
-      req="$req$app$i$sep$j$newl"
+
+     
+      name="$i$sep$j"
+      name=$(printf %q $name)
+      name="$name"
+      req="$req$app$name$newl"
     done <<< "$cmd"
 done
-$(echo -e "$req" | rofi -dmenu)
+echo "$req"
+#$(echo -e "$req" | rofi -dmenu) 2>&1 
+#echo $hier
+echo -e " $req" | rofi -dmenu | zsh 
 
