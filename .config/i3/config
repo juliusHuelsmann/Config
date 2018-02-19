@@ -121,8 +121,8 @@ bindsym $mod+odiaeresis focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
+#bindsym $mod+Shift+j move down
+#bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 bindsym $mod+Shift+odiaeresis move right
 
@@ -170,10 +170,24 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+h workspace prev
-bindsym $mod+Ctrl+j workspace_right 
-bindsym $mod+Ctrl+l workspace next
-bindsym $mod+Ctrl+k workspace prev
+#bindsym $mod+Ctrl+h exec --no-startup-id /mnt/data/repos/i3-grid/src/i3GridInterface.py moveWorkspaceLeft
+#bindsym $mod+Ctrl+l exec --no-startup-id /mnt/data/repos/i3-grid/src/i3GridInterface.py moveWorkspaceRight
+#bindsym $mod+Ctrl+j exec --no-startup-id /mnt/data/repos/i3-grid/src/i3GridInterface.py moveWorkspaceDown
+#bindsym $mod+Ctrl+k exec --no-startup-id /mnt/data/repos/i3-grid/src/i3GridInterface.py moveWorkspaceUp
+
+bindsym $mod+Ctrl+Mod1+h exec --no-startup-id i3Grid moveWorkspaceLeft
+bindsym $mod+Ctrl+Mod1+l exec --no-startup-id i3Grid moveWorkspaceRight
+bindsym $mod+Ctrl+Mod1+j exec --no-startup-id i3Grid moveWorkspaceDown
+bindsym $mod+Ctrl+Mod1+k exec --no-startup-id i3Grid moveWorkspaceUp
+
+bindsym $mod+Ctrl+h exec --no-startup-id i3Grid moveWorkspaceExistingLeft
+bindsym $mod+Ctrl+l exec --no-startup-id i3Grid moveWorkspaceExistingRight
+bindsym $mod+Ctrl+j exec --no-startup-id i3Grid moveWorkspaceExistingDown
+bindsym $mod+Ctrl+k exec --no-startup-id i3Grid moveWorkspaceExistingUp
+
+
+#bindsym $mod+Ctrl+h workspace prev
+#bindsym $mod+Ctrl+l workspace next
 
 
 
@@ -189,15 +203,15 @@ bindsym $mod+Ctrl+k workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 "1"
-set $ws2 2
-set $ws3 3
-set $ws4 4
+set $ws1 "1git"
+set $ws2 "2vim"
+set $ws3 "3ide"
+set $ws4 "4pdf"
 set $ws5 5
 set $ws6 6
-set $ws7 "7web1"
-set $ws8 "8web2"
-set $ws9 "9Mails"
+set $ws7 "7qt"
+set $ws8 "8fire"
+set $ws9 "9chat"
 
 #set $ws1 ↖
 #set $ws2 ↑
@@ -535,3 +549,6 @@ exec disableUnwantedDevicesOnStartup
 exec setxkbmap -layout de
 
 exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
+
+# restart
+exec_always --no-startup-id starti3Grid.sh 

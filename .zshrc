@@ -101,6 +101,10 @@ alias netsec="cd $ws4Raw/netsec; daemonize termite -d '$ws4/netsec'"
 alias seclab="cd $ws4Raw/seclab; daemonize termite -d '$ws4/seclab'"
 alias osd="cd $ws4Raw/osd; daemonize termite -d '$ws4/osd'"
 alias bri="sudo chown juli /sys/class/backlight/intel_backlight/brightness"
+alias scanHome="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 300"
+alias mirror="convert -rotate 180"
+alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
+
 repo=/mnt/data/repos
 dima=$repo/dima/SenseNative
 bahn=$repo/deutscheBahn/ipa
@@ -111,7 +115,7 @@ alias cdsense="cdrep; cd $dima";
 alias dipa="cdipa;vim;";
 alias dsense="cdsense;vim";
 
-alias lt="ls -lt"
+alias lt="ls -lth"
 alias x="exit"
 alias c="clear"
 alias cx="clear; exit"
@@ -123,6 +127,7 @@ alias uuv="pushuv"
 alias uuos="pushos"
 alias rrr="pushr"
 alias cdreading="cd /mnt/data/repos/Readings"
+alias lspdf="lsPdf"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
 alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
@@ -151,6 +156,17 @@ function scparchx() {
   scp $1 $localarchx:$2
 }
 
+function lsPdf() {
+  IFS=$'\n'
+  for f in $(ls -t | grep .pdf); do
+    k=$(echo -e $(pdfinfo $f | grep Pages | grep Pages)| tr -d '[:space:]')
+    if [ ${#k} -gt 0 ]; then
+      k="$k "
+      k=${k:6:-1}
+      echo -e "$k\t$f" 
+    fi
+  done
+}
 
 function pushuv() {
   if [ -z "$1" ]; then
@@ -564,12 +580,10 @@ function genHash() {
 # (was done during the installation of procmail for using the mutt client)
 MAIL=/var/spool/mail/juli && export MAIL
 
-
-
-
-
 export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
 export PATH=$PATH:/home/juli/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/usr/local/spark/bin
 
 export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
+
+
