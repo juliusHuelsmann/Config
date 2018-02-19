@@ -15,6 +15,7 @@ This repository contains
 - `lsPdf` list the amount of pages of all pdfs in the current directory, sorted by timestemp 
 - `ls | lpdf | sort -V` list all pdfs (curr dir) by sizes (decr)
 - `sz` source zshrc
+- `vz` edit zshrc
 - `ct` copy terminal. Does also copy the ssh agent and the current directory.
 - `upw` after providing ssh key password once, the currnet terminal and all
   terminals opend via `ct` can access the ssh key without the necessity to
