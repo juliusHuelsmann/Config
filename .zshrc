@@ -157,16 +157,24 @@ function scparchx() {
 }
 
 function lsPdf() {
-  IFS=$'\n'
-  for f in $(ls -t | grep .pdf); do
-    k=$(echo -e $(pdfinfo $f | grep Pages | grep Pages)| tr -d '[:space:]')
-    if [ ${#k} -gt 0 ]; then
-      k="$k "
-      k=${k:6:-1}
-      echo -e "$k\t$f" 
-    fi
-  done
+  ls -t | grep .pdf | lpdf  | more
 }
+
+function lpdf() {
+    while read f; do
+      d=$(echo $f | grep pdf)
+      if [ ${#d} -gt 0 ]; then
+        k=$(echo -e $(pdfinfo $f | grep Pages | grep Pages)| tr -d '[:space:]')
+        if [ ${#k} -gt 0 ]; then
+          k="$k "
+          k=${k:6:-1}
+          echo -e "$k\t$f" 
+        fi
+      fi
+    done
+}
+
+
 
 function pushuv() {
   if [ -z "$1" ]; then
