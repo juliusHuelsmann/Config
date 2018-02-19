@@ -87,6 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sz="source ~/.zshrc"
+alias vz="vim ~/.zshrc"
 alias cdRepo="cd /mnt/data/repos"
 alias cdrep="cd /mnt/data/repos; addSshAgent; "
 alias cdrepo="cdRepo"
