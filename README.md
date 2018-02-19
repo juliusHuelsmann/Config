@@ -11,6 +11,30 @@ This repository contains
     6. i3
 
 
+# List of own commands provided in zshrc
+- `lsPdf` list the amount of pages of all pdfs in the current directory, sorted by timestemp 
+- `ls | lpdf | sort -V` list all pdfs (curr dir) by sizes (decr)
+- `sz` source zshrc
+- `ct` copy terminal. Does also copy the ssh agent and the current directory.
+- `upw` after providing ssh key password once, the currnet terminal and all
+  terminals opend via `ct` can access the ssh key without the necessity to
+  re-enter the ssh key.
+- `addSshAgent` like `upw`, difference: addSshAgent checks whether the ssh
+  agent has already been added (indifferent on whether successful or unsuccessful) 
+- `ttt` and other scripts are commands for pushing taks to my task tracker and
+  readings repo. hardcoded path.
+- `catasks` cats the first n current tasks to the dunst. 
+- `diffdir dir1 dir2` prints list of diffs of directories.
+- `daemonize` start following process as daemon. Similar to `nohup > /dev/null
+  ` in one simple command.
+
+
+- `getlastword` get last word of input
+- `grepx before after` wrapper for grep for specifying region around search hit
+  to be displayed
+ 
+
+
 `exec xcompmgr -c -f -n`
 ## Notes on stuff being likely to be usable in the future:
 
