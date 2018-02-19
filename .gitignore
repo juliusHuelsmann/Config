@@ -5,6 +5,7 @@
 !.gitignore
 !.vimrc
 !.zshrc
+!.ideavimrc
 
 !/.config/
 # qutebrowser
