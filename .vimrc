@@ -184,6 +184,13 @@ vnoremap > >gv  " better indentation
 "" set incsearch
 "" set ignorecase
 "" set smartcase
+set infercase       " the completion recognizes capitalization.
+set incsearch       " search while typing 
+set wildmenu        " show completions @ cl
+set suffixes+=.pyc
+set suffixes+=.a
+set suffixes+=.ipynb
+
 
 " Disable backup and swap files in case they trigger too many events
 " for file system watchers
@@ -199,8 +206,6 @@ vnoremap > >gv  " better indentation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""     Movement:  windows, tabs, files   """""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Windows: 	move between windows
-"		by pressing <Ctrl>+hjkl
 
 inoremap <C-g> <Plug>IMAP_JumpForward
 nnoremap <C-g> <Plug>IMAP_JumpForward
@@ -210,7 +215,11 @@ nnoremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
+noremap <leader>c :noh<CR>
 
+"nmap j gj                   " finally found this! 'natural' j for linewrap .
+                             " but something sucks a lot while using folds..
+"nmap k gk
 
 " Tabs:		move between tabs 
 "		by pressing <Ctrl>+nm
@@ -224,11 +233,14 @@ noremap <c-m> <esc>:tabnext<CR>
 " TODO: spell checker 
 
 
+" Move between open buffers.
+nmap <C-E> :e#<CR>     " move to last opened buff (eg.following stuff in ctags) 
+nmap <C-n> :bnext<CR>  " move to next open buff (round), e, g, after C-e
+nmap <C-e> :bprev<CR>  " move to previous "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Coding Conventions                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Real programmers don't use TABs but spaces
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -240,6 +252,18 @@ set expandtab
 " general stuff "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch
+
+" anmeldung "
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                     UTILS                                   "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Search for the word under the cursor in the current directory
+"nmap <C-k>    mo:Ack! "\b<cword>\b" <CR>
+"nmap <Esc>k   mo:Ack! "\b<cword>\b" <CR>
+"nmap <M-S-k>  mo:Ggrep! "\b<cword>\b" <CR>
+"nmap <Esc>K   mo:Ggrep! "\b<cword>\b" <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
