@@ -105,6 +105,7 @@ alias bri="sudo chown juli /sys/class/backlight/intel_backlight/brightness"
 alias scanHome="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 300"
 alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
+alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
 
 repo=/mnt/data/repos
 dima=$repo/dima/SenseNative

@@ -73,6 +73,8 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 
+Bundle "juliusHuelsmann/vim-lldb"
+
 " Optional:
 " Plugin 'honza/vim-snippets'
 
@@ -235,7 +237,8 @@ noremap <c-m> <esc>:tabnext<CR>
 
 " Move between open buffers.
 nmap <C-E> :e#<CR>     " move to last opened buff (eg.following stuff in ctags) 
-nmap <C-n> :bnext<CR>  " move to next open buff (round), e, g, after C-e
+" XXX: this command sucked.  like it overwrites tab prev.
+" nmap <C-n> :bnext<CR>  " move to next open buff (round), e, g, after C-e
 nmap <C-e> :bprev<CR>  " move to previous "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -400,8 +403,11 @@ set listchars=tab:>-
 "colorscheme corporation_modified
 
 
-colorscheme blaquemagick 
-colorscheme hybrid
+" XXX: both in for normal
+"colorscheme blaquemagick 
+"colorscheme hybrid
+" high contrast
+colorscheme harlequin
 
 "## best
 ">>>>> blaquemagick
@@ -416,7 +422,8 @@ colorscheme hybrid
 ">>> genericdc
 ">>>> alduin
 ">>off
-"skull
+"colorscheme skull
+" off
 
 
 "highlight LineNr ctermfg=12
