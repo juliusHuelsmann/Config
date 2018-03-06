@@ -65,12 +65,12 @@
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
     # transparency = 1¬.0
-    transparency = 1 
+    transparency = 0 
  
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
-    # Set to 0 to disable.
-    idle_threshold = 25
+    # Set to 0 to disable. (used to be 25)
+    idle_threshold = 0
  
     # Which monitor should the notifications be displayed on.
     monitor = 1
@@ -153,12 +153,12 @@
     # Otherwise the '#' and following  would be interpreted as a comment.
     background = "#a6a6a6"
     foreground = "#000000"
-    timeout = 10
+    timeout = 2
  
 [urgency_normal]
     background = "#000000"
     foreground = "#FFFFF9"
-    timeout = 10
+    timeout = 2
  
 [urgency_critical]
     background = "#ff1234"
