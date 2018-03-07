@@ -78,6 +78,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
 bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUp.sh)"
 bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/on.sh)"
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/out.sh)"
 #bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
 #bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
 

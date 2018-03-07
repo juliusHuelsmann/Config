@@ -10,8 +10,8 @@ export ZSH=~/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="gnzh"
-#ZSH_THEME="agnoster"
- ZSH_THEME="kardan"
+ZSH_THEME="agnoster"
+# ZSH_THEME="kardan"
 # standard used to be robbyrussell
 
 # Uncomment the following line to use case-sensitive completion.
@@ -618,8 +618,13 @@ export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
 # Vim mode in command line
 #
 bindkey -v          #< enable vim mode instead of EMACS
+bindkey -e          #< somehow EMACS leads to more intelligent autocmpl
 bindkey -s jk \\e   #< bind jk to be the escape sequence from insert mode. 
 export KEYTIMEOUT=4 #< used for setting delay to .4 sec (just right for jk)
+# XXX: show 
+#     1) pwd (only the last 3 dirs) / ~ if in current user home
+#     2) indicate how the last command exited
+#     3) colored git status
 #
 # zle widgets
 #
@@ -630,16 +635,21 @@ parse_git_branch() {
   (command git symbolic-ref -q HEAD || command git name-rev --name-only --no-undefined --always HEAD) 2>/dev/null
 }
 
-git_custom_status() {
-  local git_where="$(parse_git_branch)"
-  [ -n "$git_where" ] && echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX${git_where#(refs/heads/|tags/)}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
-    zle reset-prompt
-}
+# git_custom_status() {
+#  local git_where="$(parse_git_branch)"
+#  [ -n "$git_where" ] && echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX${git_where#(refs/heads/|tags/)}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+#}
+#function zle-line-init zle-keymap-select {
+#    NORMAL="%{$fg_bold[green]%} [% NORMAL]% %{$reset_color%}"
+#    INSERT="%{$fg_bold[blue]%} [% INSERT]% %{$reset_color%}"
+#    RPS1="${${${KEYMAP/vicmd/$NORMAL}/(main|viins)/$INSERT}} $(git_custom_status) $EPS1"
+#    zle reset-prompt
+#}
+#
+#zle -N zle-line-init
+#zle -N zle-keymap-select
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+
+# 
+alias emx="emax -nw"
 
