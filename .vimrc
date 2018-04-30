@@ -404,10 +404,12 @@ set listchars=tab:>-
 
 
 " XXX: both in for normal
-"colorscheme blaquemagick 
-"colorscheme hybrid
+colorscheme blaquemagick 
+colorscheme hybrid
 " high contrast
-colorscheme harlequin
+" colorscheme harlequin " this is the 
+"colorscheme lucius
+"LuciusWhite
 
 "## best
 ">>>>> blaquemagick
@@ -850,7 +852,10 @@ au FileType css setl ofu=csscomplete#CompleteCSS
 :hi CursorLine   cterm=NONE ctermbg=52
 :hi CursorColumn cterm=NONE ctermbg=52
 
-let g:gitgutter_max_signs = 999
+" XXX thi sis just for white
+" :hi CursorLine   cterm=NONE ctermbg=11
+":hi CursorColumn cterm=NONE ctermbg=11
+" let g:gitgutter_max_signs = 999
 
 
 let g:ctrlp_custom_ignore = {

@@ -105,6 +105,7 @@ alias seclab="cd $ws4Raw/seclab; daemonize termite -d '$ws4/seclab'"
 alias osd="cd $ws4Raw/osd; daemonize termite -d '$ws4/osd'"
 alias bri="sudo chown juli /sys/class/backlight/intel_backlight/brightness"
 alias scanHome="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 300"
+alias scanHomel="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 800"
 alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
 alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
@@ -141,10 +142,12 @@ alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 # local 
 localarcht=juli@192.168.178.67
 localarchx=juli@192.168.178.32
+localubux=x@192.168.178.32
 localosx=x@192.168.178.20
 
 alias ssharcht='ssh -X $localarcht'
 alias ssharchx='ssh -X $localarchx'
+alias sshubux='ssh -X $localarchx'
 alias sshosx='ssh -X $localosx'
 
 # This command must run each time terminal opens for 
@@ -580,6 +583,8 @@ function disableUnwantedDevicesOnStartup() {
     echo "Info: device 'OSX touch' with id $idOSXTouchpad disabled."
     xinput disable $idOSXTouchpad
   fi
+
+  xdotool mousemove 10000 10000
 }
 
 
