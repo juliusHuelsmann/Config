@@ -594,6 +594,54 @@ function genHash() {
 }
 
 
+#
+# Very ugly script yielding the overall battery status!
+#
+function getBatteryStatus() {
+  cap=0
+  cnt=0
+  stat=""
+
+  txt=$(acpi -b)
+
+  local IFS=$'\n'
+  if [ $ZSH_VERSION ]; then
+      setopt sh_word_split
+    fi
+  for p in $txt; do
+    local IFS=$' '
+    s=$(echo -e $p | awk -F'[,:%]' '{print $2, $3}') 
+    c=0
+    for i in $s; do
+      if [ $c -eq 0 ]; then
+        if [ $i = Discharging ]; then
+          stat=$i
+        fi
+      else 
+        cap=$((cap+i))
+        cnt=$((cnt+1))
+      fi
+      c=$((c+1))
+    done
+    local IFS=$'\n'
+  done
+  if [ $cnt -eq 0 ]; then
+    echo -e "0 NoBatteryFound!"
+  else
+    echo -e "$((cap/cnt)) $stat"
+  fi
+}
+
+function printBatteryStatusToCli() {
+
+  IFS=$' '
+  getBatteryStatus | {
+    read -r capacity state 
+  echo "The current overall battery capacity is $capacity ($state)."
+  }
+}
+
+
 # Sets the Mail Environemnt Variable 
 # (was done during the installation of procmail for using the mutt client)
 MAIL=/var/spool/mail/juli && export MAIL
