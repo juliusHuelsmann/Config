@@ -413,8 +413,7 @@ bar {
     colors {
 #background #1f1f2e
       #background #060d13
-      #background #000000
-      background #900C3F
+      background #680207
 #background #001a33
 #background #2B2C2B
         statusline #F9FAF9
@@ -456,6 +455,7 @@ client.urgent           #000000 #FDF6E3 #16A085 #000000 #452222
 client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 
 client.background       #2B2C2B
+client.background       #000000
 
 #############################
 ### settings for i3-gaps: ###

@@ -139,6 +139,9 @@ alias upw="eval $(ssh-agent); ssh-add"
 alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
 alias clion=/mnt/arch/home/juli/programs/clion-2016.3.2/bin/clion.sh
 
+alias i3ls="DISPLAY=:0 i3-dump-log | bzip2 -c | curl --data-binary @- https://logs.i3wm.org"
+alias i3db="i3-msg 'debuglog on; shmlog on; reload'"
+
 # local 
 localarcht=juli@192.168.178.67
 localarchx=juli@192.168.178.32
@@ -149,6 +152,8 @@ alias ssharcht='ssh -X $localarcht'
 alias ssharchx='ssh -X $localarchx'
 alias sshubux='ssh -X $localarchx'
 alias sshosx='ssh -X $localosx'
+
+
 
 # This command must run each time terminal opens for 
 # using ssh-add
