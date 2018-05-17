@@ -75,6 +75,11 @@ Plugin 'garbas/vim-snipmate'
 
 Bundle "juliusHuelsmann/vim-lldb"
 
+
+
+" solidity blcokcina.
+Plugin 'tomlion/vim-solidity'
+
 " Optional:
 " Plugin 'honza/vim-snippets'
 
