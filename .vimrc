@@ -225,6 +225,7 @@ noremap <c-h> <c-w>h
 noremap <leader>c :noh<CR>
 
 "nmap j gj                   " finally found this! 'natural' j for linewrap .
+"nmap j gj                   " finally found this! 'natural' j for linewrap .
                              " but something sucks a lot while using folds..
 "nmap k gk
 
@@ -784,6 +785,7 @@ endfunction
 
 
   noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
+  noremap <Leader>m :!clear<CR>:!make<CR><CR>
   " XXX:
   "let g:enable_ycm_at_startup = 0
 

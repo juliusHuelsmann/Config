@@ -1257,7 +1257,8 @@ c.url.searchengines = {
         'yh ': 'https://www.youtube.com/?_={}',
         'gi' : 'https://www.github.com/search?q={}&type=',
         'te' : 'http://dict.cc?s={}',
-        'tf' : 'http://defr.dict.cc?s={}'
+        'tf' : 'http://defr.dict.cc?s={}',
+        "s" : "https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q={}"
         }
 # XXX:
 
