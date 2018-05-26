@@ -1,4 +1,4 @@
-
+#!/bin/zsh
 function rbright() {
   brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
   let brightness=$brightness-500

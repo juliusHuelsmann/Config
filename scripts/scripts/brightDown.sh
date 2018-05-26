@@ -1,8 +1,12 @@
+#!/bin/zsh
+
+wd=`dirname "$0"`
+source "$wd/dimcfg"
 
 function rbright() {
   brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
   bri=$brightness
-  let brightness=$brightness-500
+  let brightness=$brightness-$atom
   if (($brightness < 1)); then
     let brightness=1
   fi

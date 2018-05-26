@@ -1,8 +1,12 @@
+#!/bin/zsh
+wd=`dirname "$0"`
+source "$wd/dimcfg"
+
 brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
 bri=$brightness
 max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
 
-let brightness=$brightness+500
+let brightness=$brightness+$atom
 if (($brightness > $max)); then
   let brightness=$max
 fi
