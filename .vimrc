@@ -8,6 +8,7 @@
 " mkdir -p ~/.vim/pack/git-plugins/start
 " git clone https://github.com/w0rp/ale.git ~/.vim/pack/git-plugins/start/ale
 
+nmap j gj
 
 """""""""""
 "  Vundle "
