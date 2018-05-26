@@ -46,6 +46,7 @@
 !/scripts/
 !/scripts/*
 !/scripts/scripts/*
+/scritps/scripts/*cfg
 
 
 !README.md
