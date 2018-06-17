@@ -9,6 +9,7 @@
 " git clone https://github.com/w0rp/ale.git ~/.vim/pack/git-plugins/start/ale
 
 nmap j gj
+nmap k gk
 
 """""""""""
 "  Vundle "
@@ -446,7 +447,7 @@ set number
 " 
 " max line width
 set colorcolumn=80
-match ErrorMsg '\%>80v.\+'
+"match ErrorMsg '\%>80v.\+'
 
 
 

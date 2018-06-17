@@ -197,7 +197,8 @@ bindsym $mod+Ctrl+k exec --no-startup-id i3Grid moveWorkspaceExistingUp
 # move workspace to the left window
 # bindsym $mod+Alt_L+Right move workspace to output right
 #bindsym $mod+c move workspace to output left
-#bindsym $mod+c move workspace to output above 
+#bindsym $mod+c move workspace to output up 
+#bindsym $mod+c move workspace to output down 
 # bindsym $mod+c move workspace to output left 
 
 

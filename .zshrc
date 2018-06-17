@@ -93,6 +93,7 @@ alias vz="vim ~/.zshrc"
 alias cdRepo="cd /mnt/data/repos"
 alias cdrep="cd /mnt/data/repos; addSshAgent; "
 alias cdrepo="cdRepo"
+alias updatePip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U"
 ws4="/mnt/data/repos/4-ws1718"
 ws4Raw="/mnt/data/repos/4-ws1718Raw"
 alias cds="cd /mnt/data/repos/4-ws1718"
@@ -116,9 +117,13 @@ bahn=$repo/deutscheBahn/ipa
 
 alias cdipa="cdrep; cd $bahn";
 alias cdsense="cdrep; cd $dima";
+alias cdp3="cdrep; cd p3";
 
 alias dipa="cdipa;vim;";
 alias dsense="cdsense;vim";
+
+alias cdb="cd /mnt/data/repos/blockchain/documentation/moneylendingtracker/"
+
 
 alias lt="ls -lth"
 alias x="exit"
