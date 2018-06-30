@@ -1,6 +1,6 @@
 #!/bin/zsh
 brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
-if (($brightness != 0)); then
+if (($brightness != 1)); then
   echo "Decreased to min value."
-  echo 0 > /sys/class/backlight/intel_backlight/brightness
+  echo 1 > /sys/class/backlight/intel_backlight/brightness
 fi

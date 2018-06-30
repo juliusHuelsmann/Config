@@ -803,6 +803,8 @@ endfunction
   "
 
 
+  autocmd VimResized * wincmd = 
+  autocmd BufEnter * wincmd = 
 
   "folds
 
