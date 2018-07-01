@@ -2,6 +2,6 @@
 
 # Powermanagement
 powertop --auto-tune
-sudo chown juli /sys/class/backlight/intel_backlight/brightness
+sudo chown $(whoami) /sys/class/backlight/intel_backlight/brightness
 
 
