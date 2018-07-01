@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 name=$(whoami)
-echo $name
 
 touch ~/inf.o
 export HOME=/home/$name
 export XAUTHORITY=/home/$name/.Xauthority
+export XAUTHORITY=/home/$(whoami)/.Xauthority
 export DISPLAY=:0.0
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 export XDG_RUNTIME_DIR=/run/user/1000
@@ -17,17 +17,25 @@ IFS=$' '
 getBatteryStatus | {
   read -r capacity state 
   # if there is something discharging.
-  if [ "$state" = "Discharging" ]; then
-    id=$(diff ~/.config/i3/config.low ~/.config/i3/config)
-    if [ "$id" != "" ]; then
-      ln -s ~/.config/i3/config.low ~/.config/i3/config -f
-      i3-msg reload
+  if [ -e ~/.config/i3/config ]; then 
+    if [ "$state" = "Discharging" ]; then
+      id=$(diff ~/.config/i3/config.low ~/.config/i3/config)
+      if [ "$id" != "" ]; then
+        ln -s ~/.config/i3/config.low ~/.config/i3/config -f
+        i3-msg reload
+      fi
+    else
+      id=$(diff ~/.config/i3/config.standard ~/.config/i3/config)
+      if [ "$id" != "" ]; then
+        ln -s ~/.config/i3/config.standard ~/.config/i3/config -f
+        i3-msg reload
+      fi
     fi
   else
-    id=$(diff ~/.config/i3/config.standard ~/.config/i3/config)
-    if [ "$id" != "" ]; then
+    if [ "$state" = "Discharging" ]; then
+      ln -s ~/.config/i3/config.low ~/.config/i3/config -f
+    else
       ln -s ~/.config/i3/config.standard ~/.config/i3/config -f
-      i3-msg reload
     fi
   fi
 
@@ -107,4 +115,7 @@ getBatteryStatus | {
       fi
     fi
   fi
+
+  mkdir -p ~/.batteryStats/
+  echo -n "$capacity\t$state\t$(date +%s)\n" >> ~/.batteryStats/stats
 }

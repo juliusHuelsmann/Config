@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Powermanagement
+powertop --auto-tune
+sudo chown $(whoami) /sys/class/backlight/intel_backlight/brightness
+
+
