@@ -1,13 +1,16 @@
 #!/bin/zsh
 
+name=$(whoami)
+echo $name
+
 touch ~/inf.o
-export HOME=/home/juli
-export XAUTHORITY=/home/juli/.Xauthority
+export HOME=/home/$name
+export XAUTHORITY=/home/$name/.Xauthority
 export DISPLAY=:0.0
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 export XDG_RUNTIME_DIR=/run/user/1000
 
-source /home/juli/.zshrc
+source /home/$name/.zshrc
 
 
 IFS=$' '
