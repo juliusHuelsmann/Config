@@ -105,5 +105,5 @@ getBatteryStatus | {
     fi
   fi
 
-  echo -n "$capacity\t$state\t$(date+%s)\n" > ~/.batteryStats/stats
+  echo -n "$capacity\t$state\t$(date+%s)\n" >> ~/.batteryStats/stats
 }
