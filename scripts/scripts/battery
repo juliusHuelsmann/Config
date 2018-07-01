@@ -1,13 +1,18 @@
 #!/bin/zsh
 
-touch ~/inf.o
-export HOME=/home/$(whoami)
-export XAUTHORITY=/home/$(whoami)/.Xauthority
+
+dir=`dirname "$0"`
+source $dir/dimcfg
+
+touch /home/$i/inf.o
+export HOME=/home/$i
+export XAUTHORITY=/home/$i/.Xauthority
 export DISPLAY=:0.0
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 export XDG_RUNTIME_DIR=/run/user/1000
 
-source /home/$(whoami)/.zshrc
+
+source /home/$i/.zshrc
 
 
 IFS=$' '
