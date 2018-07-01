@@ -803,9 +803,8 @@ endfunction
   "
 
 
-  autocmd VimResized * wincmd = 
-  autocmd BufEnter * wincmd = 
-
+  autocmd VimResized * wincmd =  | let NERDTreeWinSize = 1
+  autocmd BufEnter * wincmd = | let NERDTreeWinSize = 1
   "folds
 
   " normally every fold is open
