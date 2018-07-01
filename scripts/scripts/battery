@@ -1,13 +1,13 @@
 #!/bin/zsh
 
 touch ~/inf.o
-export HOME=/home/juli
-export XAUTHORITY=/home/juli/.Xauthority
+export HOME=/home/$(whoami)
+export XAUTHORITY=/home/$(whoami)/.Xauthority
 export DISPLAY=:0.0
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 export XDG_RUNTIME_DIR=/run/user/1000
 
-source /home/juli/.zshrc
+source /home/$(whoami)/.zshrc
 
 
 IFS=$' '
@@ -105,5 +105,6 @@ getBatteryStatus | {
     fi
   fi
 
-  echo -n "$capacity\t$state\t$(date+%s)\n" > ~/.batteryStats/stats
+  mkdir -p ~/.batteryStats/
+  echo -n "$capacity\t$state\t$(date +%s)\n" >> ~/.batteryStats/stats
 }
