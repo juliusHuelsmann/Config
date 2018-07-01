@@ -1,23 +1,20 @@
-#!/bin/sh
+#!/bin/zsh
+
+dir=`dirname "$0"`
+source "$dir/dimcfg"
 
 # Powermanagement
-name=$(whoami)
-name="x"
 powertop --auto-tune
-sudo chown $name:$name /sys/class/backlight/intel_backlight/brightness
+sudo chown $i:$i /sys/class/backlight/intel_backlight/brightness
 
 
 if [ -L /mnt/data/scripts ]; then
-  echo "remoging and recreating."
   rm /mnt/data/scripts
 fi
 
 if [ -d /mnt/data/scripts ]; then
-  echo "x"
 else
-  echo "n"
-  ln -s /home/$name/scripts/scripts /mnt/data/scripts
-  echo $name
-  sudo chown $name:$name /mnt/data/scripts -R
+  ln -s /home/$i/scripts/scripts /mnt/data/scripts
+  sudo chown $i:$i /mnt/data/scripts -R
 fi
 
