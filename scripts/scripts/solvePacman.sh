@@ -54,22 +54,14 @@ function process {
 
 function interactiveMode {
 
-  zmodload zsh/mapfile
-  FNAME=/path/to/some/file.txt
-  FLINES=( "${(f)mapfile[$pathInteractive]}" )
-  LIST="${mapfile[$FNAME]}" # Not required unless stuff uses it
-  integer POS=1             # Not required unless stuff uses it
-  integer SIZE=$#FLINES     # Number of lines, not required unless stuff uses it
-  for ITEM in $FLINES
-    # Do stuff
-    (( POS++ ))
-  endfor 
 
-    echo "interactive :)"
-  echo $pathInteractive
+  arr=["first", "second"]
+  i=0
   while read -r line; do
     echo $line
-    process true $line 
+    #process true $line 
+    arr[i]=$line
+    i=$((i+1))
   done < $pathInteractive
 
 #!/bin/bash
