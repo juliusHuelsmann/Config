@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 pathInteractive="/home/juli/.pacError"
 
@@ -8,41 +8,44 @@ function process {
   interactive=$1
   line="${@:2}"
 
-  #echo "debug line = $line; interactive = $interactive"
   if [[ $line =~ "exists in filesystem" ]]; then
+    echo -e "$line"
     i=0;
     progName=""
     path=""
+    #setopt shwordsplit
     for word in $line; do
-      if [ $i == 0 ]; then
-        progName=$word;
-      elif [ $i == 1 ]; then
-        path=$word;
+      if [ $i = 0 ]; then
+        progName="$word";
+      elif [ $i = 1 ]; then
+        path="$word";
       fi
       i=$((i+1))
     done
-    if [ $i == 5 ]; then 
+    #unsetopt shwordsplit
+
+    if [ $i = 5 ]; then 
       
-      owner=$(pacman -Qo $path 2>&1)
+      owner=$(/usr/bin/pacman -Qo $path 2>&1)
       #echo -e "Rename $path for $progName if there is no owner: $owner"
       
       if [[ $owner == "error: No package owns $path" ]]; then
 
+        pathNew=$path"Old"
         if [ "$interactive" = true ]; then
-
-          read -p "Are you sure? " -n 1 -r
+          read -p "?Are you sure?" -n 1 -r
           if [[ $REPLY =~ ^[Yy]$ ]]; then
-            pathNew=$path"Old"
             sudo mv $path $pathNew
             echo "Moved $path to $pathNew"
           else 
             echo "skipped!"
           fi
         else
-          echo "$line" >> $pathInteractive
+          sudo mv $path $pathNew
         fi
+
       else
-        echo "Attention: is owned!"
+        echo "Attention: is owned!$owner"
       fi
     else 
       echo -e "[i]\t$line"
@@ -53,24 +56,21 @@ function process {
 
 
 function interactiveMode {
+  echo "interactive"
 
-
-  arr=["first", "second"]
-  i=0
+  field=()
   while read -r line; do
-    echo $line
-    #process true $line 
-    arr[i]=$line
-    i=$((i+1))
+    field+=("$line")
   done < $pathInteractive
 
-#!/bin/bash
-file=$pathInteractive
-while IFS= read -r line
-do
-  # display $line or do somthing with $line
-  printf '%s\n' "$line"
-done <"$file"
+  amount=${#field[@]}
+  echo "read $amount elements"
+
+  for ((x=0; x < $amount; x++)); do
+    line="${field[x]}"
+    process true $line 
+  done
+
 }
 
 function nonInteractiveMode {
