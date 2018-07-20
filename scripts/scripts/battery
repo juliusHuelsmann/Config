@@ -57,7 +57,7 @@ getBatteryStatus | {
           age=$(($(date +%s) - $(date +%s -r $f)))
         fi
         if [ $age -ge $maxAge ]; then
-          notify-send --urgency=critical "WARNING: energy ($capacity) lowest!!! For getting rid for $maxAge seconds, touch ~/.energyAlert!";
+          notify-send --urgency=critical "WARNING: energy = ($capacity)! Disable warning for $maxAge seconds by touching ~/.energyAlert!";
           for i in {1..3}
           do
             xrandr --output eDP-1 --display :0 --brightness 2.0 --gamma 0.0:0.0:0.0
