@@ -37,7 +37,7 @@ Plugin 'kien/ctrlp.vim'
 
 " Display methods and class variables
 Plugin 'majutsushi/tagbar'
-Plugin 'https://git.llvm.org/git/llvm'
+"Plugin 'https://git.llvm.org/git/llvm'
 " https://git.llvm.org/git/llvm
 "Plugin 'llvm-mirror/lldb'
 
@@ -45,7 +45,7 @@ Plugin 'https://git.llvm.org/git/llvm'
 
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " Plugin for php autocomplete suppot for projects
-Plugin 'shawncplus/phpcomplete.vim'
+"Plugin 'shawncplus/phpcomplete.vim'
 
 " Plugin for changing the color of the inactive buffers
 " Plugin 'blueyed/vim-diminactive'
@@ -75,7 +75,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 
-Bundle "juliusHuelsmann/vim-lldb"
 
 
 
@@ -873,3 +872,8 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|CVS$\|build|\.svn$\|target$\|build\|cmake-build-debug\|ignore\|local\|migrate\|thirdparty\|src/libs/\|settings/benchmark\|settings/configs\|settings/data\|settings/documentation',
   \ 'file': '\.class$\|\.so$',
   \ }
+
+
+
+set exrc
+set secure
