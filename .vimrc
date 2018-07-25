@@ -480,6 +480,34 @@ endfunction
     endif
   endfunction
 
+
+  function! Execute() 
+
+    let file = expand('%:p')
+    let splitForEnding = split(file, '\.')
+
+
+    if len(splitForEnding)
+
+      let ending = splitForEnding[-1]
+
+      if ending == "py" 
+
+        echom "Execute python on that file."
+        execute '!python3 '. file
+
+      elseif ending == "tex" 
+        echom "execute pdflatex"
+        execute '!pdflatex ' . file
+      
+      else 
+        execute './cexec.sh'
+        ":!clear<CR>:!./cexec.sh<CR>
+        echom "Falling back to cexec"
+      endif
+    endif
+  endfunction
+
   function! GetHeader() 
 
     let file = expand('%:p')
@@ -531,7 +559,7 @@ endfunction
     endif
   endfunction
 
-  nnoremap <leader>o :call OpenHeader() <CR>
+  nnoremap <Leader>o :call OpenHeader() <CR>
 
   function! ReplaceWithHeader() 
     let name = GetHeader()
@@ -785,8 +813,9 @@ endfunction
 
 
 
-
-  noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
+  nnoremap <Leader>o :call OpenHeader() <CR>
+  noremap <Leader>E :!clear<CR>:!./cexec.sh<CR>
+  noremap <Leader>e :call Execute()<CR>
   noremap <Leader>m :!clear<CR>:!make<CR><CR>
   " XXX:
   "let g:enable_ycm_at_startup = 0
