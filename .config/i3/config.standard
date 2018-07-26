@@ -205,16 +205,26 @@ bindsym $mod+Ctrl+k exec --no-startup-id i3Grid moveWorkspaceExistingUp
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 "1git"
-set $ws2 "2vim"
-set $ws3 "3ide"
-set $ws4 "4pdf"
-set $ws5 5
-set $ws6 6
-set $ws7 "7qt"
-set $ws8 "8fire"
-set $ws9 "9chat"
+set $ws1 "1o"
+set $ws2 "2w1"
+set $ws3 "3w2"
+set $ws4 "4i"
+set $ws5 "5i1"
+set $ws6 "6i2"
+set $ws7 "7q"
+set $ws8 "8f"
+set $ws9 "9c"
 
+#set $ws1 "1α o"
+#set $ws2 "2ℜ² v"
+#set $ws3 "3☢ i"
+#set $ws4 "4x"
+#set $ws5 "5y"
+#set $ws6 "6z"
+#set $ws7 "7❤ q"
+#set $ws8 "8☂ f"
+#set $ws9 "9✉ m"
+#
 #set $ws1 ↖
 #set $ws2 ↑
 #set $ws3 ↗ 

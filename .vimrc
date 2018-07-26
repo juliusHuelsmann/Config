@@ -866,6 +866,7 @@ au FileType css setl ofu=csscomplete#CompleteCSS
 " :hi CursorLine   cterm=NONE ctermbg=11
 ":hi CursorColumn cterm=NONE ctermbg=11
 " let g:gitgutter_max_signs = 999
+" highlight Normal ctermfg=grey ctermbg=white
 
 
 let g:ctrlp_custom_ignore = {
