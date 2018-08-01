@@ -3,7 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-
+export PATH=$PATH:~/.local/bin/
+export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
 
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -88,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias beep='paplay $BEEP'
 alias sz="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias cdRepo="cd /mnt/data/repos"
