@@ -90,6 +90,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias beep='paplay $BEEP'
+alias qute="qutebrowser"
+alias qutie="qutebrowser"
+
 alias sz="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias cdRepo="cd /mnt/data/repos"
