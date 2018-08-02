@@ -24,8 +24,13 @@ general {
 #}
 order += "wireless _first_"
 order += "cpu_usage"  
+order += "cpu_temperature all"  
+order += "load"  
 order += "battery all"
-order += "tztime local"
+order += "tztime berlin"
+order += "tztime dublin"
+order += "tztime nyc"
+order += "tztime utc"
 #order += "load"
 #order += "disk /"
 # order += "disk /home"
@@ -41,15 +46,23 @@ run_watch DHCP {
 }
 
 
+load {
+format = "%1min_%15min"
+#max_threshold="0,1"
+
+}
 
 cpu_usage {
-  format = " cpu %usage "
+  format = " cpu@%usage "
+  max_threshold=80
+  degraded_threshold = 75
 }
 
-load {
-  format = " load %1min "
-# max_threshold = 0.3
+cpu_temperature all {
+  format = "%degrees°C"
+  max_threshold = 42
 }
+
 
 disk "/" {
 # format = " hdd %avail "
@@ -76,28 +89,35 @@ ethernet _first_ {
     format_down = " no lan "
 }
 battery all {
-  format = "%status %percentage %remaining  %emptytime" 
+  format = "%status%percentage-%remaining" 
 #format = " %status %percentage"
-    format_down = "No battery"
+    format_down = "/"
     last_full_capacity = true
     integer_battery_capacity = true
-# status_chr = ""
-    status_chr = "⚡"
-# status_bat = "bat"
-# status_bat = "☉"
-# status_unk = "?"
-# status_full = ""
     
-    # status_full = ""
-    # status_bat = ""
-    # status_unk = ""
-    #
+    status_chr = "🡑"
+    status_bat = "🡓"
+    status_full = "✔"
+    status_unk = "?"
 
     low_threshold = 15
     threshold_type = time
 }
+tztime berlin {
+  format = "berlin:'%y-%m-%d_%H:%M:%S"
+  timezone = "Europe/Berlin"
+}
+tztime dublin {
+  format = "dublin:%H:%M"
+  timezone = "Europe/Dublin"
+}
 
-tztime local {
-  format = "%Y-%m-%d %H:%M:%S"
-# format = " %d.%m. %H:%M "
+tztime nyc {
+  format = "nyc:%H:%M"
+  timezone = "US/Eastern"
+}
+
+tztime utc {
+  format = "utc:%H:%M"
+  timezone = "Etc/UTC"
 }
