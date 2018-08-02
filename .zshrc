@@ -155,13 +155,13 @@ alias i3db="i3-msg 'debuglog on; shmlog on; reload'"
 
 # local 
 localarcht=juli@192.168.178.67
-localarchx=juli@192.168.178.32
 localubux=x@192.168.178.32
+localubud=x@192.168.178.48
 localosx=x@192.168.178.20
 
 alias ssharcht='ssh -X $localarcht'
-alias ssharchx='ssh -X $localarchx'
-alias sshubux='ssh -X $localarchx'
+alias sshubux='ssh -X $localubux'
+alias sshubud='ssh -X $localubud'
 alias sshosx='ssh -X $localosx'
 
 
@@ -176,8 +176,11 @@ function scposx() {
 function scparcht() {
   scp $1 $localarcht:$2
 }
-function scparchx() {
-  scp $1 $localarchx:$2
+function scpubud() {
+  scp $1 $localubud:$2
+}
+function scpubux() {
+  scp $1 $localubux:$2
 }
 
 function lsPdf() {
