@@ -97,8 +97,8 @@ battery all {
     
     status_chr = "🡑"
     status_bat = "🡓"
-    status_full = "✔"
-    status_unk = "?"
+    status_full = "✔ "
+    status_unk = "? "
 
     low_threshold = 15
     threshold_type = time

@@ -500,6 +500,8 @@ endfunction
         echom "execute pdflatex"
         execute '!pdflatex ' . file
       
+      elseif executable(file)
+        execute "!" . file
       else 
         execute './cexec.sh'
         ":!clear<CR>:!./cexec.sh<CR>
