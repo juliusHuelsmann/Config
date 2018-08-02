@@ -197,8 +197,8 @@ bindsym $mod+Ctrl+k exec --no-startup-id i3Grid moveWorkspaceExistingUp
 # move workspace to the left window
 # bindsym $mod+Alt_L+Right move workspace to output right
 #bindsym $mod+c move workspace to output left
-#bindsym $mod+c move workspace to output up 
-#bindsym $mod+c move workspace to output down 
+#bindsym $mod+c move workspace to output up
+#bindsym $mod+c move workspace to output down
 # bindsym $mod+c move workspace to output left 
 
 
@@ -398,8 +398,9 @@ bar {
 
 
 
-#separator_symbol "  "
-    separator_symbol " | "
+    #separator_symbol "  "
+    separator_symbol "|"
+    separator_symbol " "
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 ##	tray_output primary
@@ -528,8 +529,8 @@ bindsym $mod+o exec --no-startup-id ~/.config/i3/listInteresting.sh
 #exec_always feh --bg-scale ~/.i3/ice.jpg
 #exec_always feh --bg-scale ~/.i3/w.jpg
 #exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
-exec_always feh --bg-scale ~/.config/i3/irie.png
-exec_always feh --bg-scale ~/.config/i3/bg.png
+#exec_always feh --bg-scale ~/.config/i3/irie.png
+#exec_always feh --bg-scale ~/.config/i3/bg.png
 #exec blueman-applet
 #exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #redshift: fluxalternative:
