@@ -101,6 +101,7 @@ alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while r
 alias sz="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias vi3="vim ~/.config/i3/config"
+alias vt="vim ~/.config/termite/config"
 
 alias beep='paplay $BEEP'
 alias qute="qutebrowser"

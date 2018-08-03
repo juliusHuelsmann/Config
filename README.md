@@ -50,6 +50,12 @@ vim /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="text"#< used to be "quiet splash"
 sudo update-grub
 ```
+For my `systemd` machines:
+```
+sudo systemctl enable multi-user.target --force
+sudo systemctl set-default multi-user.target
+```
+
 2. I put `eval $(ssh-agent); ssh-add` on top of the startx script for
 automatically adding ssh agent on startup (shared by all applications started
 by x).
