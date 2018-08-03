@@ -88,6 +88,9 @@ source $ZSH/oh-my-zsh.sh
 #
 
 
+alias gil="gl"
+alias gip="gp"
+
 alias updateKeysUbuntu="apt-key list | awk '/expired/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
 alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
 #
