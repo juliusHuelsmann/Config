@@ -90,6 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias gil="gl"
 alias gip="gp"
+alias gic="gc"
 alias gis="git status"
 alias gia="ga"
 
@@ -103,6 +104,7 @@ alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while r
 alias sz="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias vi3="vim ~/.config/i3/config"
+alias vr="vim ~/.config/ranger/rc.conf"
 alias vt="vim ~/.config/termite/config"
 
 alias beep='paplay $BEEP'
