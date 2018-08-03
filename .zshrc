@@ -731,3 +731,4 @@ parse_git_branch() {
 # 
 alias emx="emax -nw"
 
+xmodmap .Xmodmap
