@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 wd=`dirname "$0"`
-min=1
+min=0
 source "$wd/dimcfg"
 
 function rbrightkb() {

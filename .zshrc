@@ -122,6 +122,7 @@ pData="/mnt/data"
 pInter="$pData/inter"
 pOnline="$pData/online"
 pLocal="$pData/local"
+pScripts="$pData/scripts"
 pRepos="$pOnline/repos"
 
 alias cdd="cd $pData"
@@ -129,6 +130,8 @@ alias cdd="cd $pData"
 alias cdi="cd $pInter"
 alias cdo="cd $pOnline"
 alias cdl="cd $pLocal"
+
+alias cds="cd $pScripts"
 
 alias cdr="cd $pRepos"
 alias cdrep="cd; addSshAgent"
