@@ -29,6 +29,9 @@
 # dunst
 !/.config/dunst/
 !/.config/dunst/*
+# ranger
+!/.config/ranger/
+!/.config/ranger/*
 
 # vim color config
 !/.vim/
