@@ -162,7 +162,7 @@ alias i3db="i3-msg 'debuglog on; shmlog on; reload'"
 # local 
 localarcht=juli@192.168.178.67
 localubux=x@192.168.178.32
-localubud=x@192.168.178.48
+localubud=juli@192.168.178.48
 localosx=x@192.168.178.20
 
 alias ssharcht='ssh -X $localarcht'
