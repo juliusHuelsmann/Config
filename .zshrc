@@ -88,6 +88,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias qute="qutebrowser"
+alias qutie="qutebrowser"
+
 alias sz="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias cdRepo="cd /mnt/data/repos"

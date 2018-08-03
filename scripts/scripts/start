@@ -1,9 +1,20 @@
-#!/bin/sh
+#!/bin/zsh
 
 dir=`dirname "$0"`
-source $dir/dimcfg
+source "$dir/dimcfg"
 
+# Powermanagement
 powertop --auto-tune
-sudo chown $i /sys/class/backlight/intel_backlight/brightness
+sudo chown $i:$i /sys/class/backlight/intel_backlight/brightness
 
+
+if [ -L /mnt/data/scripts ]; then
+  rm /mnt/data/scripts
+fi
+
+if [ -d /mnt/data/scripts ]; then
+else
+  ln -s /home/$i/scripts/scripts /mnt/data/scripts
+  sudo chown $i:$i /mnt/data/scripts -R
+fi
 

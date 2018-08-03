@@ -37,7 +37,7 @@ Plugin 'kien/ctrlp.vim'
 
 " Display methods and class variables
 Plugin 'majutsushi/tagbar'
-Plugin 'https://git.llvm.org/git/llvm'
+"Plugin 'https://git.llvm.org/git/llvm'
 " https://git.llvm.org/git/llvm
 "Plugin 'llvm-mirror/lldb'
 
@@ -45,7 +45,7 @@ Plugin 'https://git.llvm.org/git/llvm'
 
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " Plugin for php autocomplete suppot for projects
-Plugin 'shawncplus/phpcomplete.vim'
+"Plugin 'shawncplus/phpcomplete.vim'
 
 " Plugin for changing the color of the inactive buffers
 " Plugin 'blueyed/vim-diminactive'
@@ -75,7 +75,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 
-Bundle "juliusHuelsmann/vim-lldb"
 
 
 
@@ -481,6 +480,34 @@ endfunction
     endif
   endfunction
 
+
+  function! Execute() 
+
+    let file = expand('%:p')
+    let splitForEnding = split(file, '\.')
+
+
+    if len(splitForEnding)
+
+      let ending = splitForEnding[-1]
+
+      if ending == "py" 
+
+        echom "Execute python on that file."
+        execute '!python3 '. file
+
+      elseif ending == "tex" 
+        echom "execute pdflatex"
+        execute '!pdflatex ' . file
+      
+      else 
+        execute './cexec.sh'
+        ":!clear<CR>:!./cexec.sh<CR>
+        echom "Falling back to cexec"
+      endif
+    endif
+  endfunction
+
   function! GetHeader() 
 
     let file = expand('%:p')
@@ -532,7 +559,7 @@ endfunction
     endif
   endfunction
 
-  nnoremap <leader>o :call OpenHeader() <CR>
+  nnoremap <Leader>o :call OpenHeader() <CR>
 
   function! ReplaceWithHeader() 
     let name = GetHeader()
@@ -733,6 +760,7 @@ endfunction
   iabbrev @@ huelsmann@campus.tu-berlin.de
 
   nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+  nnoremap <leader>$ viW<esc>a$<esc>hBi$<esc>lel
   nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
   nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
   nnoremap <leader>h viw<esc>a`<esc>hbi`<esc>lel
@@ -785,8 +813,9 @@ endfunction
 
 
 
-
-  noremap <Leader>e :!clear<CR>:!./cexec.sh<CR>
+  nnoremap <Leader>o :call OpenHeader() <CR>
+  noremap <Leader>E :!clear<CR>:!./cexec.sh<CR>
+  noremap <Leader>e :call Execute()<CR>
   noremap <Leader>m :!clear<CR>:!make<CR><CR>
   " XXX:
   "let g:enable_ycm_at_startup = 0
@@ -873,3 +902,8 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|CVS$\|build|\.svn$\|target$\|build\|cmake-build-debug\|ignore\|local\|migrate\|thirdparty\|src/libs/\|settings/benchmark\|settings/configs\|settings/data\|settings/documentation',
   \ 'file': '\.class$\|\.so$',
   \ }
+
+
+
+set exrc
+set secure
