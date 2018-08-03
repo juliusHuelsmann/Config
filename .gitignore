@@ -31,8 +31,9 @@
 !/.config/dunst/*
 # ranger
 !/.config/ranger/
-!/.config/ranger/*
-.config/ranger/history
+!/.config/ranger/rc.conf
+!/.config/ranger/commands.py
+!/.config/ranger/rifle.conf
 
 # vim color config
 !/.vim/
