@@ -531,7 +531,7 @@ exec_always --no-startup-id blueman-applet
 #exec_always feh --bg-scale ~/.i3/w.jpg
 #exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
 #exec_always feh --bg-scale ~/.config/i3/irie.png
-#exec_always feh --bg-scale ~/.config/i3/bg.png
+exec_always feh --bg-scale ~/.config/i3/image.jpg
 #exec blueman-applet
 #exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #redshift: fluxalternative:
@@ -544,7 +544,7 @@ exec_always --no-startup-id killall redshift; redshift; i3-msg 'hallo'
 # open xprop via terminal, click on the app, class = 2nd vlaue
 #
 #
-exec_always xcompmgr -c -f -n
+exec_always xcompmgr -c -C -o .14
 exec_always xmodmap ~/.Xmodmap
 exec source .zshrc
 exec disableUnwantedDevicesOnStartup
