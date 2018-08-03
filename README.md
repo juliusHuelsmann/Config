@@ -33,7 +33,12 @@ This repository contains
 - `getlastword` get last word of input
 - `grepx before after` wrapper for grep for specifying region around search hit
   to be displayed
- 
+
+#  Ranger
+switch on the preview (using w3m as provided in configuration).
+```
+ranger --copy-config=scope
+```
 
 
 `exec xcompmgr -c -f -n`
