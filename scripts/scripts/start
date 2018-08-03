@@ -6,6 +6,9 @@ source "$dir/dimcfg"
 # Powermanagement
 powertop --auto-tune
 sudo chown $i:$i /sys/class/backlight/intel_backlight/brightness
+if [ -d /sys/class/leds/smc::kbd_backlight ]; then
+  sudo chown $i:$i /sys/class/leds/smc::kbd_backlight/brightness
+fi
 
 
 if [ -L /mnt/data/scripts ]; then

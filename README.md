@@ -34,11 +34,27 @@ This repository contains
 - `grepx before after` wrapper for grep for specifying region around search hit
   to be displayed
 
-#  Ranger
-switch on the preview (using w3m as provided in configuration).
+# Manual todos
+#### Ranger
+For enabling the preview, exeucte the following command once:
 ```
 ranger --copy-config=scope
 ```
+
+#### Startup behavior
+1. As I do not always require a gui, need a terminal open if the gui does not
+   work (e.g. xkeyboard error) I disabled auto-launching the gui on startup in
+   grub:
+```bash
+vim /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="text"#< used to be "quiet splash"
+sudo update-grub
+```
+2. I put `eval $(ssh-agent); ssh-add` on top of the startx script for
+automatically adding ssh agent on startup (shared by all applications started
+by x).
+
+
 
 
 `exec xcompmgr -c -f -n`
