@@ -79,7 +79,7 @@ disk "/" {
 
 wireless _first_ {
   format_up = "%quality@%essid %ip %bitrate"
-    format_down = " ☡ WiFi "
+    format_down = ""
 }
 
 
