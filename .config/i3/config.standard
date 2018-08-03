@@ -544,7 +544,7 @@ exec_always --no-startup-id killall redshift; redshift; i3-msg 'hallo'
 # open xprop via terminal, click on the app, class = 2nd vlaue
 #
 #
-exec_always xcompmgr -c -C -o .14
+exec_always xcompmgr -c -C -o .5
 exec_always xmodmap ~/.Xmodmap
 exec source .zshrc
 exec disableUnwantedDevicesOnStartup
