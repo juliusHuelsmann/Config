@@ -525,6 +525,7 @@ bindsym $mod+shift+x  exec --no-startup-id blurlock
 
 bindsym $mod+o exec --no-startup-id ~/.config/i3/listInteresting.sh
 
+exec_always --no-startup-id blueman-applet
 #exec_always feh --bg-scale ~/.i3/NxmAzdu-storm-clouds-wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/ice.jpg
 #exec_always feh --bg-scale ~/.i3/w.jpg

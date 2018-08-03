@@ -79,7 +79,7 @@ disk "/" {
 
 wireless _first_ {
   format_up = "%quality@%essid %ip %bitrate"
-    format_down = " ☡ WiFi "
+    format_down = ""
 }
 
 
@@ -97,8 +97,8 @@ battery all {
     
     status_chr = "🡑"
     status_bat = "🡓"
-    status_full = "✔"
-    status_unk = "?"
+    status_full = "✔ "
+    status_unk = "? "
 
     low_threshold = 15
     threshold_type = time
