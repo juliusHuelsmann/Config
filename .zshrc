@@ -98,31 +98,14 @@ alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while r
 #
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sz="source ~/.zshrc"
+alias vz="vim ~/.zshrc"
+alias vi3="vim ~/.config/i3/config"
+
 alias beep='paplay $BEEP'
 alias qute="qutebrowser"
 alias qutie="qutebrowser"
-
-alias sz="source ~/.zshrc"
-alias vz="vim ~/.zshrc"
-alias cdRepo="cd /mnt/data/online/repos"
-alias cdd="cd /mnt/data"
-alias cdi="cd /mnt/data/inter"
-alias cdo="cd /mnt/data/online"
-alias cdl="cd /mnt/data/local"
-alias cdrep="cd /mnt/data/online/repos; addSshAgent; "
-alias cdm="cd /mnt/data/online/repos/NotesDL/"
-alias cdrepo="cdRepo"
 alias updatePip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U"
-ws4="/mnt/data/online/repos/4-ws1718"
-ws4Raw="/mnt/data/online/repos/4-ws1718Raw"
-alias cds="cd /mnt/data/online/repos/4-ws1718"
-alias cdsr="cd /mnt/data/online/repos/4-ws1718Raw"
-alias uni="cdsr; daemonize termite -d $ws4"
-alias aim="cd $ws4Raw/aim; daemonize termite -d '$ws4/aim'"
-alias bkits="cd $ws4Raw/bkits; daemonize termite -d '$ws4/bkits'"
-alias netsec="cd $ws4Raw/netsec; daemonize termite -d '$ws4/netsec'"
-alias seclab="cd $ws4Raw/seclab; daemonize termite -d '$ws4/seclab'"
-alias osd="cd $ws4Raw/osd; daemonize termite -d '$ws4/osd'"
 alias bri="sudo chown $(whoami) /sys/class/backlight/intel_backlight/brightness"
 alias scanHome="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 300"
 alias scanHomel="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 800"
@@ -130,18 +113,30 @@ alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
 alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
 
-repo=/mnt/data/online/repos
-dima=$repo/dima/SenseNative
-bahn=$repo/deutscheBahn/ipa
+pData="/mnt/data"
+pInter="$pData/inter"
+pOnline="$pData/online"
+pLocal="$pData/local"
+pRepos="$pOnline/repos"
 
-alias cdipa="cdrep; cd $bahn";
-alias cdsense="cdrep; cd $dima";
-alias cdp3="cdrep; cd p3";
+alias cdd="cd $pData"
 
-alias dipa="cdipa;vim;";
+alias cdi="cd $pInter"
+alias cdo="cd $pOnline"
+alias cdl="cd $pLocal"
+
+alias cdr="cd $pRepos"
+alias cdrep="cd; addSshAgent"
+
+# Special repositories
+alias cdm="cd $pRepos/NotesDL/"
+alias cdsense="cd $pRepos/dima/SenseNative";
 alias dsense="cdsense;vim";
+alias cdp3="cd $pRepos/dima/p3";
+alias cdp2="cd $pRepos/dima/p3";
+alias cdp1="cd $pRepos/dima/p3";
 
-alias cdb="cd /mnt/data/online/repos/blockchain/documentation/moneylendingtracker/"
+
 
 
 alias lt="ls -lth"
@@ -160,11 +155,8 @@ alias lspdf="lsPdf"
 alias upw="eval $(ssh-agent); ssh-add"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
-alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
+alias puh="git add .; git commit -am \"partial commit\"; git push;"
 alias clion="/mnt/arch/home/$(whoami)/programs/clion-2016.3.2/bin/clion.sh"
-
-alias i3ls="DISPLAY=:0 i3-dump-log | bzip2 -c | curl --data-binary @- https://logs.i3wm.org"
-alias i3db="i3-msg 'debuglog on; shmlog on; reload'"
 
 # local 
 localarcht=juli@192.168.178.67
