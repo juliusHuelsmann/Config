@@ -32,6 +32,7 @@
 # ranger
 !/.config/ranger/
 !/.config/ranger/*
+.config/ranger/history
 
 # vim color config
 !/.vim/
