@@ -104,15 +104,15 @@ alias qutie="qutebrowser"
 
 alias sz="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
-alias cdRepo="cd /mnt/data/repos"
-alias cdrep="cd /mnt/data/repos; addSshAgent; "
-alias cdm="cd /mnt/data/repos/NotesDL/"
+alias cdRepo="cd /mnt/data/online/repos"
+alias cdrep="cd /mnt/data/online/repos; addSshAgent; "
+alias cdm="cd /mnt/data/online/repos/NotesDL/"
 alias cdrepo="cdRepo"
 alias updatePip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U"
-ws4="/mnt/data/repos/4-ws1718"
-ws4Raw="/mnt/data/repos/4-ws1718Raw"
-alias cds="cd /mnt/data/repos/4-ws1718"
-alias cdsr="cd /mnt/data/repos/4-ws1718Raw"
+ws4="/mnt/data/online/repos/4-ws1718"
+ws4Raw="/mnt/data/online/repos/4-ws1718Raw"
+alias cds="cd /mnt/data/online/repos/4-ws1718"
+alias cdsr="cd /mnt/data/online/repos/4-ws1718Raw"
 alias uni="cdsr; daemonize termite -d $ws4"
 alias aim="cd $ws4Raw/aim; daemonize termite -d '$ws4/aim'"
 alias bkits="cd $ws4Raw/bkits; daemonize termite -d '$ws4/bkits'"
@@ -126,7 +126,7 @@ alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
 alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
 
-repo=/mnt/data/repos
+repo=/mnt/data/online/repos
 dima=$repo/dima/SenseNative
 bahn=$repo/deutscheBahn/ipa
 
@@ -137,7 +137,7 @@ alias cdp3="cdrep; cd p3";
 alias dipa="cdipa;vim;";
 alias dsense="cdsense;vim";
 
-alias cdb="cd /mnt/data/repos/blockchain/documentation/moneylendingtracker/"
+alias cdb="cd /mnt/data/online/repos/blockchain/documentation/moneylendingtracker/"
 
 
 alias lt="ls -lth"
@@ -151,7 +151,7 @@ alias nnn="pushn"
 alias uuv="pushuv"
 alias uuos="pushos"
 alias rrr="pushr"
-alias cdreading="cd /mnt/data/repos/Readings"
+alias cdreading="cd /mnt/data/online/repos/Readings"
 alias lspdf="lsPdf"
 alias upw="eval $(ssh-agent); ssh-add"
 #alias push="ssh-add; git push"
@@ -292,7 +292,7 @@ function catasks() {
  if [ -z "$*" ]; then
   k=5;
  fi
- cat /mnt/data/repos/Readings/tasks.mdpp | tail -n $k
+ cat /mnt/data/online/repos/online/Readings/tasks.mdpp | tail -n $k
 }
 
 function pushn() {
@@ -674,7 +674,7 @@ function printBatteryStatusToCli() {
 # (was done during the installation of procmail for using the mutt client)
 MAIL=/var/spool/mail/x && export MAIL
 
-export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
+export PATH=$PATH:/mnt/data/online/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
 export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/usr/local/spark/bin
 
