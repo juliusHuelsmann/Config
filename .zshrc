@@ -669,10 +669,10 @@ function printBatteryStatusToCli() {
 
 # Sets the Mail Environemnt Variable 
 # (was done during the installation of procmail for using the mutt client)
-MAIL=/var/spool/mail/juli && export MAIL
+MAIL=/var/spool/mail/x && export MAIL
 
 export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
-export PATH=$PATH:/home/juli/.gem/ruby/2.4.0/bin
+export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/usr/local/spark/bin
 
 export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
