@@ -35,6 +35,8 @@ This repository contains
   to be displayed
 
 # Manual todos
+sudo systemctl disable cups-browsed.service
+
 #### Ranger
 For enabling the preview, exeucte the following command once:
 ```
