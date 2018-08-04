@@ -189,32 +189,51 @@ localTa=juli@192.168.178.67    #< t    arch
 #
 #mac
 alias sshMu='ssh -X $localMu'
+alias sshM=sshMu
+alias sshm=sshM
 #dell
 alias sshDu='ssh -X $localDu'
 alias sshD=sshDu
+alias sshd=sshD
 #x
 alias sshXa='ssh -X $localXa'
 alias sshXu='ssh -X $localXu'
 alias sshX=sshXu #< they equal.
+alias sshx=sshX
 #t
 alias sshTa='ssh -X $localTa'
 alias sshT=sshTa
+alias ssht=sshT
 
 #
 #mac
-alias scpMu='scp -X $localMu'
-alias scpM=scpMu
+function scp2M() {
+  scp $1 $localMu:$2
+}
+function scpM() {
+  scp $localMu:$1 $2
+}
 #dell
-alias scpDu='scp -X $localDu'
-alias scpD=scpDu
+function scp2D() {
+  scp $1 $localDu:$2
+}
+function scpD() {
+  scp $localDu:$1 $2
+}
 #x
-alias scpXa='scp -X $localXa'
-alias scpXu='scp -X $localXu'
-alias scpX=scpXu
+function scp2X() {
+  scp $1 $localXa:$2
+}
+function scpX() {
+  scp $localXa:$1 $2
+}
 #t
-alias scpTa='scp -X $localTa'
-alias scpT=scpTu
-
+function scp2T() {
+  scp $1 $localTa:$2
+}
+function scpT() {
+  scp $localTa:$1 $2
+}
 
 
 function lsPdf() {
