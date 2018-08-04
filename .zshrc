@@ -184,7 +184,7 @@ localDu=juli@192.168.178.48 #< dell ubuntu
 localXa=x@192.168.178.33    #< x230 manjaro
 localXu=x@192.168.178.33    #< x230 ubuntu
 #t
-localTa=x@192.168.178.67    #< t    arch
+localTa=juli@192.168.178.67    #< t    arch
 
 #
 #mac
