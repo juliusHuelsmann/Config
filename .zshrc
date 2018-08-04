@@ -144,6 +144,10 @@ alias cdp3="cd $pRepos/dima/p3";
 alias cdp2="cd $pRepos/dima/p3";
 alias cdp1="cd $pRepos/dima/p3";
 
+alias seta="feh --bg-scale ~/.config/i3/image.jpg"
+alias setb="feh --bg-scale ~/.config/i3/imageB.jpg"
+alias setc="feh --bg-scale ~/.config/i3/imageC.jpg"
+alias setd="feh --bg-scale ~/.config/i3/imageD.jpg"
 
 
 
