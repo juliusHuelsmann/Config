@@ -40,6 +40,21 @@ For enabling the preview, exeucte the following command once:
 ```
 ranger --copy-config=scope
 ```
+#### SSH
+- ubuntu:  apt install openssh-server
+- vim /etc/ssh/ssdh_config
+```
+PermitRootLogin no
+PubkeyAuthentication yes
+AuthorizedKeysFile	.ssh/authorized_keys
+PasswordAuthentication no
+(AuthenticationMethods publickey)
+UsePAM no
+X11Forwarding yes
+X11UseLocalhost no
+# x = username placeholder
+AllowUsers x 
+```
 
 #### Startup behavior
 1. As I do not always require a gui, need a terminal open if the gui does not
