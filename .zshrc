@@ -176,29 +176,46 @@ localubux=x@192.168.178.32
 localubud=juli@192.168.178.48
 localosx=x@192.168.178.20
 
-alias ssharcht='ssh -X $localarcht'
-alias sshubux='ssh -X $localubux'
-alias sshubud='ssh -X $localubud'
-alias sshosx='ssh -X $localosx'
+#mac
+localMu=x@192.168.178.20    #< mac  ubuntu
+#dell
+localDu=juli@192.168.178.48 #< dell ubuntu
+#x
+localXa=x@192.168.178.33    #< x230 manjaro
+localXu=x@192.168.178.33    #< x230 ubuntu
+#t
+localTa=x@192.168.178.67    #< t    arch
 
-
-
-# This command must run each time terminal opens for 
-# using ssh-add
 #
+#mac
+alias sshMu='ssh -X $localMu'
+#dell
+alias sshDu='ssh -X $localDu'
+alias sshD=sshDu
+#x
+alias sshXa='ssh -X $localXa'
+alias sshXu='ssh -X $localXu'
+alias sshX=sshXu #< they equal.
+#t
+alias sshTa='ssh -X $localTa'
+alias sshT=sshTa
 
-function scposx() {
-  scp $1 $localosx:$2
-}
-function scparcht() {
-  scp $1 $localarcht:$2
-}
-function scpubud() {
-  scp $1 $localubud:$2
-}
-function scpubux() {
-  scp $1 $localubux:$2
-}
+#
+#mac
+alias scpMu='scp -X $localMu'
+alias scpM=scpMu
+#dell
+alias scpDu='scp -X $localDu'
+alias scpD=scpDu
+#x
+alias scpXa='scp -X $localXa'
+alias scpXu='scp -X $localXu'
+alias scpX=scpXu
+#t
+alias scpTa='scp -X $localTa'
+alias scpT=scpTu
+
+
 
 function lsPdf() {
   ls -t | grep .pdf | lpdf  | more
