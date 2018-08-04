@@ -89,6 +89,8 @@ source $ZSH/oh-my-zsh.sh
 
 
 alias stranger="source ranger"
+alias strange=stranger
+alias str=stranger
 alias gil="gl"
 alias gip="gp"
 alias gic="gc"
