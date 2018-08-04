@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-export PATH=$PATH:~/.local/bin/
+export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/
 export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
 
 
@@ -88,6 +88,9 @@ source $ZSH/oh-my-zsh.sh
 #
 
 
+alias stranger="source ranger"
+alias strange=stranger
+alias str=stranger
 alias gil="gl"
 alias gip="gp"
 alias gic="gc"
@@ -124,12 +127,22 @@ pOnline="$pData/online"
 pLocal="$pData/local"
 pScripts="$pData/scripts"
 pRepos="$pOnline/repos"
+pPrograms="$pLocal/programs"
 
 alias cdd="cd $pData"
 
 alias cdi="cd $pInter"
-alias cdo="cd $pOnline"
 alias cdl="cd $pLocal"
+alias cdp="cd $pPrograms"
+alias cdprog=cdp
+alias cdpro=cdp
+alias cdorga="cd $pInter/orga"
+alias cdorg=cdorga
+alias cdmat="cd $pInter/material"
+alias cdfree="cd $pInter/freeTime"
+alias cdfre=cdfree
+
+
 
 alias cds="cd $pScripts"
 
@@ -216,7 +229,7 @@ function scp2D() {
   scp $1 $localDu:$2
 }
 function scpD() {
-  scp $localDu:$1 $2
+  scp -r $localDu:$1 $2
 }
 #x
 function scp2X() {
