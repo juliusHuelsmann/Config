@@ -80,6 +80,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/script
 bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
 bindsym $mod+XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/on.sh)"
 bindsym $mod+XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/out.sh)"
+
+bindsym XF86KbdBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUpKb.sh)"
+bindsym XF86KbdBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDownKb.sh)"
+
 #bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
 #bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
 

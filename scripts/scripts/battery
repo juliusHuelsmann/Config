@@ -4,7 +4,6 @@
 dir=`dirname "$0"`
 source $dir/dimcfg
 
-touch /home/$i/inf.o
 export HOME=/home/$i
 export XAUTHORITY=/home/$i/.Xauthority
 export DISPLAY=:0.0

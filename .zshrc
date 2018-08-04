@@ -90,6 +90,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias gil="gl"
 alias gip="gp"
+alias gic="gc"
+alias gis="git status"
+alias gia="ga"
 
 alias updateKeysUbuntu="apt-key list | awk '/expired/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
 alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
@@ -98,27 +101,16 @@ alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while r
 #
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sz="source ~/.zshrc"
+alias vz="vim ~/.zshrc"
+alias vi3="vim ~/.config/i3/config"
+alias vr="vim ~/.config/ranger/rc.conf"
+alias vt="vim ~/.config/termite/config"
+
 alias beep='paplay $BEEP'
 alias qute="qutebrowser"
 alias qutie="qutebrowser"
-
-alias sz="source ~/.zshrc"
-alias vz="vim ~/.zshrc"
-alias cdRepo="cd /mnt/data/repos"
-alias cdrep="cd /mnt/data/repos; addSshAgent; "
-alias cdm="cd /mnt/data/repos/NotesDL/"
-alias cdrepo="cdRepo"
 alias updatePip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U"
-ws4="/mnt/data/repos/4-ws1718"
-ws4Raw="/mnt/data/repos/4-ws1718Raw"
-alias cds="cd /mnt/data/repos/4-ws1718"
-alias cdsr="cd /mnt/data/repos/4-ws1718Raw"
-alias uni="cdsr; daemonize termite -d $ws4"
-alias aim="cd $ws4Raw/aim; daemonize termite -d '$ws4/aim'"
-alias bkits="cd $ws4Raw/bkits; daemonize termite -d '$ws4/bkits'"
-alias netsec="cd $ws4Raw/netsec; daemonize termite -d '$ws4/netsec'"
-alias seclab="cd $ws4Raw/seclab; daemonize termite -d '$ws4/seclab'"
-alias osd="cd $ws4Raw/osd; daemonize termite -d '$ws4/osd'"
 alias bri="sudo chown $(whoami) /sys/class/backlight/intel_backlight/brightness"
 alias scanHome="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 300"
 alias scanHomel="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 800"
@@ -126,18 +118,37 @@ alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
 alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
 
-repo=/mnt/data/repos
-dima=$repo/dima/SenseNative
-bahn=$repo/deutscheBahn/ipa
+pData="/mnt/data"
+pInter="$pData/inter"
+pOnline="$pData/online"
+pLocal="$pData/local"
+pScripts="$pData/scripts"
+pRepos="$pOnline/repos"
 
-alias cdipa="cdrep; cd $bahn";
-alias cdsense="cdrep; cd $dima";
-alias cdp3="cdrep; cd p3";
+alias cdd="cd $pData"
 
-alias dipa="cdipa;vim;";
+alias cdi="cd $pInter"
+alias cdo="cd $pOnline"
+alias cdl="cd $pLocal"
+
+alias cds="cd $pScripts"
+
+alias cdr="cd $pRepos"
+alias cdrep="cd; addSshAgent"
+
+# Special repositories
+alias cdm="cd $pRepos/NotesDL/"
+alias cdsense="cd $pRepos/dima/SenseNative";
 alias dsense="cdsense;vim";
+alias cdp3="cd $pRepos/dima/p3";
+alias cdp2="cd $pRepos/dima/p3";
+alias cdp1="cd $pRepos/dima/p3";
 
-alias cdb="cd /mnt/data/repos/blockchain/documentation/moneylendingtracker/"
+alias seta="feh --bg-scale ~/.config/i3/image.jpg"
+alias setb="feh --bg-scale ~/.config/i3/imageB.jpg"
+alias setc="feh --bg-scale ~/.config/i3/imageC.jpg"
+alias setd="feh --bg-scale ~/.config/i3/imageD.jpg"
+
 
 
 alias lt="ls -lth"
@@ -151,16 +162,13 @@ alias nnn="pushn"
 alias uuv="pushuv"
 alias uuos="pushos"
 alias rrr="pushr"
-alias cdreading="cd /mnt/data/repos/Readings"
+alias cdreading="cd /mnt/data/online/repos/Readings"
 alias lspdf="lsPdf"
 alias upw="eval $(ssh-agent); ssh-add"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
-alias puh="git add .; git commit -am \"provided partial solution for comparison\"; git push;"
+alias puh="git add .; git commit -am \"partial commit\"; git push;"
 alias clion="/mnt/arch/home/$(whoami)/programs/clion-2016.3.2/bin/clion.sh"
-
-alias i3ls="DISPLAY=:0 i3-dump-log | bzip2 -c | curl --data-binary @- https://logs.i3wm.org"
-alias i3db="i3-msg 'debuglog on; shmlog on; reload'"
 
 # local 
 localarcht=juli@192.168.178.67
@@ -168,29 +176,46 @@ localubux=x@192.168.178.32
 localubud=juli@192.168.178.48
 localosx=x@192.168.178.20
 
-alias ssharcht='ssh -X $localarcht'
-alias sshubux='ssh -X $localubux'
-alias sshubud='ssh -X $localubud'
-alias sshosx='ssh -X $localosx'
+#mac
+localMu=x@192.168.178.20    #< mac  ubuntu
+#dell
+localDu=juli@192.168.178.48 #< dell ubuntu
+#x
+localXa=x@192.168.178.33    #< x230 manjaro
+localXu=x@192.168.178.33    #< x230 ubuntu
+#t
+localTa=juli@192.168.178.67    #< t    arch
 
-
-
-# This command must run each time terminal opens for 
-# using ssh-add
 #
+#mac
+alias sshMu='ssh -X $localMu'
+#dell
+alias sshDu='ssh -X $localDu'
+alias sshD=sshDu
+#x
+alias sshXa='ssh -X $localXa'
+alias sshXu='ssh -X $localXu'
+alias sshX=sshXu #< they equal.
+#t
+alias sshTa='ssh -X $localTa'
+alias sshT=sshTa
 
-function scposx() {
-  scp $1 $localosx:$2
-}
-function scparcht() {
-  scp $1 $localarcht:$2
-}
-function scpubud() {
-  scp $1 $localubud:$2
-}
-function scpubux() {
-  scp $1 $localubux:$2
-}
+#
+#mac
+alias scpMu='scp -X $localMu'
+alias scpM=scpMu
+#dell
+alias scpDu='scp -X $localDu'
+alias scpD=scpDu
+#x
+alias scpXa='scp -X $localXa'
+alias scpXu='scp -X $localXu'
+alias scpX=scpXu
+#t
+alias scpTa='scp -X $localTa'
+alias scpT=scpTu
+
+
 
 function lsPdf() {
   ls -t | grep .pdf | lpdf  | more
@@ -292,7 +317,7 @@ function catasks() {
  if [ -z "$*" ]; then
   k=5;
  fi
- cat /mnt/data/repos/Readings/tasks.mdpp | tail -n $k
+ cat /mnt/data/online/repos/online/Readings/tasks.mdpp | tail -n $k
 }
 
 function pushn() {
@@ -674,7 +699,7 @@ function printBatteryStatusToCli() {
 # (was done during the installation of procmail for using the mutt client)
 MAIL=/var/spool/mail/x && export MAIL
 
-export PATH=$PATH:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
+export PATH=$PATH:/mnt/data/online/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
 export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/usr/local/spark/bin
 
