@@ -778,3 +778,5 @@ parse_git_branch() {
 # 
 alias emx="emax -nw"
 
+export TERM=xterm
+export TERM=xterm-256color
