@@ -219,16 +219,15 @@ set $ws6 "6s2"
 set $ws7 "7q"
 set $ws8 "8f"
 set $ws9 "9c"
-
-#set $ws1 ↖
-#set $ws2 ↑
-#set $ws3 ↗ 
-#set $ws4 ←
-#set $ws5 🗘 
-#set $ws6 →  
-#set $ws7 ↙
-#set $ws8 ↓
-#set $ws9 ↘ 
+#set $ws1 "1α o"
+#set $ws2 "2ℜ² v"
+#set $ws3 "3☢ i"
+#set $ws4 "4x"
+#set $ws5 "5y"
+#set $ws6 "6z"
+#set $ws7 "7❤ q"
+#set $ws8 "8☂ f"
+#set $ws9 "9✉ m"
 
 # switch to workspace
 #bindsym $mod+1 workspace $ws1: SW
