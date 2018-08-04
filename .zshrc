@@ -181,7 +181,7 @@ localMu=x@192.168.178.20    #< mac  ubuntu
 #dell
 localDu=juli@192.168.178.48 #< dell ubuntu
 #x
-localXa=x@192.168.178.33    #< x230 manjaro
+localXa=x@192.168.178.32    #< x230 manjaro
 localXu=x@192.168.178.33    #< x230 ubuntu
 #t
 localTa=juli@192.168.178.67    #< t    arch
@@ -198,8 +198,6 @@ alias sshd=sshD
 #x
 alias sshXa='ssh -X $localXa'
 alias sshXu='ssh -X $localXu'
-alias sshX=sshXu #< they equal.
-alias sshx=sshX
 #t
 alias sshTa='ssh -X $localTa'
 alias sshT=sshTa
