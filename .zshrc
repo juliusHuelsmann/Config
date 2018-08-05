@@ -149,7 +149,7 @@ alias cdfre=cdfree
 alias cds="cd $pScripts"
 
 alias cdr="cd $pRepos"
-alias cdrep="cd; addSshAgent"
+alias cdrep="cdr; addSshAgent"
 
 # Special repositories
 alias cdm="cd $pRepos/NotesDL/"
@@ -199,7 +199,7 @@ localDu=juli@192.168.178.48 #< dell ubuntu
 localXa=x@192.168.178.32    #< x230 manjaro
 localXu=x@192.168.178.33    #< x230 ubuntu
 #t
-localTa=juli@192.168.178.67    #< t    arch
+localTa=juli@192.168.178.67 #< t    arch
 
 #
 #mac
@@ -247,6 +247,8 @@ function scp2T() {
 function scpT() {
   scp -r $localTa:$1 $2
 }
+
+
 
 
 function lsPdf() {
