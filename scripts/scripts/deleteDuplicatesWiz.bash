@@ -5,7 +5,7 @@ function showDialog() {
   $title=$2
   
   choice=$(dialog --title "Delete duplicates ($(pwd)):" --nocancel \
-    --menu "Please select the file you want to keep" 15 105 9 \
+    --menu "Please select the file you want to keep" 15 185 9 \
     0 "exit, do not remove anything." \
     "${argAry[@]}" \
     3>&1 1>&2 2>&3 3>&1 )
@@ -22,7 +22,6 @@ function deleteDuplicatesWizard() {
   else
     toBeChecked=$1
   fi
-  toBeChecked="/mnt/data/inter/images"
 
 
     argumentsToDialog=()
