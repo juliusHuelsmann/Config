@@ -107,6 +107,8 @@ alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while r
 alias sz="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias vi3="vim ~/.config/i3/config"
+alias vi3s="vim ~/.config/i3/config.standard"
+alias vi3l="vim ~/.config/i3/config.low"
 alias vr="vim ~/.config/ranger/rc.conf"
 alias vt="vim ~/.config/termite/config"
 
@@ -219,31 +221,31 @@ alias ssht=sshT
 #
 #mac
 function scp2M() {
-  scp $1 $localMu:$2
+  scp -r $1 $localMu:$2
 }
 function scpM() {
-  scp $localMu:$1 $2
+  scp -r $localMu:$1 $2
 }
 #dell
 function scp2D() {
-  scp $1 $localDu:$2
+  scp -r $1 $localDu:$2
 }
 function scpD() {
   scp -r $localDu:$1 $2
 }
 #x
 function scp2X() {
-  scp $1 $localXa:$2
+  scp -r $1 $localXa:$2
 }
 function scpX() {
-  scp $localXa:$1 $2
+  scp -r $localXa:$1 $2
 }
 #t
 function scp2T() {
-  scp $1 $localTa:$2
+  scp -r $1 $localTa:$2
 }
 function scpT() {
-  scp $localTa:$1 $2
+  scp -r $localTa:$1 $2
 }
 
 

@@ -80,6 +80,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/script
 bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
 bindsym $mod+XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/on.sh)"
 bindsym $mod+XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/out.sh)"
+bindsym XF86KbdBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUpKb.sh)"
+bindsym XF86KbdBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDownKb.sh)"
 #bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
 #bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
 
@@ -224,16 +226,6 @@ set $ws9 "9c"
 #set $ws7 "7❤ q"
 #set $ws8 "8☂ f"
 #set $ws9 "9✉ m"
-#
-#set $ws1 ↖
-#set $ws2 ↑
-#set $ws3 ↗ 
-#set $ws4 ←
-#set $ws5 🗘 
-#set $ws6 →  
-#set $ws7 ↙
-#set $ws8 ↓
-#set $ws9 ↘ 
 
 # switch to workspace
 #bindsym $mod+1 workspace $ws1: SW
