@@ -93,6 +93,7 @@ alias str=stranger
 alias gil="gl"
 alias gip="gp"
 alias gic="gc"
+alias gid="git diff"
 alias gis="git status"
 alias gia="ga"
 
@@ -794,3 +795,7 @@ alias emx="emax -nw"
 #setfont ter-v16n
 export TERM=xterm
 export TERM=xterm-256color
+
+
+source $HOME/.shortcuts
+

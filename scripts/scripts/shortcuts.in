@@ -1,0 +1,30 @@
+#XXX: special repositories
+#XXX: make git pull+push hook
+#
+h	~/
+d	~/Downloads
+
+#/MNT
+in	/mnt/data/inter
+on	/mnt/data/online
+lo	/mnt/data/local
+# local:
+pr	/mnt/data/local/programs
+mu	/mnt/data/local/music
+wi	/mnt/data/local/wine
+co	/mnt/data/local/configurations
+wo	/mnt/data/local/work
+# intersync: 
+ma	/mnt/data/inter/material
+or	/mnt/data/inter/orga
+im	/mnt/data/inter/images
+
+
+
+#online:
+re	/mnt/data/online/repos
+
+
+	/mnt/data/online/repos/
+rpma	/mnt/data/online/repos/
+

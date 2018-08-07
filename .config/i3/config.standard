@@ -80,8 +80,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/script
 bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
 bindsym $mod+XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/on.sh)"
 bindsym $mod+XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/out.sh)"
+
 bindsym XF86KbdBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUpKb.sh)"
 bindsym XF86KbdBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDownKb.sh)"
+
 #bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
 #bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
 
@@ -279,7 +281,7 @@ assign [class="Thunderbird"] $ws9
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
+#for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
@@ -295,7 +297,7 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
+#for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
@@ -416,7 +418,7 @@ bar {
     colors {
 #background #1f1f2e
       #background #060d13
-      background #000000
+      background #680207
 #background #001a33
 #background #2B2C2B
         statusline #F9FAF9
@@ -526,7 +528,6 @@ bindsym $mod+shift+x  exec --no-startup-id blurlock
 
 bindsym $mod+o exec --no-startup-id ~/.config/i3/listInteresting.sh
 
-exec_always --no-startup-id blueman-applet
 #exec_always feh --bg-scale ~/.i3/NxmAzdu-storm-clouds-wallpaper.jpg
 #exec_always feh --bg-scale ~/.i3/ice.jpg
 #exec_always feh --bg-scale ~/.i3/w.jpg
@@ -545,7 +546,7 @@ exec_always --no-startup-id killall redshift; redshift; i3-msg 'hallo'
 # open xprop via terminal, click on the app, class = 2nd vlaue
 #
 #
-exec_always xcompmgr -c -C -o .5
+exec_always xcompmgr -c -f -n
 exec_always xmodmap ~/.Xmodmap
 exec source .zshrc
 exec disableUnwantedDevicesOnStartup
@@ -558,5 +559,4 @@ exec setxkbmap -layout de
 exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
 
 # restart
-#
 exec_always --no-startup-id starti3Grid.sh 

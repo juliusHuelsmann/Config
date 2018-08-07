@@ -1566,3 +1566,5 @@ config.bind('L', 'tab-next')
 
 ## Bindings for register mode
 # config.bind('<Escape>', 'leave-mode', mode='register')
+
+config.source('.shortcuts')
