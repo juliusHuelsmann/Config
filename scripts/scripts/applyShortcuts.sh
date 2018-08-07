@@ -10,6 +10,6 @@ quteOut=$HOME/.config/qutebrowser/.shortcuts
 sed "/^#/d " "$input"  | sed "/^\s*$/d" \
   | tee  \
   >(awk '{print "alias cd"$1"=\"cd "$2" && ls -ltrSh\""}' > "$shellOut") \
-  >(awk '{print "config.bind(\";"$1"\", \"set downloads.location.directory "$2">;; hint links download\")"}' > "$quteOut") \
+  >(awk '{print "config.bind(\";"$1"\", \"set downloads.location.directory "$2";; hint links download\")"}' > "$quteOut") \
   | awk '{print "map cd"$1" cd "$2"\nmap t"$1" tab_new "$2"\nmap mv"$1" shell mv -v %s "$2"\nmap Y"$1" shell cp -rv %s "$2"\n"}' > "$rangerOut"
 
