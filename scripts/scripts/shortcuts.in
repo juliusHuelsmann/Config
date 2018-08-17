@@ -14,6 +14,8 @@ mu	/mnt/data/local/music
 wi	/mnt/data/local/wine
 co	/mnt/data/local/configurations
 wo	/mnt/data/local/work
+# scripts:
+sc  /mnt/data/scripts
 # intersync: 
 ma	/mnt/data/inter/material
 or	/mnt/data/inter/orga
@@ -24,7 +26,7 @@ im	/mnt/data/inter/images
 #online:
 re	/mnt/data/online/repos
 
-
-	/mnt/data/online/repos/
-rpma	/mnt/data/online/repos/
+rma	/mnt/data/online/repos/paperStudies
+rda	/mnt/data/online/repos/dataspree
+rli	/mnt/data/online/repos/dataspree/labelImage
 

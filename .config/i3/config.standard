@@ -418,7 +418,7 @@ bar {
     colors {
 #background #1f1f2e
       #background #060d13
-      background #680207
+      background #000000
 #background #001a33
 #background #2B2C2B
         statusline #F9FAF9

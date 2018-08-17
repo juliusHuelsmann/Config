@@ -183,7 +183,6 @@ alias upw="eval $(ssh-agent); ssh-add"
 #alias push="ssh-add; git push"
 #alias pull="ssh-add; git pull"
 alias puh="git add .; git commit -am \"partial commit\"; git push;"
-alias clion="/mnt/arch/home/$(whoami)/programs/clion-2016.3.2/bin/clion.sh"
 
 # local 
 localarcht=juli@192.168.178.67

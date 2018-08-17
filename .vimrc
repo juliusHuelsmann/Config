@@ -503,7 +503,7 @@ endfunction
       elseif executable(file)
         execute "!" . file
       else 
-        execute './cexec.sh'
+        execute '!./cexec.sh'
         ":!clear<CR>:!./cexec.sh<CR>
         echom "Falling back to cexec"
       endif
