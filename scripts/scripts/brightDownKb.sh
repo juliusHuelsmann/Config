@@ -14,7 +14,7 @@ function rbrightkb() {
   fi
   echo "echo $brightness > $brightPath" | zsh
   if (($brightness == $min &&  $bri != $min)); then
-    echo "Decreased to min value."
+    echo "Keyboard min"
   fi
 }
 

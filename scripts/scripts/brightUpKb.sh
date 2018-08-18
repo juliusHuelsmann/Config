@@ -17,6 +17,6 @@ echo "echo $brightness > $brightPath "| zsh
 
   
 if (($brightness == $max && $bri != $max)); then
-  echo "increased to max value." 
+  echo "Keyboard max" 
 fi 
 
