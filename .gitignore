@@ -42,6 +42,8 @@
 !/.vim/colors/corporation_modified.vim
 !/.vim/colors/hybrid.vim
 !/.vim/colors/blaquemagick.vim
+!/.vim/spell/
+!/.vim/spell/*
 
 
 # vim snippets
