@@ -27,10 +27,10 @@ order += "cpu_usage"
 order += "cpu_temperature all"  
 order += "load"  
 order += "battery all"
-order += "tztime berlin"
-order += "tztime dublin"
-order += "tztime nyc"
+order += "tztime eastern"
 order += "tztime utc"
+order += "tztime dublin"
+order += "tztime berlin"
 #order += "load"
 #order += "disk /"
 # order += "disk /home"
@@ -112,8 +112,8 @@ tztime dublin {
   timezone = "Europe/Dublin"
 }
 
-tztime nyc {
-  format = "nyc:%H:%M"
+tztime eastern {
+  format = "eastern:%H:%M"
   timezone = "US/Eastern"
 }
 
