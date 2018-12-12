@@ -1251,14 +1251,14 @@ c.url.default_page = 'https://www.startpage.com/'
 c.url.searchengines = {
        # 'DEFAULT': 'https://duckduckgo.com/?q={}',
         'DEFAULT': 'https://www.startpage.com/do/asearch?hmb=1&cat=web&cmd=process_search&language=english&engine0=v1all&query={}&abp=-1&t=black&nj=0&pg=0',
-        'w' : 'https://www.wikipedia.org/wiki/{}',
-        'g' : 'https://www.github.com/juliusHuelsmann/{}',
-        'y' : 'https://www.youtube.com/results?search_query={}',
-        'yh ': 'https://www.youtube.com/?_={}',
+        'w'  : 'https://www.wikipedia.org/wiki/{}',
+        'g'  : 'https://www.github.com/juliusHuelsmann/{}',
+        'y'  : 'https://www.youtube.com/results?search_query={}',
+        'yh' : 'https://www.youtube.com/?_={}',
         'gi' : 'https://www.github.com/search?q={}&type=',
         'te' : 'http://dict.cc?s={}',
         'tf' : 'http://defr.dict.cc?s={}',
-        "s" : "https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q={}"
+        "s"  : "https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q={}"
         }
 # XXX:
 

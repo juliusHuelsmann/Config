@@ -24,7 +24,7 @@ function process {
     done
     #unsetopt shwordsplit
 
-    if [ $i = 5 ]; then 
+    if [ $i -gt 5 ]; then 
       
       owner=$(/usr/bin/pacman -Qo $path 2>&1)
       #echo -e "Rename $path for $progName if there is no owner: $owner"

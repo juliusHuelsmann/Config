@@ -1,4 +1,4 @@
-#XXX: special repositories
+#XX: special repositories
 #XXX: make git pull+push hook
 #
 h	~/
@@ -20,6 +20,7 @@ sc  /mnt/data/scripts
 ma	/mnt/data/inter/material
 or	/mnt/data/inter/orga
 im	/mnt/data/inter/images
+da	/mnt/data/inter/dataSpree/
 
 
 
@@ -29,4 +30,18 @@ re	/mnt/data/online/repos
 rma	/mnt/data/online/repos/paperStudies
 rda	/mnt/data/online/repos/dataspree
 rli	/mnt/data/online/repos/dataspree/labelImage
+rps	/mnt/data/online/repos/paperStudy/
+rre	/mnt/data/online/repos/Readings/
+
+
+
+rsh	/mnt/data/online/repos/dima/senseHackathon/
+rsn	/mnt/data/online/repos/dima/senseNode/
+rsl	/mnt/data/online/repos/dima/senseLib/
+#rsn	/mnt/data/online/repos/dima/senseNative/
+
+
+
+
+
 

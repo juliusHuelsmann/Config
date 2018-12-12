@@ -282,6 +282,14 @@ assign [class="Thunderbird"] $ws9
 
 # Open specific applications in floating mode
 #for_window [title="alsamixer"] floating enable border pixel 1
+#
+for_window [title="^cuteRecorder$"] floating enable border pixel 1
+for_window [class="Distance\ image"] floating disable 
+for_window [class="Termite"] floating disable 
+for_window [class="untitled"] floating enable border normal
+for_window [class="cute"] floating enable border normal
+for_window [class="QtQmlViewer"] floating enable border normal
+for_window [title="qtExample"] floating enable border normal
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
@@ -533,11 +541,11 @@ bindsym $mod+o exec --no-startup-id ~/.config/i3/listInteresting.sh
 #exec_always feh --bg-scale ~/.i3/w.jpg
 #exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
 #exec_always feh --bg-scale ~/.config/i3/irie.png
-exec_always feh --bg-scale ~/.config/i3/image.jpg
+exec_always feh --bg-center ~/.config/i3/image.jpg
 #exec blueman-applet
 #exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #redshift: fluxalternative:
-exec_always --no-startup-id killall redshift; redshift; i3-msg 'hallo' 
+exec_always --no-startup-id killall redshift&& redshift -l 52:8&& i3-msg 'hallo' 
 
 
 # window binding to workspace

@@ -5,6 +5,12 @@
 export ZSH=~/.oh-my-zsh
 export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/
 export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
+if [[ -a /mnt/data/online/repos/stderred/build/libstderred.so ]]; then
+  bold=$(tput bold || tput md)
+  red=$(tput setaf 202)
+  export STDERRED_ESC_CODE=`echo -e "$bold$red"`
+  export LD_PRELOAD="/mnt/data/online/repos/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
+fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -86,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 
-
+alias ka="killall"
 alias stranger="source ranger"
 alias strange=stranger
 alias str=stranger
@@ -113,9 +119,10 @@ alias vr="vim ~/.config/ranger/rc.conf"
 alias vt="vim ~/.config/termite/config"
 
 alias beep='paplay $BEEP'
+alias cute="qutebrowser"
 alias qute="qutebrowser"
 alias qutie="qutebrowser"
-alias updatePip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U"
+alias updatePip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U"
 alias bri="sudo chown $(whoami) /sys/class/backlight/intel_backlight/brightness"
 alias scanHome="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 300"
 alias scanHomel="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 800"
@@ -196,7 +203,7 @@ localMu=x@192.168.178.20    #< mac  ubuntu
 localDu=juli@192.168.178.48 #< dell ubuntu
 #x
 localXa=x@192.168.178.32    #< x230 manjaro
-localXu=x@192.168.178.33    #< x230 ubuntu
+localXu=x@192.168.178.68    #< x230 ubuntu
 #t
 localTa=juli@192.168.178.67 #< t    arch
 
@@ -233,7 +240,10 @@ function scpD() {
   scp -r $localDu:$1 $2
 }
 #x
-function scp2X() {
+function scp2Xu() {
+  scp -r $1 $localXu:$2
+}
+function scp2Xa() {
   scp -r $1 $localXa:$2
 }
 function scpX() {

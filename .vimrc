@@ -445,7 +445,7 @@ set number
 
 " 
 " max line width
-set colorcolumn=80
+set colorcolumn=100
 "match ErrorMsg '\%>80v.\+'
 
 
@@ -890,9 +890,21 @@ au FileType css setl ofu=csscomplete#CompleteCSS
 
 
 
-:hi CursorLine   cterm=NONE ctermbg=52
-:hi CursorColumn cterm=NONE ctermbg=52
+:hi CursorLine   cterm=NONE ctermbg=4
+:hi CursorColumn cterm=NONE ctermbg=1
 
+:hi CursorLine   cterm=NONE ctermbg=7
+:hi CursorColumn cterm=NONE ctermbg=8
+:hi CursorColumn cterm=NONE ctermbg=23
+
+:hi CursorLine   cterm=NONE ctermbg=66
+:hi CursorLine   cterm=NONE ctermbg=52
+:hi CursorLine   cterm=NONE ctermbg=88
+
+
+:hi CursorLine   cterm=NONE ctermbg=1
+:hi CursorColumn cterm=NONE ctermbg=1
+:hi Cursor       cterm=NONE ctermbg=4
 " XXX thi sis just for white
 " :hi CursorLine   cterm=NONE ctermbg=11
 ":hi CursorColumn cterm=NONE ctermbg=11
@@ -905,7 +917,19 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.class$\|\.so$',
   \ }
 
-
+  " use an orange cursor in insert mode
+  let &t_SI = "\<Esc>]12;white\x7"
+  " use a red cursor otherwise
+  let &t_EI = "\<Esc>]12;#229B78\x7"
+  silent !echo -ne "\033]12;white\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]12;white\007"
+  " use \003]12;gray\007 for gnome-terminal
+   
+   
+   
+"speed of blinking 
+"set guicursor=i:blinkwait0-blinkon100-blinkoff50
 
 set exrc
 set secure
