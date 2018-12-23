@@ -224,6 +224,46 @@ alias sshTa='ssh -X $localTa'
 alias sshT=sshTa
 alias ssht=sshT
 
+function ssh() {
+
+
+
+  arg=$1
+  # ugly fix for -X (non ip arg as first arg.)
+  len=${#arg}
+  echo "len = $len"
+  if [ $len -le 8 ]; then 
+    arg=$2
+  fi
+
+  #B=$(echo $A | cut -d ' ' -f 5-)
+
+  # entire command (___.???.???.???) is directly translated to color
+  #printf -v color "$(printf '%02x' $(echo $arg | cut -d '.' -f 2-  | tr '.' ' '))"
+  # entire command (___.???.???.???) is translated to color, leaving out some
+  # colors for keeping the value (hsv) low.
+  printf -v color "$(printf '%02x' $(echo $arg | cut -d '.' -f 2-  | tr '.' ' ' | xargs -n1 | while read -r line; do echo $((line%55)); done))"
+  # only use the last 
+
+  # range of 85 for each value
+  k=$(echo $arg | cut -d '.' -f 4-)
+  ka=$(((k%6)*10))
+  kb=$((((k/6)%6)*9))
+  kc=$((10+(k/36)*10))
+  echo $ka $kb $kc
+
+  printf -v color "$(printf '%02x' $ka $kb $kc)"
+
+  clear
+  #printf '\033]11;#101A39\007'
+  printf "\033]11;#$color\007"
+  command ssh $@
+  failed=$?
+  if [ $failed -eq 0 ]; then
+    clear 
+  fi
+  printf '\033]11;#000000\007'
+}
 #
 #mac
 function scp2M() {
