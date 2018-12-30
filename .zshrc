@@ -226,6 +226,9 @@ function scpM() {
   scp -r $localMu:$1 $2
 }
 #dell
+function scp2Du() {
+  scp -r $1 $localDu:$2
+}
 function scp2D() {
   scp -r $1 $localDu:$2
 }
@@ -786,6 +789,7 @@ parse_git_branch() {
 #
 #zle -N zle-line-init
 #zle -N zle-keymap-select
+
 
 
 # 
