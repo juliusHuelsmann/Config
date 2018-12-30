@@ -18,6 +18,6 @@ fi
 if [ -d /mnt/data/scripts ]; then
 else
   ln -s /home/$i/scripts/scripts /mnt/data/scripts
-  sudo chown $i:$i /mnt/data/scripts -R
+  sudo chown $i /mnt/data/scripts -R
 fi
 

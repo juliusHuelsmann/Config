@@ -105,6 +105,12 @@ notify-send "string" # for sending information (e.g. on git updates, battery pow
 
 ## Useful Commands / Installations
 
+### Record gif for github
+byzanz-record -d [DURATION] outputFile.gif
+### Display gif
+sxiv -a [FILENAME]
+but does not offer the possibility to scroll fw and bw and pause
+
 ### Font cousine
 sudo pacman -S ttf-croscore
 
@@ -212,3 +218,7 @@ execute xmodmap .Xmodmap each time on login.
 
 new proceeding:
 just be sure to execute xmodmap .Xmodmap, and pull the xmodmap from repo :)
+
+
+# change the refresh rate via xrandr
+`xrandr -s 1280x1024 -r 645`

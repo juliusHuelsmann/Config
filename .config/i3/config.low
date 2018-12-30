@@ -117,7 +117,6 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down 
 bindsym $mod+k focus up 
 bindsym $mod+l focus right
-bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
 # bindsym $mod+Left focus left
@@ -281,6 +280,11 @@ assign [class="Thunderbird"] $ws9
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
+for_window [title="^cuteRecorder$"] floating enable border pixel 1
+for_window [class="Termite"] floating disable 
+#for_window [class="^Termite$" title="^cuteRecorder$"] floating enable border pixel 1
+for_window [title="scroll"] floating enable border pixel 1
+for_window [class="testScroll"] floating enable border pixel 1
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
@@ -418,7 +422,8 @@ bar {
     colors {
 #background #1f1f2e
       #background #060d13
-      background #680207
+      #background #680207
+      background #181819
 #background #001a33
 #background #2B2C2B
         statusline #F9FAF9
@@ -537,7 +542,7 @@ exec_always feh --bg-center ~/.config/i3/image.jpg
 #exec blueman-applet
 #exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #redshift: fluxalternative:
-exec_always --no-startup-id killall redshift; redshift; i3-msg 'hallo' 
+exec_always --no-startup-id killall redshift; redshift -l 52:8; i3-msg 'hallo' 
 
 
 # window binding to workspace
