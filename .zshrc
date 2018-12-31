@@ -224,29 +224,71 @@ alias sshTa='ssh -X $localTa'
 alias sshT=sshTa
 alias ssht=sshT
 
+function isFlag() {
+  [[ $1 =~ ^- ]]
+}
+
+function isValidIp() {
+  [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] #<actually does not check bounds (<255).
+}
+function isNumber() {
+  #[[ $1 =~ ^[0-9] ]]
+  [[ $1 =~ ^[0-9]+$ ]]
+}
+
 function ssh() {
 
 
 
+
   arg=$1
-  # ugly fix for -X (non ip arg as first arg.)
-  len=${#arg}
-  echo "len = $len"
-  if [ $len -le 8 ]; then 
-    arg=$2
+
+  position=1
+
+
+  for f in "$@"; do
+    position=$((position + 1))
+    if isFlag $f; then; else 
+      arg=$f #<$k
+    fi
+  done
+
+  changed=false
+  decomposition=("${(@s/@/)arg}") #<into uname and ip
+  len=$#decomposition
+  name=$decomposition[1]
+  addr=$decomposition[-1]
+  echo "0:$decomposition[0]; 1:$decomposition[1], 2:$decomposition[2]" 
+
+  if (( len > 2 )); then; echo "error."; return; fi
+
+  echo "addr=$addr"
+  if isNumber $addr; then
+    arg="192.168.178.$addr"
+    changed=true
+  else 
+    echo "is not Number $addr"
   fi
+  if (( len == 2 )); then 
+    arg="$name@$arg"
+  fi
+  echo "arg=$arg"
+
+
+
+
 
   #B=$(echo $A | cut -d ' ' -f 5-)
 
   # entire command (___.???.???.???) is directly translated to color
-  #printf -v color "$(printf '%02x' $(echo $arg | cut -d '.' -f 2-  | tr '.' ' '))"
+  #printf -v color "$(printf '%02x' $(echo $addr  | cut -d '.' -f 2-  | tr '.' ' '))"
   # entire command (___.???.???.???) is translated to color, leaving out some
   # colors for keeping the value (hsv) low.
-  printf -v color "$(printf '%02x' $(echo $arg | cut -d '.' -f 2-  | tr '.' ' ' | xargs -n1 | while read -r line; do echo $((line%55)); done))"
+  printf -v color "$(printf '%02x' $(echo $addr | cut -d '.' -f 2-  | tr '.' ' ' | xargs -n1 | while read -r line; do echo $((line%55)); done))"
   # only use the last 
 
   # range of 85 for each value
-  k=$(echo $arg | cut -d '.' -f 4-)
+  k=$(echo $addr  | cut -d '.' -f 4-)
   ka=$(((k%6)*10))
   kb=$((((k/6)%6)*9))
   kc=$((10+(k/36)*10))
@@ -257,7 +299,12 @@ function ssh() {
   clear
   #printf '\033]11;#101A39\007'
   printf "\033]11;#$color\007"
+
+  if $changed; then
+  command ssh ${@:$position} ${@:$position:$#} $arg
+  else 
   command ssh $@
+  fi
   failed=$?
   if [ $failed -eq 0 ]; then
     clear 
