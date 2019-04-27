@@ -280,6 +280,7 @@ assign [class="Thunderbird"] $ws9
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
+for_window [class="Matplotlib"] floating enable border pixel 1
 for_window [title="^cuteRecorder$"] floating enable border pixel 1
 for_window [class="Termite"] floating disable 
 #for_window [class="^Termite$" title="^cuteRecorder$"] floating enable border pixel 1
@@ -565,3 +566,7 @@ exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
 
 # restart
 exec_always --no-startup-id starti3Grid.sh 
+exec_always --no-startup-id synclient TapButton1=0 TapButton2=0 TapButton3=0 # no tap click
+exec_always --no-startup-id synclient VertTwoFingerScroll=0 # no scroll
+exec_always --no-startup-id synclient VertEdgeScroll=0 # no scroll on the edge (that sucked most)
+

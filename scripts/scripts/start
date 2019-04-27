@@ -1,7 +1,9 @@
 #!/bin/zsh
 
+
 dir=`dirname "$0"`
 source "$dir/dimcfg"
+echo "$dir $i $atom"
 
 # Powermanagement
 powertop --auto-tune

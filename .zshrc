@@ -236,6 +236,13 @@ function isNumber() {
   [[ $1 =~ ^[0-9]+$ ]]
 }
 
+function mplayer() {
+
+  echo "evoke  command mplayer if you do not want scale tempo..."
+  command mplayer -af scaletempo $@
+
+}
+
 function ssh() {
 
 
@@ -487,6 +494,17 @@ function pushr() {
     git push
     cd $ret
   fi
+}
+
+function notify-send() {
+  command notify-send $@
+
+  #( mplayer ~/.config/i3/beep.mp3 > /dev/null 2>&1 > /dev/null &) > /dev/null 
+  #sleep 0.15
+  #( mplayer ~/.config/i3/beep.mp3 > /dev/null 2>&1 > /dev/null &) > /dev/null
+  #sleep 0.15
+  ( mplayer ~/.config/i3/beep.mp3 > /dev/null 2>&1 &) > /dev/null
+
 }
 
 function bright() {
@@ -899,3 +917,5 @@ export TERM=xterm-256color
 
 source $HOME/.shortcuts
 
+
+export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"

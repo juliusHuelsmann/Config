@@ -14,7 +14,7 @@ font = Terminus 12px
 font = GoMono 8
 font = Terminus 12px
 font = xos4 Terminus 18px
-font = Hack 18px
+font = Hack 15px
 scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
@@ -88,7 +88,8 @@ color15 = #ffffff
 
 [hints]
 #font = Cousine 9
-font = Cousine 12
+#font = Cousine 12
+font = Hack 12
 #foreground = #dcdccc
 #background = #3f3f3f
 #active_foreground = #e68080

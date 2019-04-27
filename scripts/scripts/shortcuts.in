@@ -8,6 +8,7 @@ d	~/Downloads
 in	/mnt/data/inter
 on	/mnt/data/online
 lo	/mnt/data/local
+ubu	/mnt/os3/home/x/
 # local:
 pr	/mnt/data/local/programs
 mu	/mnt/data/local/music

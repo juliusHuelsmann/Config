@@ -8,8 +8,8 @@
 " mkdir -p ~/.vim/pack/git-plugins/start
 " git clone https://github.com/w0rp/ale.git ~/.vim/pack/git-plugins/start/ale
 
-nmap j gj
-nmap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 
 """""""""""
 "  Vundle "
@@ -157,7 +157,7 @@ noremap <leader>sa zg
 noremap <leader>s? z=
 
 
-set tw=79
+set tw=99
 set nowrap "don't automatically wrap on load
 set fo-=t  "don't automatically wrap text when typing.
 
@@ -165,6 +165,10 @@ set fo-=t  "don't automatically wrap text when typing.
 " is leq 80 characters.
 vnoremap Q gq
 nnoremap Q gqap
+
+
+map <C-i> :pyf /usr/share/clang/clang-format.py<cr>
+imap <C-i> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
 
 " Useful settings
 set history=700
@@ -719,10 +723,6 @@ endfunction
   set secure 
 
 
-  set exrc
-
-  set exrc
-
   " re php-tag folder
   noremap <Leader>rc :!<space>phpctags<space>-R<CR> 
 
@@ -926,6 +926,11 @@ let g:ctrlp_custom_ignore = {
   autocmd VimLeave * silent !echo -ne "\033]12;white\007"
   " use \003]12;gray\007 for gnome-terminal
    
+function! Formatonsave()
+  let l:formatdiff = 1
+  pyf /usr/share/clang/clang-format.py
+endfunction
+"autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
    
    
 "speed of blinking 
