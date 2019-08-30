@@ -14,6 +14,7 @@ font = Terminus 12px
 font = GoMono 8
 font = Terminus 12px
 font = xos4 Terminus 18px
+font = Terminus 12px
 font = Hack 15px
 scrollback_lines = 10000
 search_wrap = true
@@ -51,7 +52,8 @@ filter_unmatched_urls = true
 # background black
 foreground = #dcdccc
 foreground_bold = #ffffff
-background = rgba(0, 0, 0, .75) 
+background = rgba(0, 0, 0, .5) 
+#background = rgba(0, 0, 0, 1) 
 # END black
 
 
@@ -89,7 +91,7 @@ color15 = #ffffff
 [hints]
 #font = Cousine 9
 #font = Cousine 12
-font = Hack 12
+#font = Hack 12
 #foreground = #dcdccc
 #background = #3f3f3f
 #active_foreground = #e68080

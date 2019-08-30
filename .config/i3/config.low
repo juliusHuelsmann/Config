@@ -539,7 +539,8 @@ bindsym $mod+o exec --no-startup-id ~/.config/i3/listInteresting.sh
 #exec_always feh --bg-scale ~/.i3/w.jpg
 #exec_always feh --bg-scale ~/.config/i3/wallpaper.jpg
 #exec_always feh --bg-scale ~/.config/i3/irie.png
-exec_always feh --bg-center ~/.config/i3/image.jpg
+#exec_always feh --bg-center ~/.config/i3/image.jpg
+exec_always feh --bg-scale ~/.config/i3/bg.png
 #exec blueman-applet
 #exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #redshift: fluxalternative:
@@ -566,7 +567,7 @@ exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
 
 # restart
 exec_always --no-startup-id starti3Grid.sh 
-exec_always --no-startup-id synclient TapButton1=0 TapButton2=0 TapButton3=0 # no tap click
-exec_always --no-startup-id synclient VertTwoFingerScroll=0 # no scroll
-exec_always --no-startup-id synclient VertEdgeScroll=0 # no scroll on the edge (that sucked most)
+#exec_always --no-startup-id synclient TapButton1=0 TapButton2=0 TapButton3=0 # no tap click
+#exec_always --no-startup-id synclient VertTwoFingerScroll=0 # no scroll
+#exec_always --no-startup-id synclient VertEdgeScroll=0 # no scroll on the edge (that sucked most)
 

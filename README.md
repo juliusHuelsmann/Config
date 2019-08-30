@@ -222,3 +222,14 @@ just be sure to execute xmodmap .Xmodmap, and pull the xmodmap from repo :)
 
 # change the refresh rate via xrandr
 `xrandr -s 1280x1024 -r 645`
+
+
+
+# remove cache
+```bash
+#Remove the uninstalled package files:
+sudo paccache -ruk0
+# Only keep newest 3 versions per pkg 
+sudo paccache -r
+```
+

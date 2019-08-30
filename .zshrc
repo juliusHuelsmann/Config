@@ -1,5 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -234,6 +236,18 @@ function isValidIp() {
 function isNumber() {
   #[[ $1 =~ ^[0-9] ]]
   [[ $1 =~ ^[0-9]+$ ]]
+}
+
+
+function nosudo() {
+  echo -n "[sudo] password for $(whoami):" 
+  read -s password
+  echo ""
+  echo "I got the password $password"
+  echo "$password" | command sudo -S $@ #2> /dev/null
+  #XXX: only disadvantage: if the passwod is entered wrong, 
+  #     it sipmly prompts again, but does not accept any input.
+  #
 }
 
 function mplayer() {

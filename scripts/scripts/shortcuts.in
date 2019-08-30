@@ -33,6 +33,9 @@ rda	/mnt/data/online/repos/dataspree
 rli	/mnt/data/online/repos/dataspree/labelImage
 rps	/mnt/data/online/repos/paperStudy/
 rre	/mnt/data/online/repos/Readings/
+rmcp 	/mnt/data/online/repos/masterThesis/mcp
+rmo 	/mnt/data/online/repos/masterThesis/ownMcp
+rmmd 	/mnt/data/online/repos/masterThesis/MasterDefinitions/tex
 
 
 

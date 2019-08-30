@@ -116,6 +116,7 @@ getBatteryStatus | {
     fi
   fi
 
-  mkdir -p ~/.batteryStats/
-  echo -n "$capacity\t$state\t$(date +%s)\n" >> ~/.batteryStats/stats
+
+  #mkdir -p ~/.batteryStats/
+  #echo -n "$capacity\t$state\t$(date +%s)\n" >> ~/.batteryStats/stats
 }
