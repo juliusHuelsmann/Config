@@ -6,6 +6,7 @@ source "$wd/dimcfg"
 
 function rbright() {
   brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
+  echo $brightness
   bri=$brightness
   let brightness=$brightness-$atom
   if (($brightness < min)); then

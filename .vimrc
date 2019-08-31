@@ -167,6 +167,8 @@ vnoremap Q gq
 nnoremap Q gqap
 
 
+
+
 map <C-i> :pyf /usr/share/clang/clang-format.py<cr>
 imap <C-i> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
 
@@ -936,5 +938,15 @@ endfunction
 "speed of blinking 
 "set guicursor=i:blinkwait0-blinkon100-blinkoff50
 
+
+"nnoremap cc dd
+nnoremap CC "+d
+"vnoremap <C-d> "+d
+"XXX: it is also possible to just use the system keyboard as default keyboard, 
+" but that screws up the system keyboard. 
+
+
 set exrc
 set secure
+
+

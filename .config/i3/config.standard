@@ -76,13 +76,23 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUp.sh)"
-bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/on.sh)"
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/out.sh)"
+#bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUp.sh)"
+#bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
+#bindsym $mod+XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/on.sh)"
+#bindsym $mod+XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/out.sh)"
 
-bindsym XF86KbdBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUpKb.sh)"
-bindsym XF86KbdBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDownKb.sh)"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
+bindsym $mod+XF86MonBrightnessUp exec "xbacklight -set 100"
+bindsym $mod+XF86MonBrightnessDown exec "xbacklight -set 1"
+
+bindsym XF86KbdBrightnessUp exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -inc 10"
+bindsym XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -dec 10"
+bindsym $mod+XF86KbdBrightnessUp exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -set 100"
+bindsym $mod+XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -set 0"
+
+#bindsym XF86KbdBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUpKb.sh)"
+#bindsym XF86KbdBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDownKb.sh)"
 
 #bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
 #bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh
@@ -382,7 +392,7 @@ mode "resize" {
 #exec --no-startup-id /usr/bin/adjust_i3statusconf
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
@@ -429,6 +439,7 @@ bar {
 #background #1f1f2e
       #background #060d13
       background #000000
+      #background #FFFFFF
 
 #background #001a33
 #background #2B2C2B

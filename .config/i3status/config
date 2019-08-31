@@ -25,11 +25,11 @@ general {
 order += "wireless _first_"
 order += "cpu_usage"  
 order += "cpu_temperature all"  
-order += "load"  
+#order += "load"  
 order += "battery all"
-order += "tztime eastern"
-order += "tztime utc"
-order += "tztime dublin"
+#order += "tztime eastern"
+#order += "tztime utc"
+#order += "tztime dublin"
 order += "tztime berlin"
 #order += "load"
 #order += "disk /"
@@ -89,15 +89,14 @@ ethernet _first_ {
     format_down = " no lan "
 }
 battery all {
-  format = "%status%percentage-%remaining" 
+  #format = "%status%percentage-%remaining" 
+  format = "%percentage-%remaining" 
 #format = " %status %percentage"
     format_down = "/"
     last_full_capacity = true
     integer_battery_capacity = true
-    
-    status_chr = "🡑"
-    status_bat = "🡓"
-    status_full = "✔ "
+   
+    #status="" 
     status_unk = "? "
 
     low_threshold = 15

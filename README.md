@@ -233,3 +233,12 @@ sudo paccache -ruk0
 sudo paccache -r
 ```
 
+
+
+# backlight
+it is in most cases sufficient to add the user to the video group in order to change the backlight
+settings. 
+At my macbook xbacklight could not detect any controllable devices, so I changed to acpi backlight
+which is backwards compatible with xbacklight and works fine for screen and keyboard backlight. 
+
+sudo pacman -S acpilight
