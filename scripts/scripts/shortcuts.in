@@ -27,6 +27,7 @@ da	/mnt/data/inter/dataSpree/
 
 #online:
 re	/mnt/data/online/repos
+me	/mnt/data/online/mail/
 
 rma	/mnt/data/online/repos/paperStudies
 rda	/mnt/data/online/repos/dataspree
