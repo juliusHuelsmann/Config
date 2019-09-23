@@ -90,6 +90,7 @@ bindsym XF86KbdBrightnessUp exec --no-startup-id "xbacklight -ctrl smc::kbd_back
 bindsym XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -dec 10"
 bindsym $mod+XF86KbdBrightnessUp exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -set 100"
 bindsym $mod+XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -set 0"
+bindsym $mod+space exec --no-startup-id "keyboardLightToggle.sh"
 
 #bindsym XF86KbdBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUpKb.sh)"
 #bindsym XF86KbdBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDownKb.sh)"
@@ -170,7 +171,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
