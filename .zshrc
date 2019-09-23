@@ -226,6 +226,33 @@ alias sshTa='ssh -X $localTa'
 alias sshT=sshTa
 alias ssht=sshT
 
+# edit the file that was changed last (of all files, independent on the ending)
+alias vl='vim $(ls -t | head -n 1)'
+
+function start_agent() {
+  ssh-add -l &>/dev/null
+  if [ $? -ne 0 ]; then
+    echo "i2"
+    test -r ~/.ssh-agent && \
+      eval "$(<~/.ssh-agent)" >/dev/null
+
+    ssh-add -l &>/dev/null
+    echo "check after"
+    if [ $? -ne 2 ]; then
+      (umask 066; ssh-agent > ~/.ssh-agent)
+      eval "$(<~/.ssh-agent)" >/dev/null
+      ssh-add
+      echo "added!"
+    else
+      echo "ino"
+    fi
+  else 
+      echo "ino00"
+
+  fi
+}
+
+
 function isFlag() {
   [[ $1 =~ ^- ]]
 }
@@ -933,3 +960,4 @@ source $HOME/.shortcuts
 
 
 export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
+export PATH="$PATH:/mnt/data/local/programs"
