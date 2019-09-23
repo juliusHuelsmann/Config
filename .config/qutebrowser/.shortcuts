@@ -15,6 +15,7 @@ config.bind(";or", "set downloads.location.directory /mnt/data/inter/orga;; hint
 config.bind(";im", "set downloads.location.directory /mnt/data/inter/images;; hint links download")
 config.bind(";da", "set downloads.location.directory /mnt/data/inter/dataSpree/;; hint links download")
 config.bind(";re", "set downloads.location.directory /mnt/data/online/repos;; hint links download")
+config.bind(";me", "set downloads.location.directory /mnt/data/online/mail/;; hint links download")
 config.bind(";rma", "set downloads.location.directory /mnt/data/online/repos/paperStudies;; hint links download")
 config.bind(";rda", "set downloads.location.directory /mnt/data/online/repos/dataspree;; hint links download")
 config.bind(";rli", "set downloads.location.directory /mnt/data/online/repos/dataspree/labelImage;; hint links download")
