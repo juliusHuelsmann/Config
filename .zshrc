@@ -277,6 +277,14 @@ function nosudo() {
   #
 }
 
+# record #1 : filename
+# XXX: record entire screen as default (without slop)
+function record() {
+  read -r X Y W H G ID < <(slop -f "%x %y %w %h %g %i")
+  ffmpeg -f x11grab -r 30 -s "$W"x"$H" -i :0.0+$X,$Y -c:v libx264 -q:v 1 $1
+}
+
+
 function mplayer() {
 
   echo "evoke  command mplayer if you do not want scale tempo..."
