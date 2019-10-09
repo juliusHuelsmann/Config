@@ -499,12 +499,30 @@ endfunction
 
         echom "Execute python on that file."
         execute '!python3 '. file
+        if v:shell_error == 0
+          return
+        endif
+      endif
 
-      elseif ending == "tex" 
+      if ending == "tex" 
         echom "execute pdflatex"
         execute '!pdflatex ' . file
+        if v:shell_error == 0
+          return
+        endif
+      endif
+
+      if ending == "cc" 
+        echom "build'n'run: " .'g++ -std=c++-20 ' . file . '; ./a.out'
+        execute '!set -e;g++ -std=c++2a ' . file . '; ./a.out'
+
+        if v:shell_error == 0
+          return
+        endif
+      endif
+
       
-      elseif executable(file)
+      if executable(file)
         execute "!" . file
       else 
         execute '!./cexec.sh'
@@ -651,7 +669,7 @@ endfunction
   endfunction
 
 
-  inoremap <Leader>s :sort<CR>
+  "inoremap <Leader>s :sort<CR>
 
   "
   " syntax highlighting
@@ -817,6 +835,7 @@ endfunction
 
   nnoremap <Leader>o :call OpenHeader() <CR>
   noremap <Leader>E :!clear<CR>:!./cexec.sh<CR>
+  noremap <leader>R :!clear<CR>:!./run.sh<CR>
   noremap <Leader>e :call Execute()<CR>
   noremap <Leader>m :!clear<CR>:!make<CR><CR>
   " XXX:
@@ -853,7 +872,11 @@ endfunction
   let g:ale_sign_column_always = 1
   let g:ale_sign_error = '>>'
   let g:ale_sign_warning = '--'
+  let g:ale_c_parse_compile_commands=1
 
+  " advanced features
+ let g:ale_completion_enabled = 1
+ let g:ale_cpp_clang_executable = "clang++"
 
   nnoremap <leader>tn :tabnew<CR>:NERDTree<CR><c-w>l
   nnoremap <leader>x :%!xxd<CR> 
