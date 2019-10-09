@@ -1253,6 +1253,7 @@ c.url.searchengines = {
         #'DEFAULT': 'https://www.startpage.com/do/asearch?hmb=1&cat=web&cmd=process_search&language=english&engine0=v1all&query={}&abp=-1&t=black&nj=0&pg=0',
         'DEFAULT': 'https://www.startpage.com/do/search?query={}&cat=web&cmd=process_search&language=english&engine0=v1all&pg=0&abp=-1&t=black',
         'w'  : 'https://www.wikipedia.org/wiki/{}',
+        'W'  : 'https://de.wikipedia.org/wiki/{}',
         'g'  : 'https://www.github.com/juliusHuelsmann/{}',
         'y'  : 'https://www.youtube.com/results?search_query={}',
         'yh' : 'https://www.youtube.com/?_={}',

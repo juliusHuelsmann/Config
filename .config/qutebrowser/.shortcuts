@@ -23,6 +23,7 @@ config.bind(";rre", "set downloads.location.directory /mnt/data/online/repos/Rea
 config.bind(";rmcp", "set downloads.location.directory /mnt/data/online/repos/masterThesis/mcp;; hint links download")
 config.bind(";rmo", "set downloads.location.directory /mnt/data/online/repos/masterThesis/ownMcp;; hint links download")
 config.bind(";rmmd", "set downloads.location.directory /mnt/data/online/repos/masterThesis/MasterDefinitions/tex;; hint links download")
+config.bind(";rom", "set downloads.location.directory /mnt/data/online/repos/masterThesis/ownMcp;; hint links download")
 config.bind(";rsh", "set downloads.location.directory /mnt/data/online/repos/dima/senseHackathon/;; hint links download")
 config.bind(";rsn", "set downloads.location.directory /mnt/data/online/repos/dima/senseNode/;; hint links download")
 config.bind(";rsl", "set downloads.location.directory /mnt/data/online/repos/dima/senseLib/;; hint links download")
