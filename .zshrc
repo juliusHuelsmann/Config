@@ -94,6 +94,12 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 
+alias night1="dawn 2700"
+alias night2="dawn 2250"
+alias night3="dawn 2000"
+alias night4="dawn 1700"
+alias night5="dawn 1000"
+alias dawn="killall redshift -1; xrandr --output eDP-1 --auto --brightness 1; redshift -O $1"
 alias ka="killall"
 alias stranger="source ranger"
 alias strange=stranger
