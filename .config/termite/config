@@ -7,6 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
+
 # font = GoMono 8
 # font = Monospace 10
 font = xos4 Terminus 12px
@@ -17,6 +18,9 @@ font = xos4 Terminus 18px
 font = Terminus 12px
 font = Hack 15px
 scrollback_lines = 10000
+
+cell_height_scale = 0.9
+
 search_wrap = true
 #icon_name = terminal
 #geometry = 640x480
@@ -52,7 +56,7 @@ filter_unmatched_urls = true
 # background black
 foreground = #dcdccc
 foreground_bold = #ffffff
-background = rgba(0, 0, 0, .5) 
+background = rgba(0, 0, 0, .7) 
 #background = rgba(0, 0, 0, 1) 
 # END black
 
