@@ -167,8 +167,8 @@ vnoremap Q gq
 nnoremap Q gqap
 
 
-map <C-i> :pyf /usr/share/clang/clang-format.py<cr>
-imap <C-i> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+
+
 
 " Useful settings
 set history=700
@@ -689,11 +689,11 @@ endfunction
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
   let g:syntastic_cpp_compiler = 'clang++'
-  let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+  let g:syntastic_cpp_compiler_options = ' -std=c++17 -stdlib=libc++'
 
   let g:syntastic_cpp_checkers = ['gcc']
   let g:syntastic_cpp_compiler = 'gcc'
-  let g:syntastic_cpp_compiler_options = '-std=c++14'
+  let g:syntastic_cpp_compiler_options = '-std=c++17'
 
   let g:syntastic_cpp_check_header = 1
   let g:syntastic_cpp_auto_refresh_includes = 1
@@ -870,9 +870,33 @@ endfunction
 
   " Sytnastics replacment
   let g:ale_sign_column_always = 1
-  let g:ale_sign_error = '>>'
-  let g:ale_sign_warning = '--'
-  let g:ale_c_parse_compile_commands=1
+  "let g:ale_sign_error = '>>'
+  "let g:ale_sign_warning = '--'
+"  let g:ale_sign_error   = '!!'
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = ':('
+noremap <Leader>ac :ALEFix<CR>
+noremap <Leader>ag :ALEGoToDefinition<CR>
+noremap <Leader>af :ALEFindReference<CR>
+noremap <Leader>as :ALESymbolSearch<CR>
+let g:ale_fixers = ['clangtidy']
+let b:ale_fixers = ['clangtidy']
+let g:ale_fix_on_save = 0
+"let b:ale_fixers = {'c++': ["clangtidy"]}
+
+
+
+  let g:ale_c_parse_compile_commands = 1
+  let g:ale_cpp_parse_compile_commands = 1
+  let g:ale_completion_enabled = 1
+  "let g:ale_cpp_clangtidy_options = get(g:, 'ale_cpp_clangtidy_options', '-std=c++20 -Wall ')
+  let g:ale_cpp_clangtidy_options = get(g:, 'ale_cpp_clangtidy_options', '-std=c++17 -Wall -stdlib=libc++ ')
+  "let g:ale_cpp_clangtidy_options = get(g:, 'ale_cpp_clangtidy_options', '-std=c++20 -Wall -stdlib=libc++ ')
+set completeopt=menu,menuone,preview,noselect,noinsert
+inoremap <Leader>d <Down><CR>
+  
+
+
 
   " advanced features
  let g:ale_completion_enabled = 1
@@ -953,11 +977,25 @@ function! Formatonsave()
   let l:formatdiff = 1
   pyf /usr/share/clang/clang-format.py
 endfunction
+map <C-i> :pyf /usr/share/clang/clang-format.py<cr>
+imap <C-i> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+
+
 "autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
    
    
 "speed of blinking 
 "set guicursor=i:blinkwait0-blinkon100-blinkoff50
 
+
+"nnoremap cc dd
+nnoremap xc "+y
+"vnoremap <C-d> "+d
+"XXX: it is also possible to just use the system keyboard as default keyboard, 
+" but that screws up the system keyboard. 
+
+
 set exrc
 set secure
+
+

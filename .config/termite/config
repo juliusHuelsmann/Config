@@ -16,7 +16,7 @@ font = GoMono 8
 font = Terminus 12px
 font = xos4 Terminus 18px
 font = Terminus 12px
-font = Hack 15px
+font = Hack 13px
 scrollback_lines = 10000
 
 cell_height_scale = 0.9

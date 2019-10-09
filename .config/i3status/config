@@ -89,15 +89,14 @@ ethernet _first_ {
     format_down = " no lan "
 }
 battery all {
-  format = "%status%percentage-%remaining" 
+  #format = "%status%percentage-%remaining" 
+  format = "%percentage-%remaining" 
 #format = " %status %percentage"
     format_down = "/"
     last_full_capacity = true
     integer_battery_capacity = true
-    
-    status_chr = "🡑"
-    status_bat = "🡓"
-    status_full = "✔ "
+   
+    #status="" 
     status_unk = "? "
 
     low_threshold = 15
