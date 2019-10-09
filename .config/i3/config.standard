@@ -550,7 +550,7 @@ exec_always feh --bg-scale ~/.config/i3/bg.png
 #exec blueman-applet
 #exec --no-startup-id i3-msg 'workspace $ws8; exec qutebrowser'
 #redshift: fluxalternative:
-exec_always --no-startup-id killall redshift&& redshift -l 52:8&& i3-msg 'hallo' 
+exec_always --no-startup-id killall redshift -1&& redshift -l 52.52437:13.41053 -r && i3-msg 'hallo' 
 
 
 # window binding to workspace

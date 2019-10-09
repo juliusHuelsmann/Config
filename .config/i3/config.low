@@ -377,7 +377,7 @@ mode "resize" {
 #exec --no-startup-id /usr/bin/adjust_i3statusconf
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
@@ -566,8 +566,13 @@ exec setxkbmap -layout de
 exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
 
 # restart
+
+# Reload the xresources (for urxvt)
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+# Lauch custom I3 grid manager
 exec_always --no-startup-id starti3Grid.sh 
-#exec_always --no-startup-id synclient TapButton1=0 TapButton2=0 TapButton3=0 # no tap click
-#exec_always --no-startup-id synclient VertTwoFingerScroll=0 # no scroll
-#exec_always --no-startup-id synclient VertEdgeScroll=0 # no scroll on the edge (that sucked most)
+# Disable some touchpad operations.
+exec_always --no-startup-id synclient TapButton1=0 TapButton2=0 TapButton3=0 # no tap click
+exec_always --no-startup-id synclient VertTwoFingerScroll=0 # no scroll
+exec_always --no-startup-id synclient VertEdgeScroll=0 # no scroll on the edge (that sucked most)
 
