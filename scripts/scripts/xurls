@@ -1,7 +1,7 @@
+#!/usr/bin/perl
+
 # unaltered by me;
 # fetched from https://raw.githubusercontent.com/bobrippling/perlbin/master/xurls
-
-#!/usr/bin/perl
 
 use warnings;
 
