@@ -18,12 +18,18 @@ Xcursor.theme: smalldot
 *color14: #93e0e3
 *color15: #ffffff
 
+!!st.font: hack-39
+!!font: hack-39
+st.font: Hack-12
+st.alpha: 0.8
+st.alphaUnfocussed: 0.6
+
+
 
 
 URxvt.depth: 32
 urxvt.background:  [70]#000000
 urxvt.foreground:  #FaFbFc
-urxvt.font:  xft:hack:size=12
 !! urxvt.font:  xft:terminus:size=12
 urxvt.scrollBar: false
 urxvt.scrollBar_right: false
