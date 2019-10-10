@@ -14,7 +14,7 @@
 
 # start a terminal
 # bindsym $mod+Return exec terminal
-bindsym $mod+Return exec termite 
+bindsym $mod+Return exec st # termite 
 # bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
