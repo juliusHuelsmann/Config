@@ -21,8 +21,8 @@ Xcursor.theme: smalldot
 !!st.font: hack-39
 !!font: hack-39
 st.font: Hack-12
-st.alpha: 0.8
-st.alphaUnfocussed: 0.6
+st.alpha: 0.9
+st.alphaUnfocussed: 0.4
 
 
 
