@@ -93,7 +93,13 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-
+alias memTop="ps axch -o cmd,%mem --sort=-%mem | head -n 10"
+alias cpuTop="ps axch -o cmd,%cpu --sort=-%cpu | head -n 10"
+alias cpuTemp="sensors | awk '/^temp1:/ {print $2}' | tail -n 1"
+alias up="sudo pacman -Syu"
+alias yv="youtube-dl --add-metadata -ic"
+alias ya="youtube-dl --add-metadata -ixc"
+alias hcat=highlight --out-format=ansi
 alias night1="dawn 2700"
 alias night2="dawn 2250"
 alias night3="dawn 2000"
@@ -975,3 +981,5 @@ source $HOME/.shortcuts
 
 export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/mnt/data/local/programs"
+
+shd() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
