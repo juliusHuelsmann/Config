@@ -5,7 +5,7 @@ files=("Downloads" "Desktop" "~")
 req=""
 newl="\n"
 sep="/"
-app="okular "
+app="zathura "
 for i in $files; do
     cd
     cd "$i"

@@ -11,6 +11,7 @@
 ## aliases, while the values are the commands they map to.
 ## Type: Dict
 # c.aliases = {'w': 'session-save', 'q': 'quit', 'wq': 'quit --save'}
+c.aliases = {'w': 'session-save', 'q': 'quit', 'wq': 'quit --save', "yt": 'open https://youtube.com'}
 
 ## How often (in milliseconds) to auto-save config/cookies/etc.
 ## Type: Int
@@ -148,11 +149,12 @@ c.colors.completion.odd.bg = '#010102'
 ## Background color for hints. Note that you can use a `rgba(...)` value
 ## for transparency.
 ## Type: QssColor
-# c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
+#c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 200, 200, 0.8), stop:1 rgba(255, 0, 0, 0.8))'
+c.colors.hints.bg = 'yellow'
 
 ## Font color for hints.
 ## Type: QssColor
-# c.colors.hints.fg = 'black'
+c.colors.hints.fg = 'black'
 
 ## Font color for the matched part of hints.
 ## Type: QssColor
@@ -351,7 +353,7 @@ c.colors.tabs.odd.bg = 'black'
 
 ## Background color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.bg = 'orange'
+c.colors.tabs.selected.even.bg = 'grey'
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
@@ -359,7 +361,7 @@ c.colors.tabs.selected.even.fg = 'black'
 
 ## Background color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.bg = 'orange'
+c.colors.tabs.selected.odd.bg = 'grey'
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor
@@ -1252,11 +1254,11 @@ c.url.searchengines = {
        # 'DEFAULT': 'https://duckduckgo.com/?q={}',
         #'DEFAULT': 'https://www.startpage.com/do/asearch?hmb=1&cat=web&cmd=process_search&language=english&engine0=v1all&query={}&abp=-1&t=black&nj=0&pg=0',
         'DEFAULT': 'https://www.startpage.com/do/search?query={}&cat=web&cmd=process_search&language=english&engine0=v1all&pg=0&abp=-1&t=black',
+        'm'  : 'https://www.google.de/maps/search/{}/',
         'w'  : 'https://www.wikipedia.org/wiki/{}',
         'W'  : 'https://de.wikipedia.org/wiki/{}',
         'g'  : 'https://www.github.com/juliusHuelsmann/{}',
         'y'  : 'https://www.youtube.com/results?search_query={}',
-        'yh' : 'https://www.youtube.com/?_={}',
         'gi' : 'https://www.github.com/search?q={}&type=',
         'te' : 'http://dict.cc?s={}',
         'tf' : 'http://defr.dict.cc?s={}',

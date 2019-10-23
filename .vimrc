@@ -167,9 +167,6 @@ vnoremap Q gq
 nnoremap Q gqap
 
 
-
-
-
 " Useful settings
 set history=700
 set undolevels=700
@@ -711,6 +708,7 @@ endfunction
   filetype plugin on
 
   set shellslash
+  set shell=zsh
   "
   " " IMPORTANT: grep will sometimes skip displaying the file name if you
   " " search in a singe file. This will confuse Latex-Suite. Set your grep

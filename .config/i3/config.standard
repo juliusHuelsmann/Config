@@ -22,7 +22,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+d exec --no-startup-id dmenu_recency
-bindsym $mod+d exec --no-startup-id rofi -show run 
+bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+c exec --no-startup-id rofi -show
 
 # launch categorized menu
@@ -84,7 +84,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
 bindsym $mod+XF86MonBrightnessUp exec "xbacklight -set 100"
-bindsym $mod+XF86MonBrightnessDown exec "xbacklight -set 1"
+bindsym $mod+XF86MonBrightnessDown exec "xbacklight -set 1
 
 bindsym XF86KbdBrightnessUp exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -inc 10"
 bindsym XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -dec 10"
@@ -584,6 +584,9 @@ exec setxkbmap -layout de
 exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
 
 # restart
+# Reload the xresources (for urxvt)
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+# Lauch custom I3 grid manager
 exec_always --no-startup-id starti3Grid.sh 
 exec_always --no-startup-id synclient TapButton1=0 TapButton2=0 TapButton3=0 # no tap click
 exec_always --no-startup-id synclient VertTwoFingerScroll=0 # no scroll

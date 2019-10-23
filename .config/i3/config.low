@@ -22,7 +22,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+d exec --no-startup-id dmenu_recency
-bindsym $mod+d exec --no-startup-id rofi -show run 
+bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+c exec --no-startup-id rofi -show
 
 # launch categorized menu
@@ -76,13 +76,18 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-bindsym XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUp.sh)"
-bindsym XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDown.sh)"
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/on.sh)"
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/out.sh)"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
+bindsym $mod+XF86MonBrightnessUp exec "xbacklight -set 100"
+bindsym $mod+XF86MonBrightnessDown exec "xbacklight -set 1
 
-bindsym XF86KbdBrightnessUp exec --no-startup-id notify-send "$(/mnt/data/scripts/brightUpKb.sh)"
-bindsym XF86KbdBrightnessDown exec --no-startup-id notify-send "$(/mnt/data/scripts/brightDownKb.sh)"
+
+bindsym XF86KbdBrightnessUp exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -inc 10"
+bindsym XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -dec 10"
+bindsym $mod+XF86KbdBrightnessUp exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -set 100"
+bindsym $mod+XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::kbd_backlight -set 0"
+#bindsym $mod+space exec --no-startup-id "keyboardLightToggle.sh"
+
 
 #bindsym XF86BrightUp exec --no-startup-id sudo /mnt/data/scripts/brightUp.sh
 #bindsym XF86BrightDown exec --no-startup-id sudo /mnt/data/scripts/brightDown.sh

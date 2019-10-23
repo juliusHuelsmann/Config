@@ -2,6 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
 
+source $HOME/.shortcuts
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -99,6 +101,15 @@ alias cpuTemp="sensors | awk '/^temp1:/ {print $2}' | tail -n 1"
 alias up="sudo pacman -Syu"
 alias yv="youtube-dl --add-metadata -ic"
 alias ya="youtube-dl --add-metadata -ixc"
+alias lsswp="find -name '*.swp'"
+function rmswp() {
+  echo "Removing $(lsswp)"
+  rm $(lsswp)
+  echo "Remaining occurrences: $(lsswp)."
+}
+function fo() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep $1 }
+function yay() { k=$(pwd); cdmu; ya "$(clippaste)"; cd $k}
+function yvy() { k=$(pwd); cdmu; yv "$(clippaste)"; cd $k}
 alias hcat=highlight --out-format=ansi
 alias night1="dawn 2700"
 alias night2="dawn 2250"
@@ -464,8 +475,8 @@ function pusht() {
     cdreading
     echo -e $k >> tasks.mdpp
     git commit -am "semi-auto pushed task needed."
-    eval $(ssh-agent)
-    ssh-add
+    #eval $(ssh-agent)
+    #ssh-add
     git push
     cd $ret
   fi
@@ -482,8 +493,8 @@ function pushur() {
     cdreading
     echo -e $k >> u2d.mdpp
     git commit -am "semi-auto pushed utility needed."
-    eval $(ssh-agent)
-    ssh-add
+    #eval $(ssh-agent)
+    #ssh-add
     git push
     cd $ret
   fi
@@ -500,8 +511,8 @@ function pushu() {
     cdreading
     echo -e $k >> utilitiesNeeded.mdpp
     git commit -am "semi-auto pushed utility needed."
-    eval $(ssh-agent)
-    ssh-add
+    #eval $(ssh-agent)
+    #ssh-add
     git push
     cd $ret
   fi
@@ -532,8 +543,8 @@ function pushn() {
     cdreading
     echo -e $k >> notes.mdpp
     git commit -am "semi-auto pushed reading."
-    eval $(ssh-agent)
-    ssh-add
+    #eval $(ssh-agent)
+    #ssh-add
     git push
     cd $ret
   fi
@@ -550,8 +561,8 @@ function pushr() {
     cdreading
     echo -e $k >> readingQueue.mdpp
     git commit -am "semi-auto pushed reading."
-    eval $(ssh-agent)
-    ssh-add
+    #eval $(ssh-agent)
+    #ssh-add
     git push
     cd $ret
   fi
@@ -701,16 +712,16 @@ function grepx() {
     fi
 }
 
-function addSshAgent() {
-
-  if [ $SSH_AGENT_PID ]
-  then
-    echo "already added";
-  else
-    eval $(ssh-agent);
-    ssh-add
-  fi
-}
+#function addSshAgent() {
+#
+  #if [ $SSH_AGENT_PID ]
+  #then
+    #echo "already added";
+  #else
+    #eval $(ssh-agent);
+    #ssh-add
+  #fi
+#}
 
 function copyFromSmartphone(){
    
@@ -975,8 +986,6 @@ alias emx="emax -nw"
 export TERM=xterm
 export TERM=xterm-256color
 
-
-source $HOME/.shortcuts
 
 
 export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"

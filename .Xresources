@@ -20,9 +20,10 @@ Xcursor.theme: smalldot
 
 !!st.font: hack-39
 !!font: hack-39
-st.font: Hack-12
-st.alpha: 0.9
-st.alphaUnfocussed: 0.4
+!!st.font: Hack-13
+st.font: hack:pixelsize=17:antialias=true:autohint=true
+st.alpha: 0.85
+st.alphaUnfocussed: 0.55
 
 
 
