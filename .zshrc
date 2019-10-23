@@ -2,7 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
 
-
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/
@@ -19,6 +18,14 @@ fi
 ZSH_THEME="agnoster"
 plugins=(git git-extras github zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
+
+alias memTop="ps axch -o cmd,%mem --sort=-%mem | head -n 10"
+alias cpuTop="ps axch -o cmd,%cpu --sort=-%cpu | head -n 10"
+alias cpuTemp="sensors | awk '/^temp1:/ {print $2}' | tail -n 1"
+alias up="sudo pacman -Syu"
+alias yv="youtube-dl --add-metadata -ic"
+alias ya="youtube-dl --add-metadata -ixc"
+alias hcat=highlight --out-format=ansi
 
 alias night0="dawn 25000"
 alias night1="dawn 2700"
@@ -900,4 +907,4 @@ source $HOME/.shortcuts
 export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/mnt/data/local/programs"
 
-
+shd() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
