@@ -25,6 +25,10 @@ st.font: hack:pixelsize=17:antialias=true:autohint=true
 st.alpha: 0.85
 st.alphaUnfocussed: 0.55
 
+! st.font: hack-30
+#st.font: hack:pixelsize=15:antialias=true:autohint=true
+#font: hack:pixelsize=15:antialias=true:autohint=true
+
 
 
 
