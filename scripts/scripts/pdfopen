@@ -1,0 +1,9 @@
+#!/bin/sh
+regex='*.pdf'
+regex='^\.(([pP][dD][fF])|([jJ][pP][gG]))'
+regex='*+\.+(([pP][dD][fF])|([jJ][pP][gG]))'
+regex='\^.+\.(([pP][dD][fF])|([jJ][pP][gG]))$\'
+regex='\^+\.(([pP][dD][fF])|([jJ][pP][gG]))'
+regex='[-a-z0-9A-Z_.]+\.(([pP][dD][fF])|([jJ][pP][gG]))'
+name=$(grep -Po "$regex" | rofi -dmenu -p "Go:" -w "$WINDOWID") || exit
+okular "$name"

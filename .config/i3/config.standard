@@ -114,7 +114,7 @@ bindsym $mod+space exec --no-startup-id "keyboardLightToggle.sh"
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+Shift+d --release exec "killall dunst; dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -583,6 +583,8 @@ exec setxkbmap -layout de
 
 exec --no-startup-id xset r rate 300 40 # delay 300 ms, 50 ps
 
+# Reload the xresources (for st)
+exec_always --no-startup-id xrdb -merge ~/.Xresources
 # restart
 exec_always --no-startup-id starti3Grid.sh 
 exec_always --no-startup-id synclient TapButton1=0 TapButton2=0 TapButton3=0 # no tap click
