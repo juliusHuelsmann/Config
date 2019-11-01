@@ -33,11 +33,13 @@ function rmswp() {
   rm $(lsswp)
   echo "Remaining occurrences: $(lsswp)."
 }
-function fo() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep $1 }
+function fo() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v // | grep -v 'Binary file' | grep $1 }
+function foc() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v 'Binary file' | grep $1 }
 function yay() { k=$(pwd); cdmu; ya "$(clippaste)"; cd $k}
 function yvy() { k=$(pwd); cdmu; yv "$(clippaste)"; cd $k}
 alias hcat=highlight --out-format=ansi
-
+alias day="killall redshift -1; xrandr --output eDP-1 --auto --brightness 2; redshift -O 25000"
+alias normal="killall redshift -1; xrandr --output eDP-1 --auto --brightness 1"
 alias night0="dawn 25000"
 alias night1="dawn 2700"
 alias night2="dawn 2250"
@@ -568,9 +570,9 @@ function diffdir() {
 #
 # Daemonize a command / sequence of commands
 function ct() {
+  echo "I DO NOT WORK\n"
     k=$(pwd)
-    (termite $k &) &
- 
+    (st $k &) &
 }
 
 
@@ -917,3 +919,11 @@ export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/mnt/data/local/programs"
 
 shd() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
+
+#XXX:
+# https://stackoverflow.com/questions/2640141/is-there-a-way-to-switch-bash-or-zsh-from-emacs-mode-to-vi-mode-with-a-keystroke
+#set -o vi
+#bind '"\ee": emacs-editing-mode'
+#set -o emacs
+#bind '"\ee": vi-editing-mode'
+

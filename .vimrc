@@ -556,11 +556,16 @@ endfunction
 
         let newFile = join(splitForEnding[0:-2])
         let newFile = join([newFile,".h"], "")
+        let newFileAlternative = join([newFile,"pp"], "")
+
         "echom "Looking for h file" newFile
 
 
         let rec = ReconstructFile(newFile, "/src/", "/include/")
         "echom "reconstructed " rec 
+        if (!filereadable(rec))
+          let rec = ReconstructFile(newFileAlternative, "/src/", "/include/")
+        endif
 
       else 
         echom "Sorry, the corresponding file could not be found."
