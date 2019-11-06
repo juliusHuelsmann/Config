@@ -550,7 +550,7 @@ endfunction
 
         let rec = ReconstructFile(newFile, "/include/", "/src/")
         if (!filereadable(rec))
-          let rec = ReconstructFile(newFileAlternative, "/src/", "/include/")
+          let rec = ReconstructFile(newFileAlternative, "/include/", "/src/")
         endif
         "echom "reconstructed " rec  
         "echom "hier " newFile
