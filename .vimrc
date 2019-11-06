@@ -543,11 +543,15 @@ endfunction
       if ending == "h" || ending == "hpp"
 
         let newFile = join(splitForEnding[0:-2])
-        let newFile = join([newFile,".cpp"], "")
+        let newFile = join([newFile,".c"], "")
+        let newFileAlternative = join([newFile,"pp"], "")
         "echom "Looking for cpp file" newFile
 
 
         let rec = ReconstructFile(newFile, "/include/", "/src/")
+        if (!filereadable(rec))
+          let rec = ReconstructFile(newFileAlternative, "/src/", "/include/")
+        endif
         "echom "reconstructed " rec  
         "echom "hier " newFile
       elseif ending == "c" || ending == "cpp" 
