@@ -285,6 +285,10 @@ assign [class="Thunderbird"] $ws9
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
+#for_window [title="alsamixer"] floating enable border pixel 1
+#for_window [title="alsamixer"] floating enable border pixel 1
+
+# Open specific applications in floating mode
 for_window [class="Matplotlib"] floating enable border pixel 1
 #for_window [title="^cuteRecorder$"] floating enable border pixel 1
 for_window [class="Termite"] floating disable 
