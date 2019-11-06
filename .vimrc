@@ -811,7 +811,7 @@ endfunction
   function! PrintFullName(arg, fu)
     let path = expand('%:p')
     if a:fu != 1
-      let path = ""
+      let path = ""
     else 
       let path = path . " "
     endif
@@ -819,39 +819,47 @@ endfunction
     let extension = expand('%:e')
     if extension == "cpp" || extension == "c" || extension == "py" 
       if a:arg == 0
-        return "" . path
+        return path
       else 
         return ""
       endif
     elseif extension == "hpp" || extension == "h" 
       if a:arg == 1
-        return "" . path
+        return path
       else 
         return ""
       endif
     elseif a:arg == 2
-      return "" . path
+      return path
     endif
     return ""
   endfunction
 
   set laststatus=2
-  set statusline =%3*\%{PrintFullName(0,1)}%7*\%{PrintFullName(0,2)}
-  set statusline+=%4*\%{PrintFullName(1,1)}%8*\%{PrintFullName(1,2)}
-  set statusline+=%1*\%{PrintFullName(2,1)}%9*\%{PrintFullName(2,2)}
-  set statusline+=%6*\ |
-  set statusline+=%=%5*\C\ \%c\ \ \ L\ \%l/%L
+  set statusline =%1*\%{PrintFullName(2,2)}%1*\%{PrintFullName(2,1)}%4*\%{PrintFullName(2,2)}
+  set statusline+=%7*\%{PrintFullName(0,2)}%2*\%{PrintFullName(0,1)}%5*\%{PrintFullName(0,2)}
+  set statusline+=%8*\%{PrintFullName(1,2)}%3*\%{PrintFullName(1,1)}%6*\%{PrintFullName(1,2)}
+
+  set statusline+=%9*\ |
+  set statusline+=%=%9*\C\ \%c\ \ \ L\ \%l/%L
   "set statusline =%{PrintFullName()}\ %=Col\ %c\ Line\ %l/%L
 
-  hi User1 ctermfg=236 ctermbg=8 guibg=#4e4e4e guifg=#adadad
-  hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
-  hi User3 ctermfg=236 ctermbg=4 guibg=#303030 guifg=#303030 " dark green
-  hi User4 ctermfg=236  ctermbg=1 guibg=#4e4e4e guifg=#4e4e4e " dark red
-  hi User5 ctermfg=101 ctermbg=500 guibg=#4e4e4e guifg=#000000
+  " Colors for the content of the displayed file
+  hi User1 ctermfg=236 ctermbg=8 guibg=#4e4e4e guifg=#adadad  " none -> strange light green 
+  hi User2 ctermfg=15 ctermbg=4 guibg=#303030 guifg=#303030  " source file ->  dark blue
+  hi User3 ctermfg=15  ctermbg=1 guibg=#4e4e4e guifg=#4e4e4e " header file ->  dark red
 
-  hi User7 ctermbg=900 ctermfg=4 guifg=#303030 guibg=#303030 " dark green
-  hi User8 ctermbg=900 ctermfg=1 guifg=#4e4e4e guibg=#4e4e4e " dark red
-  hi User9 ctermbg=900 ctermfg=8 guifg=#4e4e4e guibg=#4e4e4e " dark red
+  hi User4 ctermbg=900 ctermfg=8 guifg=#4e4e4e guibg=#4e4e4e " none closing
+  hi User5 ctermbg=900 ctermfg=4 guifg=#303030 guibg=#303030 " source closing
+  hi User6 ctermbg=900 ctermfg=1 guifg=#4e4e4e guibg=#4e4e4e " header closing
+  
+  hi User7 ctermbg=4 ctermfg=236 guifg=#303030 guibg=#303030 " source closing
+  hi User8 ctermbg=1 ctermfg=236 guifg=#4e4e4e guibg=#4e4e4e " header closing
+
+  
+  "hi User4 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
+
+  hi User9 ctermfg=101 ctermbg=500 guibg=#4e4e4e guifg=#000000
 
   set statusline+=%#warningmsg#
   "" END STATUSBAR
