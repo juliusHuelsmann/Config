@@ -36,6 +36,7 @@ function rmswp() {
 function fo() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v // | grep -v 'Binary file' | grep $1 }
 function foc() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v 'Binary file' | grep $1 }
 function yay() { k=$(pwd); cdmu; ya "$(clippaste)"; cd $k}
+function yayy() { ya "$(clippaste)"; }
 function yvy() { k=$(pwd); cdmu; yv "$(clippaste)"; cd $k}
 alias hcat=highlight --out-format=ansi
 alias day="killall redshift -1; xrandr --output eDP-1 --auto --brightness 2; redshift -O 25000"
