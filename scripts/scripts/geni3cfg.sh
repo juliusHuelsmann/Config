@@ -30,6 +30,7 @@ prepare $fileStandard
 # config.standard.$(date)
 
 termin=$(date "+%Y_%m_%d_%H_%M_%s")
+termin="INTERMEDIATE$termin"
 fileLowNew="$fileLow.$termin"
 fileStandardNew="$fileStandard.$termin"
 
