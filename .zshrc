@@ -21,6 +21,8 @@ ZSH_THEME="agnoster"
 plugins=(git git-extras github zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
+alias cdubu="cd /mnt/ubu/home/x"
+alias cdarch="cd /mnt/arch/home/juli"
 alias memTop="ps axch -o cmd,%mem --sort=-%mem | head -n 10"
 alias cpuTop="ps axch -o cmd,%cpu --sort=-%cpu | head -n 10"
 alias cpuTemp="sensors | awk '/^temp1:/ {print $2}' | tail -n 1"

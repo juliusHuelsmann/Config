@@ -43,7 +43,9 @@ sudo pacman -S cron
 crontab -e
 #replace USERNAME by actual username
 PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/:/home/USERNAME/.gem/ruby/2.4.0/bin:/usr/local/spark/bin:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/:/home/USERNAME/.gem/ruby/2.4.0/bin:/usr/local/spark/bin:/mnt/data/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/:/home/USERNAME/.gem/ruby/2.4.0/bin:/usr/local/spark/bin 
-*/2 * * * * /mnt/data/scripts/battery 2>&1 ~/crerr.lg
+*/2 * * * * /mnt/data/scripts/batteryWarning 2>&1 ~/crerr.lg
+*/1 * * * * /mnt/data/scripts/memoryWarning 
+
 ```
 
 #### Ranger
