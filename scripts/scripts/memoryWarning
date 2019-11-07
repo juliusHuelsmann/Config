@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-while true; do
-
 
 mem=$(free --giga | awk '/^Mem:/ {print $4}')
 
@@ -13,8 +11,5 @@ elif (( $mem <= 2 )); then
 #  notify-send  "WARNING: only $mem GB processing memory left";
 fi
 
-sleep 5;
-
-done
 
 
