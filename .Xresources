@@ -1,6 +1,8 @@
+
 ! cursor
 Xcursor.theme: smalldot
 
+! Colorsheme
 *color0: #3f3f3f
 *color1: #705050
 *color2: #60b48a
@@ -18,37 +20,10 @@ Xcursor.theme: smalldot
 *color14: #93e0e3
 *color15: #ffffff
 
-!!st.font: hack-39
-!!font: hack-39
-!!st.font: Hack-13
+! general st settings (which can be overwritten in custom xresources
 st.font: hack:pixelsize=17:antialias=true:autohint=true
 st.alpha: 0.85
 st.alphaUnfocussed: 0.55
 
-! st.font: hack-30
-! st.font: hack:pixelsize=15:antialias=true:autohint=true
-! font: hack:pixelsize=15:antialias=true:autohint=true
-
-
-
-
-URxvt.depth: 32
-urxvt.background:  [70]#000000
-urxvt.foreground:  #FaFbFc
-!! urxvt.font:  xft:terminus:size=12
-urxvt.scrollBar: false
-urxvt.scrollBar_right: false
-urxvt.scrollBar_floating: false
-urxvt.letterSpace: -2
-!! urxvt.letterSpace: -7
-
-
-
-urxtv.perl-ext-common: default, matcher, resize-font, url-select, keyboard-select
-
-
-
-URxvt.keysym.C-minus:     resize-font:smaller
-URxvt.keysym.C-plus:      resize-font:bigger
-URxvt.keysym.C-equal:     resize-font:reset
-URxvt.keysym.C-question:  resize-font:show
+! custom xresources for each machine (due to different resolutions etc).
+#include "custom.xresources"
