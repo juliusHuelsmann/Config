@@ -54,13 +54,13 @@ format = "%1min_%15min"
 
 cpu_usage {
   format = " cpu@%usage "
-  max_threshold=80
-  degraded_threshold = 75
+ # max_threshold=80
+  #degraded_threshold = 75
 }
 
 cpu_temperature all {
   format = "%degrees°C"
-  max_threshold = 42
+  #max_threshold = 42
 }
 
 
@@ -97,7 +97,7 @@ battery all {
     integer_battery_capacity = true
    
     #status="" 
-    status_unk = "? "
+    #status_unk = "? "
 
     low_threshold = 15
     threshold_type = time

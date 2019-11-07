@@ -248,6 +248,8 @@ At my macbook xbacklight could not detect any controllable devices, so I changed
 which is backwards compatible with xbacklight and works fine for screen and keyboard backlight. 
 
 sudo pacman -S acpilight
+ 
+not available via ubunutu, clone and install repository
 
 
 
