@@ -52,8 +52,8 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " color gedoens
 Plugin 'morhetz/gruvbox'
-Bundle 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Bundle 'bling/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 "semantic highlighting
 Plugin 'jaxbot/semantic-highlight.vim'
 
@@ -313,7 +313,6 @@ let g:instant_markdown_slow = 1
 " Settings for vim-powerline
 " cd ~/.vim/bundle
 " git clone git://github.com/Lokaltog/vim-powerline.git
-"" set laststatus=2
 
 
 " Settings for ctrlp
@@ -544,11 +543,15 @@ endfunction
       if ending == "h" || ending == "hpp"
 
         let newFile = join(splitForEnding[0:-2])
-        let newFile = join([newFile,".cpp"], "")
+        let newFile = join([newFile,".c"], "")
+        let newFileAlternative = join([newFile,"pp"], "")
         "echom "Looking for cpp file" newFile
 
 
         let rec = ReconstructFile(newFile, "/include/", "/src/")
+        if (!filereadable(rec))
+          let rec = ReconstructFile(newFileAlternative, "/include/", "/src/")
+        endif
         "echom "reconstructed " rec  
         "echom "hier " newFile
       elseif ending == "c" || ending == "cpp" 
@@ -556,11 +559,16 @@ endfunction
 
         let newFile = join(splitForEnding[0:-2])
         let newFile = join([newFile,".h"], "")
+        let newFileAlternative = join([newFile,"pp"], "")
+
         "echom "Looking for h file" newFile
 
 
         let rec = ReconstructFile(newFile, "/src/", "/include/")
         "echom "reconstructed " rec 
+        if (!filereadable(rec))
+          let rec = ReconstructFile(newFileAlternative, "/src/", "/include/")
+        endif
 
       else 
         echom "Sorry, the corresponding file could not be found."
@@ -799,8 +807,63 @@ endfunction
   "noremap <Up> <nop>
   "noremap <Down> <nop>
 
-  "set statusline +=%f\ %=%c/80\ %l/%L
-  "set statusline +=%t\ %=%c/80\ %l/%L
+  "" BEGIN STATUSBAR
+  function! PrintFullName(arg, fu)
+    let path = expand('%:p')
+    if a:fu != 1
+      let path = ""
+    else 
+      let path = path . " "
+    endif
+
+    let extension = expand('%:e')
+    if extension == "cpp" || extension == "c" || extension == "py" 
+      if a:arg == 0
+        return path
+      else 
+        return ""
+      endif
+    elseif extension == "hpp" || extension == "h" 
+      if a:arg == 1
+        return path
+      else 
+        return ""
+      endif
+    elseif a:arg == 2
+      return path
+    endif
+    return ""
+  endfunction
+
+  set laststatus=2
+  set statusline =%1*\%{PrintFullName(2,2)}%1*\%{PrintFullName(2,1)}%4*\%{PrintFullName(2,2)}
+  set statusline+=%7*\%{PrintFullName(0,2)}%2*\%{PrintFullName(0,1)}%5*\%{PrintFullName(0,2)}
+  set statusline+=%8*\%{PrintFullName(1,2)}%3*\%{PrintFullName(1,1)}%6*\%{PrintFullName(1,2)}
+
+  set statusline+=%9*\ |
+  set statusline+=%=%9*\C\ \%c\ \ \ L\ \%l/%L
+  "set statusline =%{PrintFullName()}\ %=Col\ %c\ Line\ %l/%L
+
+  " Colors for the content of the displayed file
+  hi User1 ctermfg=236 ctermbg=8 guibg=#4e4e4e guifg=#adadad  " none -> strange light green 
+  hi User2 ctermfg=15 ctermbg=4 guibg=#303030 guifg=#303030  " source file ->  dark blue
+  hi User3 ctermfg=15  ctermbg=1 guibg=#4e4e4e guifg=#4e4e4e " header file ->  dark red
+
+  hi User4 ctermbg=900 ctermfg=8 guifg=#4e4e4e guibg=#4e4e4e " none closing
+  hi User5 ctermbg=900 ctermfg=4 guifg=#303030 guibg=#303030 " source closing
+  hi User6 ctermbg=900 ctermfg=1 guifg=#4e4e4e guibg=#4e4e4e " header closing
+  
+  hi User7 ctermbg=4 ctermfg=236 guifg=#303030 guibg=#303030 " source closing
+  hi User8 ctermbg=1 ctermfg=236 guifg=#4e4e4e guibg=#4e4e4e " header closing
+
+  
+  "hi User4 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
+
+  hi User9 ctermfg=101 ctermbg=500 guibg=#4e4e4e guifg=#000000
+
+  set statusline+=%#warningmsg#
+  "" END STATUSBAR
+
 
 
 
@@ -953,7 +1016,7 @@ au FileType css setl ofu=csscomplete#CompleteCSS
 " XXX thi sis just for white
 " :hi CursorLine   cterm=NONE ctermbg=11
 ":hi CursorColumn cterm=NONE ctermbg=11
-" let g:gitgutter_max_signs = 999
+" let g:gitgutter_max_signs = 9999
 " highlight Normal ctermfg=grey ctermbg=white
 
 

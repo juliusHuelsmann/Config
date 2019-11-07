@@ -108,7 +108,7 @@ bindsym $mod+XF86KbdBrightnessDown exec --no-startup-id "xbacklight -ctrl smc::k
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+Shift+d --release exec "killall dunst; dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -285,24 +285,28 @@ assign [class="Thunderbird"] $ws9
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
+#for_window [title="alsamixer"] floating enable border pixel 1
+#for_window [title="alsamixer"] floating enable border pixel 1
+
+# Open specific applications in floating mode
 for_window [class="Matplotlib"] floating enable border pixel 1
-for_window [title="^cuteRecorder$"] floating enable border pixel 1
+#for_window [title="^cuteRecorder$"] floating enable border pixel 1
 for_window [class="Termite"] floating disable 
 #for_window [class="^Termite$" title="^cuteRecorder$"] floating enable border pixel 1
-for_window [title="scroll"] floating enable border pixel 1
+#for_window [title="scroll"] floating enable border pixel 1
 for_window [class="testScroll"] floating enable border pixel 1
-for_window [title="alsamixer"] floating enable border pixel 1
+#for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
+#for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
+#for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [class="Manjaro Welcome"] floating enable
-for_window [title="MuseScore: Play Panel"] floating enable
+#for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
