@@ -248,3 +248,38 @@ At my macbook xbacklight could not detect any controllable devices, so I changed
 which is backwards compatible with xbacklight and works fine for screen and keyboard backlight. 
 
 sudo pacman -S acpilight
+
+
+
+
+
+
+
+#nmcli 
+nmcli c 
+show  #< show stored connections
+up  CONNECTION
+add  type [TYPE] ssid [essid] ifname [interface name] con-name [essid]
+
+nmcli d 
+ > wifi  
+   > list #< list all currently observed connections
+
+nmcli d status #< list interfaces, types and status 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

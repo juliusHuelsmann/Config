@@ -910,10 +910,11 @@ parse_git_branch() {
 # 
 alias emx="emax -nw"
 
+alias screenkey="cd /mnt/data/online/repos/screenkey; python2 main.py"
+
 #setfont ter-v16n
 export TERM=xterm
 export TERM=xterm-256color
-
 
 
 export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
