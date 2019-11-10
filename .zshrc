@@ -1,13 +1,22 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-#
 
+ZSH_THEME="agnoster"
+plugins=(git git-extras github zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
+
+# generated shortcut file
 source $HOME/.shortcuts
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/
 export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
+export TERM=xterm
+export TERM=xterm-256color
+export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
+export PATH="$PATH:/mnt/data/local/programs"
+export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
+export PATH=$PATH:/usr/local/spark/bin
+export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
 
 # I cloned a repository which prints error output in a different format. 
 if [[ -a /mnt/data/online/repos/stderred/build/libstderred.so ]]; then
@@ -17,19 +26,6 @@ if [[ -a /mnt/data/online/repos/stderred/build/libstderred.so ]]; then
   export LD_PRELOAD="/mnt/data/online/repos/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 fi
 
-ZSH_THEME="agnoster"
-plugins=(git git-extras github zsh-syntax-highlighting)
-source $ZSH/oh-my-zsh.sh
-
-alias cdubu="cd /mnt/ubu/home/x"
-alias cdarch="cd /mnt/arch/home/juli"
-alias memTop="ps axch -o cmd,%mem --sort=-%mem | head -n 10"
-alias cpuTop="ps axch -o cmd,%cpu --sort=-%cpu | head -n 10"
-alias cpuTemp="sensors | awk '/^temp1:/ {print $2}' | tail -n 1"
-alias up="sudo pacman -Syu"
-alias yv="youtube-dl --add-metadata -ic"
-alias ya="youtube-dl --add-metadata -ixc"
-alias lsswp="find -name '*.swp'"
 function rmswp() {
   echo "Removing $(lsswp)"
   rm $(lsswp)
@@ -50,10 +46,11 @@ alias night3="dawn 2000"
 alias night4="dawn 1700"
 alias night5="dawn 1000"
 alias dawn="killall redshift -1; xrandr --output eDP-1 --auto --brightness 1; redshift -O $1"
-alias ka="killall"
+# Ranger
 alias stranger="source ranger"
 alias strange=stranger
 alias str=stranger
+# git aliases 
 alias gil="gl"
 alias gip="gp"
 alias gic="gc"
@@ -61,11 +58,20 @@ alias gid="git diff"
 alias gis="git status"
 alias gia="ga"
 
+alias memTop="ps axch -o cmd,%mem --sort=-%mem | head -n 10"
+alias cpuTop="ps axch -o cmd,%cpu --sort=-%cpu | head -n 10"
+alias cpuTemp="sensors | awk '/^temp1:/ {print $2}' | tail -n 1"
+
+# Youtube downloader
+alias yv="youtube-dl --add-metadata -ic"
+alias ya="youtube-dl --add-metadata -ixc"
+alias lsswp="find -name '*.swp'"
+
 alias updateKeysUbuntu="apt-key list | awk '/expired/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
 alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
-#
-#
-#
+
+
+
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sz="source ~/.zshrc"
@@ -77,64 +83,18 @@ alias vr="vim ~/.config/ranger/rc.conf"
 alias vt="vim ~/.config/termite/config"
 
 alias beep='paplay $BEEP'
-alias cute="qutebrowser"
-alias qute="qutebrowser"
-alias qutie="qutebrowser"
 alias updatePip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U"
-alias bri="sudo chown $(whoami) /sys/class/backlight/intel_backlight/brightness"
 alias scanHome="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 300"
 alias scanHomel="scanimage --device 'hpaio:/usb/OfficeJet_4650_series?serial=TH5AE2J0KV0662' --format=png --resolution 800"
 alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
 alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
 
-pData="/mnt/data"
-pInter="$pData/inter"
-pOnline="$pData/online"
-pLocal="$pData/local"
-pScripts="$pData/scripts"
-pRepos="$pOnline/repos"
-pPrograms="$pLocal/programs"
-
-alias cdd="cd $pData"
-
-alias cdi="cd $pInter"
-alias cdl="cd $pLocal"
-alias cdp="cd $pPrograms"
-alias cdprog=cdp
-alias cdpro=cdp
-alias cdorga="cd $pInter/orga"
-alias cdorg=cdorga
-alias cdmat="cd $pInter/material"
-alias cdfree="cd $pInter/freeTime"
-alias cdfre=cdfree
-
-
-
-alias cds="cd $pScripts"
-
-alias cdr="cd $pRepos"
-alias cdrep="cdr; addSshAgent"
-
-# Special repositories
-alias cdm="cd $pRepos/NotesDL/"
-alias cdsense="cd $pRepos/dima/SenseNative";
-alias dsense="cdsense;vim";
-alias cdp3="cd $pRepos/dima/p3";
-alias cdp2="cd $pRepos/dima/p3";
-alias cdp1="cd $pRepos/dima/p3";
-
-alias seta="feh --bg-scale ~/.config/i3/image.jpg"
-alias setb="feh --bg-scale ~/.config/i3/imageB.jpg"
-alias setc="feh --bg-scale ~/.config/i3/imageC.jpg"
-alias setd="feh --bg-scale ~/.config/i3/imageD.jpg"
-
-
-
 alias lt="ls -lth"
 alias x="exit"
 alias c="clear"
 alias cx="clear; exit"
+# Push
 alias uuu="pushu"
 alias u2d="pushur"
 alias ttt="pusht"
@@ -206,29 +166,13 @@ function startSshAgent() {
 }
 
 
-function isFlag() {
-  [[ $1 =~ ^- ]]
-}
+function isFlag() { [[ $1 =~ ^- ]] }
+function isNumber() { [[ $1 =~ ^[0-9]+$ ]] }
 
 function isValidIp() {
   [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] #<actually does not check bounds (<255).
 }
-function isNumber() {
-  #[[ $1 =~ ^[0-9] ]]
-  [[ $1 =~ ^[0-9]+$ ]]
-}
 
-
-function nosudo() {
-  echo -n "[sudo] password for $(whoami):" 
-  read -s password
-  echo ""
-  echo "I got the password $password"
-  echo "$password" | command sudo -S $@ #2> /dev/null
-  #XXX: only disadvantage: if the passwod is entered wrong, 
-  #     it sipmly prompts again, but does not accept any input.
-  #
-}
 
 # record #1 : filename
 # XXX: record entire screen as default (without slop)
@@ -238,12 +182,7 @@ function record() {
 }
 
 
-function mplayer() {
-
-  echo "evoke  command mplayer if you do not want scale tempo..."
-  command mplayer -af scaletempo $@
-
-}
+function mplayer() { command mplayer -af scaletempo $@ }
 
 function ssh() {
 
@@ -322,46 +261,24 @@ function ssh() {
 }
 #
 #mac
-function scp2M() {
-  scp -r $1 $localMu:$2
-}
-function scpM() {
-  scp -r $localMu:$1 $2
-}
+function scp2M() { scp -r $1 $localMu:$2 }
+function scpM() { scp -r $localMu:$1 $2 }
 #dell
-function scp2Du() {
-  scp -r $1 $localDu:$2
-}
-function scp2D() {
-  scp -r $1 $localDu:$2
-}
-function scpD() {
-  scp -r $localDu:$1 $2
-}
+function scp2Du() { scp -r $1 $localDu:$2 }
+function scp2D() { scp -r $1 $localDu:$2 }
+function scpD() { scp -r $localDu:$1 $2 }
 #x
-function scp2Xu() {
-  scp -r $1 $localXu:$2
-}
-function scp2Xa() {
-  scp -r $1 $localXa:$2
-}
-function scpX() {
-  scp -r $localXa:$1 $2
-}
+function scp2Xu() { scp -r $1 $localXu:$2 }
+function scp2Xa() { scp -r $1 $localXa:$2 }
+function scpX() { scp -r $localXa:$1 $2 }
 #t
-function scp2T() {
-  scp -r $1 $localTa:$2
-}
-function scpT() {
-  scp -r $localTa:$1 $2
-}
+function scp2T() { scp -r $1 $localTa:$2 }
+function scpT() { scp -r $localTa:$1 $2 }
 
 
 
 
-function lsPdf() {
-  ls -t | grep .pdf | lpdf  | more
-}
+function lsPdf() { ls -t | grep .pdf | lpdf  | more }
 
 function lpdf() {
     while read f; do
@@ -394,8 +311,6 @@ function pushos() {
 }
 
 function pusht() {
-  # push reading
- 
   if [ -z "$1" ]; then
     notify-send "Which task?" 
   else
@@ -405,15 +320,12 @@ function pusht() {
     cdreading
     echo -e $k >> tasks.mdpp
     git commit -am "semi-auto pushed task needed."
-    #eval $(ssh-agent)
-    #ssh-add
     git push
     cd $ret
   fi
 }
+
 function pushur() {
-  # push reading
- 
   if [ -z "$1" ]; then
     notify-send "what's so urgent?" 
   else
@@ -423,15 +335,12 @@ function pushur() {
     cdreading
     echo -e $k >> u2d.mdpp
     git commit -am "semi-auto pushed utility needed."
-    #eval $(ssh-agent)
-    #ssh-add
     git push
     cd $ret
   fi
 }
+
 function pushu() {
-  # push reading
- 
   if [ -z "$1" ]; then
     notify-send "What is it I want to insert as requested utility!?" 
   else
@@ -441,8 +350,6 @@ function pushu() {
     cdreading
     echo -e $k >> utilitiesNeeded.mdpp
     git commit -am "semi-auto pushed utility needed."
-    #eval $(ssh-agent)
-    #ssh-add
     git push
     cd $ret
   fi
@@ -451,8 +358,8 @@ function pushu() {
 function gcatasks() {
   k=$(catasks $*)
   notify-send "$k" 
-
 }
+
 function catasks() {
  k="$*"
  if [ -z "$*" ]; then
@@ -462,8 +369,6 @@ function catasks() {
 }
 
 function pushn() {
-  # push notes 
- 
   if [ -z "$*" ]; then
     notify-send "Tell me what to note down sir!" 
   else
@@ -480,8 +385,6 @@ function pushn() {
   fi
 }
 function pushr() {
-  # push reading
- 
   if [ -z "$*" ]; then
     notify-send "What is it I want to read!?" 
   else
@@ -508,21 +411,6 @@ function notify-send() {
   ( mplayer ~/.config/i3/beep.mp3 > /dev/null 2>&1 &) > /dev/null
 
 }
-
-function bright() {
-
-  let brightness=500
-  echo "echo $brightness > /sys/class/backlight/intel_backlight/brightness" | sudo zsh
-}
-function rbright() {
-  brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
-  let brightness=$brightness-500
-  if (($brightness < 1)); then
-    let brightness=1
-  fi
-  echo "echo $brightness > /sys/class/backlight/intel_backlight/brightness" | sudo zsh
-}
-
 
 
 
@@ -571,20 +459,11 @@ function diffdir() {
 }
 
 #
-# Daemonize a command / sequence of commands
-function ct() {
-  echo "I DO NOT WORK\n"
-    k=$(pwd)
-    (st $k &) &
-}
+alias ct="daemonize st"
 
 
-#
 # Daemonize a command / sequence of commands
-function daemonize() {
-    #("$*" &) &
-    ("$@" &) &
-}
+function daemonize() { ("$@" &) & }
 
 
 #
@@ -599,7 +478,6 @@ function getlastword() {
     
         echo ${h:$anz:$len}
     fi
-    
 }
 
 
@@ -641,17 +519,6 @@ function grepx() {
         grep -A$after -B$before -P "$search";
     fi
 }
-
-#function addSshAgent() {
-#
-  #if [ $SSH_AGENT_PID ]
-  #then
-    #echo "already added";
-  #else
-    #eval $(ssh-agent);
-    #ssh-add
-  #fi
-#}
 
 function copyFromSmartphone(){
    
@@ -699,62 +566,6 @@ function copyFromSmartphone(){
   
 }
 
-function sentryUpgrade() {
-  export SENTRY_SECRET_KEY="phz2reaw4sj@m6a*9bwd!h0cv(0&tl53%5*5vqmn6@o7m3rgjx"
-  export SENTRY_SECRET_KEY="vu1&uu*^q*a5*%76&85zg772vv8^%ci53!5&#8)^b_!=(1625%"
-  sudo docker run \
-    --link sentry-redis:redis \
-    --link sentry-postgres:postgres \
-    --link sentry-smtp:smtp \
-    --env SENTRY_SECRET_KEY=$SENTRY_SECRET_KEY \
-    --rm -it sentry-onpremise upgrade
-}
-
-function sentryDeployRun() {
-  export SENTRY_SECRET_KEY="phz2reaw4sj@m6a*9bwd!h0cv(0&tl53%5*5vqmn6@o7m3rgjx"
-  export SENTRY_SECRET_KEY="9m!vvhl-!g-3&__uiksagt!ncwu)__2enb!f*z^*mjro6rmngx"
-
-  # run web client
-  sudo docker run \
-    --link sentry-redis:redis \
-    --link sentry-postgres:postgres \
-    --link sentry-smtp:smtp \
-    --env SENTRY_SECRET_KEY=$SENTRY_SECRET_KEY \
-    --detach \
-    --name sentry-web-01 \
-    --publish 9000:9000 \
-    sentry-onpremise \
-    run web
-
-  # run worker
-  sudo docker run \
-    --link sentry-redis:redis \
-    --link sentry-postgres:postgres \
-    --link sentry-smtp:smtp \
-    --env SENTRY_SECRET_KEY=$SENTRY_SECRET_KEY \
-    --detach \
-    --name sentry-worker-01 \
-    sentry-onpremise \
-    run worker
-
-  sudo docker run \
-    --link sentry-redis:redis \
-    --link sentry-postgres:postgres \
-    --link sentry-smtp:smtp \
-    --env SENTRY_SECRET_KEY=$SENTRY_SECRET_KEY \
-    --detach \
-    --name sentry-cron \
-    sentry-onpremise \
-    run cron
-
-}
-
-function sentryRun() {
-
-  sudo docker start sentry-postgres sentry-redis sentry-smtp
-  sudo docker start sentry-worker-01 sentry-cron sentry-web-01
-}
-
 
 
 
@@ -794,9 +605,7 @@ function disableUnwantedDevicesOnStartup() {
 
 
 
-function genHash() {
-  echo -n $1 | iconv -t utf16le | openssl md4
-}
+function genHash() { echo -n $1 | iconv -t utf16le | openssl md4 }
 
 
 #
@@ -851,11 +660,6 @@ function printBatteryStatusToCli() {
 # (was done during the installation of procmail for using the mutt client)
 MAIL=/var/spool/mail/x && export MAIL
 
-export PATH=$PATH:/mnt/data/online/repos/programs/gcc-linaro-7.1.1-2017.08-i686_arm-linux-gnueabihf/bin/
-export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
-export PATH=$PATH:/usr/local/spark/bin
-
-export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
 
 
 
@@ -893,41 +697,6 @@ parse_git_branch() {
   (command git symbolic-ref -q HEAD || command git name-rev --name-only --no-undefined --always HEAD) 2>/dev/null
 }
 
-# git_custom_status() {
-#  local git_where="$(parse_git_branch)"
-#  [ -n "$git_where" ] && echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX${git_where#(refs/heads/|tags/)}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-#}
-#function zle-line-init zle-keymap-select {
-#    NORMAL="%{$fg_bold[green]%} [% NORMAL]% %{$reset_color%}"
-#    INSERT="%{$fg_bold[blue]%} [% INSERT]% %{$reset_color%}"
-#    RPS1="${${${KEYMAP/vicmd/$NORMAL}/(main|viins)/$INSERT}} $(git_custom_status) $EPS1"
-#    zle reset-prompt
-#}
-#
-#zle -N zle-line-init
-#zle -N zle-keymap-select
-
-
-
-# 
-alias emx="emax -nw"
-
 alias screenkey="cd /mnt/data/online/repos/screenkey; python2 main.py"
 
-#setfont ter-v16n
-export TERM=xterm
-export TERM=xterm-256color
-
-
-export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
-export PATH="$PATH:/mnt/data/local/programs"
-
 shd() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
-
-#XXX:
-# https://stackoverflow.com/questions/2640141/is-there-a-way-to-switch-bash-or-zsh-from-emacs-mode-to-vi-mode-with-a-keystroke
-#set -o vi
-#bind '"\ee": emacs-editing-mode'
-#set -o emacs
-#bind '"\ee": vi-editing-mode'
-
