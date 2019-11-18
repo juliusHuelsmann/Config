@@ -617,7 +617,7 @@ endfunction
     let str     = a:str
     let find    = a:find
     let replace = a:replace
-    let verbose = 1
+    let verbose = 0
 
     " Replace string in the following form: /include/
     
@@ -662,20 +662,24 @@ endfunction
         echom "interrupt "  . p1
       endif
 
-      let p22     = join(reverse(split(p2Rev, '.\zs')), '')
+      let p22     = join(split(p1, '.\zs'), '')
       let dirname = '/' . join(split(p22, '/')[:-2], '/')
+      return "" " XXX: bugged. 
 
       " actually not found.
-      let choice = confirm("File does not exist. Create directory " . dirname . "?", "&yes\n&no", 2)
-      if choice == 1
-        echo "Ok :) Creating " . choice
-        execute "!mkdir -p " . dirname
-        return p1
-      else
-        echo "Do not create!"
-        return ""
+      if isdirectory(dirname)
+          return p1
+      else 
+        let choice = confirm("File does not exist. Create directory " . dirname . "?", "&yes\n&no", 2)
+        if choice == 1
+          echo "Ok :) Creating " . choice
+          execute "!mkdir -p " . dirname
+          return p1
+        else
+          echo "Do not create!"
+          return ""
+        endif
       endif
-
     endif
 
     let p2 = join(reverse(split(p2Rev, '.\zs')), '')
