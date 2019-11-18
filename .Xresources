@@ -21,7 +21,7 @@ Xcursor.theme: smalldot
 *color15: #ffffff
 
 ! general st settings (which can be overwritten in custom xresources
-st.font: hack:pixelsize=17:antialias=true:autohint=true
+st.font: hack:pixelsize=19:antialias=true:autohint=true
 st.alpha: 0.85
 st.alphaUnfocussed: 0.55
 
