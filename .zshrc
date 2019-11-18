@@ -1,13 +1,20 @@
 
+# CHecks if already sourced ( I have to link the zshenv, and that is sourced after zshrc)
+if [ "$SOURCED_ZSHRC" -eq 1 ]; then
+  return;
+fi
+
+SOURCED_ZSHRC="1"
+
 ZSH_THEME="agnoster"
 plugins=(git git-extras github zsh-syntax-highlighting)
+export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # generated shortcut file
 source $HOME/.shortcuts
 
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
 export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/
 export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
 export TERM=xterm
@@ -74,7 +81,7 @@ alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while r
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sz="source ~/.zshrc"
+alias sz="SOURCED_ZSHRC='0'; source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias vi3="vim ~/.config/i3/config"
 alias vi3s="vim ~/.config/i3/config.standard"
