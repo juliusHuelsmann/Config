@@ -528,6 +528,7 @@ endfunction
     endif
   endfunction
 
+
   function! GetHeader() 
 
     let file = expand('%:p')
@@ -579,11 +580,10 @@ endfunction
         "echom "recovered" rec
         "
         if (filereadable(rec))
-
           return fnameescape(rec) 
         else 
-          echom "Sorry, the corresponding file could not be found."
-          return
+          echom "Sorry, the corresponding file could not be found." . rec
+          return fnameescape(rec)
         endif
     endif
   endfunction
@@ -612,12 +612,12 @@ endfunction
 
   nnoremap <leader>o :call OpenHeader() <CR>
   nnoremap <leader>r :call ReplaceWithHeader() <CR>
-  function! ReconstructFile(str, find, replace)
 
-    let str = a:str
-    let find = a:find
+  function! ReconstructFile(str, find, replace)
+    let str     = a:str
+    let find    = a:find
     let replace = a:replace
-    let verbose = 0
+    let verbose = 1
 
     " Replace string in the following form: /include/
     
@@ -627,13 +627,13 @@ endfunction
 
 
     " reverse all strings
-    let str =  join(reverse(split(str, '.\zs')), '')
-    let findRev =  join(reverse(split(find, '.\zs')), '')
-    let replRev = join(reverse(split(replace, '.\zs')), '')
-    let voidReplacement ='/'
+    let str             = join(reverse(split(str, '.\zs')),     '')
+    let findRev         = join(reverse(split(find, '.\zs')),    '')
+    let replRev         = join(reverse(split(replace, '.\zs')), '')
+    let voidReplacement = '/'
 
-  
     let replRev0 = replRev .  substitute(replRev, "/", "", "")
+  
     " corner case for 2 src
     let p0Rev =substitute(str, findRev, replRev0, "")
     let p0 = join(reverse(split(p0Rev, '.\zs')), '')
@@ -658,11 +658,24 @@ endfunction
 
     " corner case: not replaceable
     if p2Rev == str
-
       if verbose
-        echom "interrupt "  
+        echom "interrupt "  . p1
       endif
-      return ""
+
+      let p22     = join(reverse(split(p2Rev, '.\zs')), '')
+      let dirname = '/' . join(split(p22, '/')[:-2], '/')
+
+      " actually not found.
+      let choice = confirm("File does not exist. Create directory " . dirname . "?", "&yes\n&no", 2)
+      if choice == 1
+        echo "Ok :) Creating " . choice
+        execute "!mkdir -p " . dirname
+        return p1
+      else
+        echo "Do not create!"
+        return ""
+      endif
+
     endif
 
     let p2 = join(reverse(split(p2Rev, '.\zs')), '')
