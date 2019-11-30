@@ -1,4 +1,6 @@
 
+xterm*fastScroll: true
+
 ! cursor
 Xcursor.theme: smalldot
 
