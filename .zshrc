@@ -15,6 +15,8 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.shortcuts
 
 # Path to your oh-my-zsh installation.
+export EDITOR='vim'
+export VISUAL='vim'
 export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/
 export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
 export TERM=xterm
