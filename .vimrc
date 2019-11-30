@@ -66,7 +66,7 @@ Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'ianks/octodown'
 
 " git gutter 
-Plugin 'gitgutter/Vim'
+"Plugin 'gitgutter/Vim'
 
 
 "
@@ -811,6 +811,9 @@ endfunction
   nnoremap <leader>2" viW<esc>a"<esc>hBi"<esc>lel
   nnoremap <leader>#' viW<esc>a'<esc>hBi'<esc>lel
   nnoremap <leader>H viW<esc>a`<esc>hBi`<esc>lel
+
+  nnoremap ff /\n
+
 
   inoremap jk <esc>
   "vnoremap jk <esc> " not considered useful
