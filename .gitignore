@@ -3,6 +3,7 @@
 
 # Configuration files and gitignore
 !.gitignore
+!.gitmessage
 !.vimrc
 !.zshrc
 !.Xresources
