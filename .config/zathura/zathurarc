@@ -1,0 +1,43 @@
+
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+
+#set recolor-darkcolor \#839496
+
+map R rotate
+map r reload
+map i recolor
+map p print
+
+# if enabled, the color of the foreground is red if the night mode is enabled
+#set recolor-darkcolor "#fe1134"
+set recolor true
+
+set selection--clipboard "clipboard"
+set window-title-basename "true"
+
+set font "hack 20"
+
+set highlight-color "#cEA212"
+
+#set completion-highlight-fg "#151515" #02
+#set completion-highlight-bg "#90A959" #0C
+
+# J,K  = Page down/ up
+# 2G goto page 2
+# gg G
+# o  open document
+# d dual page mode
+
+# Bookmark
+# m[bookmarkletter] set 
+# '[bookmarkletrter] goto
+
+# [ctrl] j/k  go forward /backward in jumps (only last two)
+# [ctrl] o i  go forward /backward in jumps 
+
+# follow f
+
+# [Ctrl]+f, [Ctrl]+b page down / up
+ 
