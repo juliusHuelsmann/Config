@@ -30,7 +30,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'scrooloose/syntastic'
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale' "XXX only for performance
 Plugin 'vim-latex/vim-latex'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
@@ -66,7 +66,7 @@ Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'ianks/octodown'
 
 " git gutter 
-"Plugin 'gitgutter/Vim'
+Plugin 'gitgutter/Vim'
 
 
 "
@@ -482,6 +482,7 @@ endfunction
 
 
   function! Execute() 
+    :silent execute "!echo '[Leaving vim, starting execution]'"
 
     let file = expand('%:p')
     let splitForEnding = split(file, '\.')

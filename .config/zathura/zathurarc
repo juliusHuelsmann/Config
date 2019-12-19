@@ -3,6 +3,7 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 
+
 #set recolor-darkcolor \#839496
 
 map R rotate
@@ -14,7 +15,8 @@ map p print
 #set recolor-darkcolor "#fe1134"
 set recolor true
 
-set selection--clipboard "clipboard"
+# set selection--clipboard "clipboard"
+set selection-clipboard clipboard
 set window-title-basename "true"
 
 set font "hack 20"
