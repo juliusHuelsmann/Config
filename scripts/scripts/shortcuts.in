@@ -39,7 +39,10 @@ rmcp 	/mnt/data/online/repos/masterThesis/mcp
 rmo 	/mnt/data/online/repos/masterThesis/ownMcp
 rom 	/mnt/data/online/repos/masterThesis/ownMcp
 rmmd 	/mnt/data/online/repos/masterThesis/MasterDefinitions/tex
-rom 	/mnt/data/online/repos/masterThesis/ownMcp
+#rom 	/mnt/data/online/repos/masterThesis/ownMcp
+rms 	/mnt/data/online/repos/masterThesis/thesisSenseSim
+rmsp 	/mnt/data/online/repos/masterThesis/thesisSenseSimPredict
+rmf 	/mnt/data/online/repos/masterThesis/thesisDBN
 
 
 

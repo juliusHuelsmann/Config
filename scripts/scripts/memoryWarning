@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 
-mem=$(free --giga | awk '/^Mem:/ {print $4}')
+mem=$(free --giga | awk '/^Mem:/ {print $7}')
 
-if (( $mem <= 1 )); then 
+if (( $mem <= 2 )); then 
   notify-send --urgency=critical "WARNING: only $mem GB processing memory left";
-elif (( $mem <= 2 )); then 
+elif (( $mem <= 3 )); then 
   notify-send  "WARNING: only $mem GB processing memory left";
 #elif (( $mem <= 13 )); then 
 #  notify-send  "WARNING: only $mem GB processing memory left";
