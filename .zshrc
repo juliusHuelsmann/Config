@@ -100,6 +100,7 @@ alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
 alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
 
+alias ll="ls -l"
 alias lt="ls -lth"
 alias x="exit"
 alias c="clear"
