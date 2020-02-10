@@ -1261,6 +1261,7 @@ c.url.searchengines = {
         'y'  : 'https://www.youtube.com/results?search_query={}',
         'gi' : 'https://www.github.com/search?q={}&type=',
         'te' : 'http://dict.cc?s={}',
+        'le' : 'https://www.linguee.de/deutsch-englisch/search?source=auto&query={}',
         'tf' : 'http://defr.dict.cc?s={}',
         "s"  : "https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q={}"
         }

@@ -57,6 +57,8 @@ Plugin 'morhetz/gruvbox'
 "semantic highlighting
 Plugin 'jaxbot/semantic-highlight.vim'
 
+"Plugin 'syntastic/cppcheck'
+
 " live
 " Plugin 'shime/vim-livedown'
 " XXX: use an alternative
@@ -480,9 +482,12 @@ endfunction
     endif
   endfunction
 
+  function! SetGotoPoint()
+    :silent execute "!echo '[Leaving vim, starting execution]'"
+  endfunction
 
   function! Execute() 
-    :silent execute "!echo '[Leaving vim, starting execution]'"
+    :call  SetGotoPoint()
 
     let file = expand('%:p')
     let splitForEnding = split(file, '\.')
@@ -919,7 +924,7 @@ endfunction
   noremap <Leader>E :!clear<CR>:!./cexec.sh<CR>
   noremap <leader>R :!clear<CR>:!./run.sh<CR>
   noremap <Leader>e :call Execute()<CR>
-  noremap <Leader>m :!clear<CR>:!make<CR><CR>
+  noremap <Leader>m :!clear<CR>:call SetGotoPoint()<CR>:!make<CR>
   " XXX:
   "let g:enable_ycm_at_startup = 0
 

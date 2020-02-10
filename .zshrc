@@ -25,6 +25,7 @@ export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/mnt/data/local/programs"
 export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/usr/local/spark/bin
+export PATH=$PATH:/usr/local/gcc-10.0/bin/
 export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
 
 # I cloned a repository which prints error output in a different format. 
@@ -42,8 +43,6 @@ function rmswp() {
 }
 function fo() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v // | grep -v 'Binary file' | grep $1 }
 function foc() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v 'Binary file' | grep $1 }
-function yay() { k=$(pwd); cdmu; ya "$(clippaste)"; cd $k}
-function yayy() { ya "$(clippaste)"; }
 function yvy() { k=$(pwd); cdmu; yv "$(clippaste)"; cd $k}
 alias cpwd="pwd | clipcopy"
 alias hcat=highlight --out-format=ansi
@@ -75,6 +74,8 @@ alias cpuTemp="sensors | awk '/^temp1:/ {print $2}' | tail -n 1"
 # Youtube downloader
 alias yv="youtube-dl --add-metadata -ic"
 alias ya="youtube-dl --add-metadata -ixc"
+function yay() { k=$(pwd); cdmu; ya "$(clippaste)"; cd $k}
+function yayy() { ya "$(clippaste)"; }
 alias lsswp="find -name '*.swp'"
 
 alias updateKeysUbuntu="apt-key list | awk '/expired/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
@@ -151,6 +152,11 @@ alias ssht=sshT
 
 # edit the file that was changed last (of all files, independent on the ending)
 alias vl='vim $(ls -t | head -n 1)'
+
+function quickVid() {
+    ffmpeg -i "$1" -filter_complex "[0:v]setpts=0.9009009009009009*PTS[v];[0:a]atempo=1.11[a]" -map "[v]" -map "[a]" -c:v libx264 -c:a aac "$1Quick.mp4"
+
+}
 
 function startSshAgent() {
   ssh-add -l &>/dev/null
