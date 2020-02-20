@@ -18,7 +18,9 @@ Xcursor.theme: smalldot
 *color10: #c3bf9f
 *color11: #f0dfaf
 *color12: #94bff3
-*color13: #ec93d3
+!*color13: #011009
+*color13: #120203
+!*color13: #ec93d3
 *color14: #93e0e3
 *color15: #ffffff
 
