@@ -1,4 +1,7 @@
 
+export XKB_DEFAULT_LAYOUT=de,us
+export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle
+
 # CHecks if already sourced ( I have to link the zshenv, and that is sourced after zshrc)
 if [ "$SOURCED_ZSHRC" -eq 1 ]; then
   return;
