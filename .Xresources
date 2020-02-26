@@ -18,11 +18,10 @@ Xcursor.theme: smalldot
 *color10: #c3bf9f
 
 !*color11: #f0dfaf
-
 ! DARK BLUE
-! *color11: #021021
+ *color11: #020A12
 ! DARK GREEN
-*color11: #021309
+!*color11: #021309
 ! DARK RED
 !*color11: #120203
 
