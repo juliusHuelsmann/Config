@@ -137,7 +137,7 @@ else
   let s:cterm_foreground = "250"
   let s:cterm_selection  = "237"
   let s:cterm_line       = "235"
-  let s:cterm_comment    = "243"
+  let s:cterm_comment    = "15"  " 243
   let s:cterm_red        = "167"
   let s:cterm_orange     = "173"
   let s:cterm_yellow     = "221"
