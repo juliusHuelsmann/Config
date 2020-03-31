@@ -289,6 +289,8 @@ set hlsearch
 
 " makes vim invoke latex suite when opening tex file
 filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 
 " set shellslash " i think this is not required so i dont use it
 
@@ -515,8 +517,8 @@ endfunction
       endif
 
       if ending == "cc" 
-        echom "build'n'run: " .'g++ -std=c++-20 ' . file . '; ./a.out'
-        execute '!set -e;g++ -std=c++2a ' . file . '; ./a.out'
+        echom "build'n'run: " .'g++-10.0 -std=c++-20 ' . file . '; ./a.out'
+        execute '!set -e;g++-10.0 -std=c++2a ' . file . '; ./a.out'
 
         if v:shell_error == 0
           return
@@ -924,6 +926,7 @@ endfunction
   noremap <Leader>E :!clear<CR>:!./cexec.sh<CR>
   noremap <leader>R :!clear<CR>:!./run.sh<CR>
   noremap <Leader>e :call Execute()<CR>
+  noremap <Leader>t :call  SetGotoPoint()<CR>:execute '!./cexec.sh "" "no"'<CR>
   noremap <Leader>m :!clear<CR>:call SetGotoPoint()<CR>:!make<CR>
   " XXX:
   "let g:enable_ycm_at_startup = 0
@@ -1081,8 +1084,17 @@ nnoremap xc "+y
 "XXX: it is also possible to just use the system keyboard as default keyboard, 
 " but that screws up the system keyboard. 
 
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  endif
+  return "\<c-p>"
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+
 
 set exrc
 set secure
-
 
