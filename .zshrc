@@ -78,6 +78,9 @@ function yay() { k=$(pwd); cdmu; ya "$(clippaste)"; cd $k}
 function yayy() { ya "$(clippaste)"; }
 alias lsswp="find -name '*.swp'"
 
+# Use case: e.g. for_each 'ffmpeg -i "$i" "$i.mp4"'
+function for_each() { for i in *; do eval "$@"; done }
+
 alias updateKeysUbuntu="apt-key list | awk '/expired/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
 alias updateKeysUbuntuDe="apt-key list | awk '/verfallen/{ print $2 }' | while read k; do apt-key adv --keyserver keys.gnupg.net --recv-keys ${k#*/}; done"
 
