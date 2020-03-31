@@ -3,13 +3,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 from os.path import expanduser
 
-green0=(.4,.8,.4,.5)
-green1=(.2,.6,.2,.5)
-greena=(.2,.6,.2,1)
+versionsAlpha = ["alpha 11-19", "alpha 12-19", "alpha 02-02", "alpha 02-02 HEAD"]
+versionsVim = ["vim 11-19", "vim 12-19", "vim 02-02 HEAD", "vim 02-02"]
 
-blue0=(.4,.4,.8,.5)
-blue1=(.2,.2,.6,.5)
-bluea=(.2,.2,.6,1)
+green = [
+        (.4,.8,.4,.5),
+        (.3,.6,.2,.5),
+        (.2,.6,.2,.5),
+        (.2,.6,.2,1),
+]
+
+blue=[
+        (.4,.4,.8,.5),
+        (.35,.35,.8,.5),
+        (.3,.3,.85,.5),
+        (.25,.25,.9,.5),
+        (.2,.2,.9,1),
+]
+
 
 home = expanduser("~")
 path= home + "/.stats/st.csv"
@@ -46,34 +57,45 @@ if len(k.shape) == 2:
 
 
     def visualizeAll():
+
         plt.subplot(2, 1, 1)
+
+        iter = 1
+        sum = np.zeros(arr[:,1].shape)
+        for en, t in enumerate(versionsAlpha): 
+            plt.plot(arr[:,0], arr[:,iter], label=t, color=green[en], linewidth=.8)
+            sum += arr[:,iter]
+            iter += 1
+        plt.plot(arr[:,0], sum, label="alpha total", color=green[-1], linewidth=.8)
+
+        sum = np.zeros(arr[:,1].shape)
+        for en, t in enumerate(versionsVim): 
+            plt.plot(arr[:,0], arr[:,iter], label=t, color=blue[en], linewidth=.8)
+            sum += arr[:,iter]
+            iter += 1
+        plt.plot(arr[:,0], sum, label="vim total", color=blue[-1], linewidth=.8)
+
+
         downSum=           np.sum(arr[:,1:], axis=1)
-        plt.plot(arr[:,0], arr[:,1], label="alpha 11-2019", color=blue0, linewidth=.8)
-        plt.plot(arr[:,0], arr[:,2], label="alpha 12-2019", color=blue1, linewidth=.8)
-        plt.plot(arr[:,0], arr[:,1] + arr[:,2], label="alpha total", color=bluea, linewidth=.8)
-        plt.plot(arr[:,0], arr[:,3], label="vim 11-2019", color=green0, linewidth=.8)
-        plt.plot(arr[:,0], arr[:,4], label="vim 12-2019", color=green1, linewidth=.8)
-        plt.plot(arr[:,0], arr[:,3] + arr[:,4], label="vim total", color=greena, linewidth=.8)
         plt.plot(arr[:,0], downSum, label="sum", color="black", linewidth=.8)
         
 
 
         for i in range(15):
             w = .5 / (i+1)
-            k, [al0, al1, vi0, vi1] = interpol(arr[:,0], [arr[:,1], arr[:,2], arr[:,3], arr[:,4]], maxDiff = 1 + (i+1)*.4, interpolAmount=100)
+            clrs = blue + green
+            k, ves = interpol(arr[:,0], [arr[:,i] for i in range(1,arr.shape[1])] , maxDiff = 1 + (i+1)*.4, interpolAmount=100)
 
-            plt.plot(k, al0, color=blue0, linewidth=w)
-            plt.plot(k, al1, color=blue1, linewidth=w)
-            al = al0+al1
-            plt.plot(k, al, color=bluea, linewidth=w)
+            for j,res in enumerate(ves):
+                plt.plot(k, res, color = clrs[j], linewidth=w);
+            
+            s1 = np.sum(ves[:len(versionsAlpha)], axis=0)
+            s2 = np.sum(ves[len(versionsVim):], axis=0)
 
+            plt.plot(k, s1, color=green[-1], linewidth=w*2)
+            plt.plot(k, s2, color=blue[-1], linewidth=w*2)
 
-            plt.plot(k, vi0, color=green0, linewidth=w)
-            plt.plot(k, vi1, color=green1, linewidth=w)
-            vi = vi0+vi1
-            plt.plot(k, vi, color=greena, linewidth=w)
-
-            plt.plot(k, al + vi, color="black", linewidth=w)
+            #plt.plot(k, s1 + s2, color="black", linewidth=w)
 
         plt.ylim(0 , downSum[-1])
         plt.legend(loc="upper left")
@@ -81,17 +103,14 @@ if len(k.shape) == 2:
 
     def visualizeDiff():
         divisor = np.array([arr[i + 1,0] - arr[i ,0] for i in range(arr.shape[0] - 1)])
-        diffsAl0 = np.array([arr[i + 1,1] - arr[i ,1] for i in range(arr.shape[0] - 1)]) / 24./ divisor
-        diffsAl1 = np.array([arr[i + 1,2] - arr[i ,2] for i in range(arr.shape[0] - 1)]) / 24./ divisor
-        diffsVim0 = np.array([arr[i + 1,3] - arr[i ,3] for i in range(arr.shape[0] - 1)]) / 24./ divisor
-        diffsVim1 = np.array([arr[i + 1,4] - arr[i ,4] for i in range(arr.shape[0] - 1)]) / 24./ divisor
-        
+        diffsAl = np.array([np.array([arr[i + 1,k] - arr[i ,k] for i in range(arr.shape[0] - 1)]) / 24./ divisor for k in range(len(versionsAlpha))])
+        diffsVm = p.array([np.array([arr[i + 1,k] - arr[i ,k] for i in range(arr.shape[0] - 1)]) / 24./ divisor for k in range(len(versionsVim))])
 
         sp = plt.subplot(2, 1, 2)
         sp.set_title("Download/hour for each datapoint")
-        diffsVim = diffsVim0 + diffsVim1
-        diffsAlpha = diffsAl0 + diffsAl1
-        downSum=           diffsAlpha + diffsVim
+        diffsAlp = np.sum(diffsAl, axis=0)
+        diffsVim = np.sum(diffsVm, axis=0)
+        downSum  = diffsAlp + diffsVim
         plt.scatter(arr[1:,0], diffsAl0, marker="x", label="alpha 2019-11", color=blue0, s=11)
         plt.scatter(arr[1:,0], diffsAl1, marker="x", label="alpha 2019-12", color=blue1, s=11)
         plt.scatter(arr[1:,0], diffsAlpha, marker="x",label="vim", color=bluea, s=11)
@@ -120,5 +139,5 @@ if len(k.shape) == 2:
 
 
     visualizeAll()
-    visualizeDiff()
+    #visualizeDiff()
     plt.show()
