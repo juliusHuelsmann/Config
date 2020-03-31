@@ -39,9 +39,12 @@
 !/.config/ranger/rc.conf
 !/.config/ranger/commands.py
 !/.config/ranger/rifle.conf
-#zathura
+# zathura
 !/.config/zathura/
 !/.config/zathura/zathurarc
+# picom
+!/.config/picom/
+!/.config/picom/picom.conf
 
 # vim color config
 !/.vim/
