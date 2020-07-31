@@ -1059,7 +1059,7 @@ au FileType css setl ofu=csscomplete#CompleteCSS
 
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|CVS$\|build|\.svn$\|target$\|build\|cmake-build-debug\|ignore\|local\|migrate\|thirdparty\|src/libs/\|settings/benchmark\|settings/configs\|settings/data\|settings/documentation',
+  \ 'dir':  '\.git$\|CVS$\|build|\.svn$\|target$\|build\|cmake-build-debug\|ignore\|__pycache__\|venv\|local\|migrate\|thirdparty\|src/libs/\|settings/benchmark\|settings/configs\|settings/data\|settings/documentation',
   \ 'file': '\.class$\|\.so$',
   \ }
 
