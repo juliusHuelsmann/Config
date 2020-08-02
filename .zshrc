@@ -40,14 +40,25 @@ if [[ -a /mnt/data/online/repos/stderred/build/libstderred.so ]]; then
   export LD_PRELOAD="/mnt/data/online/repos/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 fi
 
+
 function rmswp() {
   echo "Removing $(lsswp)"
   rm $(lsswp)
   echo "Remaining occurrences: $(lsswp)."
 }
+function li() {
+  ls -t | head -n 1
+}
 function fo() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v // | grep -v 'Binary file' | grep $1 }
 function foc() { grep -irnw . -e $1 | grep -v build | grep -v tags | grep -v 'Binary file' | grep $1 }
 function yvy() { k=$(pwd); cdmu; yv "$(clippaste)"; cd $k}
+function z() { result=$(ls -t *pdf | awk '{print "" $0}' |rofi -dmenu) 3> /dev/null && daemonize zathura "$result" }
+function o() { result=$(ls -t *pdf | awk '{print "" $0}' |rofi -dmenu) 3> /dev/null && daemonize okular "$result" }
+function xx() { daemonize $(ls $1 | awk '{print "xdg-open " $0}' | rofi -dmenu) 2> /dev/null }
+function stt() {
+  st -e i3-msg floating toggle
+}
+
 alias cpwd="pwd | clipcopy"
 alias hcat=highlight --out-format=ansi
 alias day="killall redshift -1; xrandr --output eDP-1 --auto --brightness 2; redshift -O 25000"
@@ -108,6 +119,7 @@ alias mirror="convert -rotate 180"
 alias mirrorAll="for f in *.png; do echo $f; convert -rotate 180 $f $f; done"
 alias workworkworkworkwork="systemd-inhibit --what=handle-lid-switch sleep 1d"
 
+alias l="ls -l"
 alias ll="ls -l"
 alias lt="ls -lth"
 alias x="exit"
@@ -483,7 +495,7 @@ function diffdir() {
 }
 
 #
-alias ct="daemonize st"
+alias ct="daemonize st 2> /dev/null"
 
 
 # Daemonize a command / sequence of commands

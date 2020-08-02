@@ -768,7 +768,7 @@ c.fonts.statusbar = '9pt monospace'
 
 ## Font used in the tab bar.
 ## Type: QtFont
-c.fonts.tabs = '11pt monospace'
+# c.fonts.tabs = '11pt monospace'
 
 ## Font family for cursive fonts.
 ## Type: FontFamily
@@ -1310,6 +1310,9 @@ c.url.start_pages = ['https://www.startpage.com/']
 # c.zoom.text_only = False
 
 ## Bindings for normal mode
+config.bind('<Ctrl-D>', 'set content.user_stylesheets /home/juli/.config/qutebrowser/dark.css')
+config.bind('<Ctrl-L>', 'set content.user_stylesheets /home/juli/.config/qutebrowser/light.css')
+config.bind('<Ctrl-I>', 'set content.user_stylesheets /home/juli/.config/qutebrowser/invert.css')
 # config.bind("'", 'enter-mode jump_mark')
 # config.bind('+', 'zoom-in')
 # config.bind('-', 'zoom-out')
@@ -1568,6 +1571,7 @@ config.bind('L', 'tab-next')
 # config.bind('<Up>', 'prompt-item-focus prev', mode='prompt')
 # config.bind('n', 'prompt-accept no', mode='prompt')
 # config.bind('y', 'prompt-accept yes', mode='prompt')
+
 
 ## Bindings for register mode
 # config.bind('<Escape>', 'leave-mode', mode='register')

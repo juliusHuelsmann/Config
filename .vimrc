@@ -517,8 +517,8 @@ endfunction
       endif
 
       if ending == "cc" 
-        echom "build'n'run: " .'g++-10.0 -std=c++-20 ' . file . '; ./a.out'
-        execute '!set -e;g++-10.0 -std=c++2a ' . file . '; ./a.out'
+        echom "build'n'run: " .'g++ -std=c++-20 ' . file . '; ./a.out'
+        execute '!set -e;g++ -std=c++2a ' . file . '; ./a.out'
 
         if v:shell_error == 0
           return
@@ -995,9 +995,6 @@ inoremap <Leader>d <Down><CR>
   nnoremap <leader>tn :tabnew<CR>:NERDTree<CR><c-w>l
   nnoremap <leader>x :%!xxd<CR> 
 
-"  set cursorline
-"  set cursorcolumn
-
   set foldmethod=indent
 
 
@@ -1006,16 +1003,26 @@ inoremap <Leader>d <Down><CR>
   autocmd VimEnter *.{cpp,hpp,c,h,php,java,py,md,tex} call OpenNerdTree() 
 
 " vin autocommands for changing the layout of 
-autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
-autocmd WinLeave,Bufleave,FocusLost,CmdwinLeave * silent :setlocal foldmethod=manual|  :setlocal syntax=off | setlocal nocursorline nocursorcolumn 
-autocmd WinLeave,FocusLost,CmdwinLeave NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
-autocmd WinLeave,FocusLost,CmdwinLeave ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
-autocmd WinLeave,FocusLost,CmdwinLeave __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+" autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
+"autocmd WinLeave,Bufleave,FocusLost,CmdwinLeave * silent :setlocal foldmethod=manual|  :setlocal syntax=off | setlocal nocursorline nocursorcolumn 
+"autocmd WinLeave,FocusLost,CmdwinLeave NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+"autocmd WinLeave,FocusLost,CmdwinLeave ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
+"autocmd WinLeave,FocusLost,CmdwinLeave __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+"
+"autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
+"autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+"autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
+"autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
 
-autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal syntax=ON | setlocal cursorline cursorcolumn
-autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter NERD_tree* :set syntax=ON | setlocal nocursorline nocursorcolumn 
-autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter ControlP :set syntax=ON | setlocal nocursorline nocursorcolumn 
-autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter __Tagbar__* :set syntax=ON | setlocal nocursorline nocursorcolumn 
+autocmd WinLeave,Bufleave,FocusLost,CmdwinLeave * silent :setlocal nocursorline nocursorcolumn 
+autocmd WinLeave,FocusLost,CmdwinLeave NERD_tree* :setlocal nocursorline nocursorcolumn 
+autocmd WinLeave,FocusLost,CmdwinLeave ControlP :setlocal nocursorline nocursorcolumn 
+autocmd WinLeave,FocusLost,CmdwinLeave __Tagbar__* :setlocal nocursorline nocursorcolumn 
+
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * silent :setlocal cursorline cursorcolumn
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter NERD_tree* :setlocal nocursorline nocursorcolumn
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter ControlP :setlocal nocursorline nocursorcolumn
+autocmd VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter __Tagbar__* :setlocal nocursorline nocursorcolumn
 
 
 filetype plugin on
@@ -1038,9 +1045,11 @@ au FileType css setl ofu=csscomplete#CompleteCSS
 :hi CursorLine   cterm=NONE ctermbg=52
 :hi CursorLine   cterm=NONE ctermbg=88
 
+:hi CursorLine   cterm=NONE ctermbg=52
+:hi CursorColumn cterm=NONE ctermbg=52
 
-:hi CursorLine   cterm=NONE ctermbg=1
-:hi CursorColumn cterm=NONE ctermbg=1
+:hi CursorLine   cterm=NONE ctermbg=52
+:hi CursorColumn cterm=NONE ctermbg=64
 :hi Cursor       cterm=NONE ctermbg=4
 " XXX thi sis just for white
 " :hi CursorLine   cterm=NONE ctermbg=11
@@ -1050,7 +1059,7 @@ au FileType css setl ofu=csscomplete#CompleteCSS
 
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|CVS$\|build|\.svn$\|target$\|build\|cmake-build-debug\|ignore\|local\|migrate\|thirdparty\|src/libs/\|settings/benchmark\|settings/configs\|settings/data\|settings/documentation',
+  \ 'dir':  '\.git$\|CVS$\|build|\.svn$\|target$\|build\|cmake-build-debug\|ignore\|__pycache__\|venv\|local\|migrate\|thirdparty\|src/libs/\|settings/benchmark\|settings/configs\|settings/data\|settings/documentation',
   \ 'file': '\.class$\|\.so$',
   \ }
 
