@@ -29,6 +29,7 @@ export PATH="$PATH:/mnt/data/local/programs"
 export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/usr/local/spark/bin
 export PATH=$PATH:/usr/local/gcc-10.0/bin/
+export PATH=$PATH:/snap/bin
 export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
 
 # I cloned a repository which prints error output in a different format. 
