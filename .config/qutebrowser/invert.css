@@ -1,0 +1,24 @@
+* {
+  background-color: white !important;
+  background-image: none !important;
+  color: black !important;
+}
+
+html {
+  filter: invert(100%) 
+}
+
+h1,h2,h3,h4 {
+  background-color: white !important;
+  color: #115566 !important;
+}
+a {
+  color: #2b2f00 !important;
+  color: #222200 !important;
+  color: #11AABB !important;
+}
+
+#bottom-result-container #spon_links { display: none !important; }
+#bottom-result-container #sponsored_csa1 { display: none !important; }
+#bottom-result-container #sponsored_csa2 { display: none !important; }
+

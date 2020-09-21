@@ -17,6 +17,10 @@
 !/.config/qutebrowser/qutebrowser.conf    #< legacy
 !/.config/qutebrowser/keys.conf           #< legacy
 !/.config/qutebrowser/config.py
+!/.config/qutebrowser/colsheet.css
+!/.config/qutebrowser/dark.css
+!/.config/qutebrowser/invert.css
+!/.config/qutebrowser/light.css
 # !/.config/qutebrowser/.shortcuts (they are automatically generated!)
 
 # basic i3

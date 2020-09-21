@@ -1,0 +1,26 @@
+
+* {
+  background-color: black !important;
+}
+
+div, pre,textarea,body,input,td,tr,p {
+	background-color: black !important;
+	background-image: none !important;
+	color: #e0e0e0 !important;
+}
+h1,h2,h3,h4 {
+	background-color: black !important;
+	color: #e02020 !important;
+	color: #FF2e20 !important;
+}
+a {
+	color: #b5b0ff !important;
+	color: #DDDDFF !important;
+}
+ 
+.pagehead { background-color: black !important; }
+#adBlock { display: none !important; }
+#bottom-result-container, #spon_links { display: none !important; }
+#bottom-result-container, #sponsored_csa1 { display: none !important; }
+#bottom-result-container, #sponsored_csa2 { display: none !important; }
+
