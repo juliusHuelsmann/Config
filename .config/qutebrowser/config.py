@@ -1310,9 +1310,9 @@ c.url.start_pages = ['https://www.startpage.com/']
 # c.zoom.text_only = False
 
 ## Bindings for normal mode
-config.bind('<Ctrl-D>', 'set content.user_stylesheets /home/juli/.config/qutebrowser/dark.css')
-config.bind('<Ctrl-L>', 'set content.user_stylesheets /home/juli/.config/qutebrowser/light.css')
-config.bind('<Ctrl-I>', 'set content.user_stylesheets /home/juli/.config/qutebrowser/invert.css')
+config.bind('<Ctrl-D>', 'set content.user_stylesheets ~/.config/qutebrowser/dark.css')
+config.bind('<Ctrl-L>', 'set content.user_stylesheets ~/.config/qutebrowser/light.css')
+config.bind('<Ctrl-I>', 'set content.user_stylesheets ~/.config/qutebrowser/invert.css')
 # config.bind("'", 'enter-mode jump_mark')
 # config.bind('+', 'zoom-in')
 # config.bind('-', 'zoom-out')
