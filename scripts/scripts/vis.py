@@ -11,6 +11,19 @@ green = [
         (.3,.6,.2,.5),
         (.2,.6,.2,.5),
         (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
+        (.2,.6,.2,1),
 ]
 
 blue=[
@@ -18,6 +31,19 @@ blue=[
         (.35,.35,.8,.5),
         (.3,.3,.85,.5),
         (.25,.25,.9,.5),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
+        (.2,.2,.9,1),
         (.2,.2,.9,1),
 ]
 
@@ -84,9 +110,9 @@ if len(k.shape) == 2:
         for i in range(15):
             w = .5 / (i+1)
             clrs = blue + green
-            k, ves = interpol(arr[:,0], [arr[:,i] for i in range(1,arr.shape[1])] , maxDiff = 1 + (i+1)*.4, interpolAmount=100)
+            k, ves = interpol(arr[:,0], [arr[:,i] for i in range(1,arr.shape[1])] , maxDiff = 5 + (i+1)*.4, interpolAmount=100)
 
-            for j,res in enumerate(ves):
+            for j, res in enumerate(ves):
                 plt.plot(k, res, color = clrs[j], linewidth=w);
             
             s1 = np.sum(ves[:len(versionsAlpha)], axis=0)
@@ -122,7 +148,7 @@ if len(k.shape) == 2:
         plt.scatter(arr[1:,0], downSum, marker="x",label="sum", color="black", s=11)
 
         for i in range(15):
-            k, [al0, al1, vi0, vi1] = interpol(arr[1:,0], [diffsAl0, diffsAl1, diffsVim0, diffsVim1], maxDiff = 1 + (i+1)*.4, interpolAmount=100)
+            k, [al0, al1, vi0, vi1] = interpol(arr[1:,0], [diffsAl0, diffsAl1, diffsVim0, diffsVim1], maxDiff = 5 + (i+1)*.4, interpolAmount=100)
             w = .5 / (i+1)
             plt.plot(k, al0, color=blue0, linewidth=w)
             plt.plot(k, al1, color=blue1, linewidth=w)

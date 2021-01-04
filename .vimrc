@@ -193,8 +193,9 @@ vnoremap > >gv  " better indentation
 " Make search case insensitive
 "" set hlsearch
 "" set incsearch
-"" set ignorecase
-"" set smartcase
+"" set ignorecase  
+set ignorecase
+set smartcase
 set infercase       " the completion recognizes capitalization.
 set incsearch       " search while typing 
 set wildmenu        " show completions @ cl

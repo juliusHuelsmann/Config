@@ -285,5 +285,5 @@ nmcli d status #< list interfaces, types and status
 
 
 
-
+LD_PRELOAD=/usr/lib/libasan.so ./predictor
 

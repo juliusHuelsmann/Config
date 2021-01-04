@@ -59,6 +59,7 @@ function stt() {
   st -e i3-msg floating toggle
 }
 
+alias mergePdfs="qpdf --empty --pages *.pdf -- out.pdf"
 alias cpwd="pwd | clipcopy"
 alias hcat=highlight --out-format=ansi
 alias day="killall redshift -1; xrandr --output eDP-1 --auto --brightness 2; redshift -O 25000"
