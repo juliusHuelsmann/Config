@@ -1,14 +1,27 @@
+#!/bin/bash
+
+# Set next option in list of valid option passed in arguments $2..$#
 
 operation=$1
-max_value=$2
-max_value=$((max_value - 1))
-echo $max_value
+selected_value=$2
+argv=("$@")
 
-k=$(get.sh $operation)
-k=$((k+1))
-if [[ k -gt $max_value ]]; then
-  k=0;
-fi
+amount_values=$#
+current_value=$(get.sh $operation)
+echo "current_value = $current_value"
 
-set.sh $operation $k
+for (( j=1; j<$amount_values; j++ )); do
+  val="${argv[j]}"
+  echo $val
+  if [ "$val" == "$current_value" ]; then
+    j=$((j+1))
+    if [ $j != $amount_values ]; then 
+      selected_value="${argv[j]}"
+    fi
+    break
+  fi
+done
+
+echo "setting '$selected_value'"
+set.sh $operation $selected_value
 
