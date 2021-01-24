@@ -1,3 +1,5 @@
+#!/bin/bash
+
 operation=$1
 value=$2
 

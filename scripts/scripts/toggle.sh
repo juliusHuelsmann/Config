@@ -8,11 +8,9 @@ argv=("$@")
 
 amount_values=$#
 current_value=$(get.sh $operation)
-echo "current_value = $current_value"
 
 for (( j=1; j<$amount_values; j++ )); do
   val="${argv[j]}"
-  echo $val
   if [ "$val" == "$current_value" ]; then
     j=$((j+1))
     if [ $j != $amount_values ]; then 
@@ -22,6 +20,6 @@ for (( j=1; j<$amount_values; j++ )); do
   fi
 done
 
-echo "setting '$selected_value'"
+echo "setting '$selected_value' from old value '$current_value'."
 set.sh $operation $selected_value
 
