@@ -5,7 +5,7 @@
 
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
-# config.load_autoconfig()
+config.load_autoconfig(False)
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
@@ -1253,7 +1253,8 @@ c.url.default_page = 'https://www.startpage.com/'
 c.url.searchengines = {
        # 'DEFAULT': 'https://duckduckgo.com/?q={}',
         #'DEFAULT': 'https://www.startpage.com/do/asearch?hmb=1&cat=web&cmd=process_search&language=english&engine0=v1all&query={}&abp=-1&t=black&nj=0&pg=0',
-        'DEFAULT': 'https://www.startpage.com/do/search?query={}&cat=web&cmd=process_search&language=english&engine0=v1all&pg=0&abp=-1&t=black',
+        #'DEFAULT': 'https://www.startpage.com/do/search?query={}&cat=web&cmd=process_search&language=english&engine0=v1all&pg=0&abp=-1&t=black',
+        'DEFAULT': 'https://www.google.com/search?hl=en&q={}',
         'm'  : 'https://www.google.de/maps/search/{}/',
         'w'  : 'https://www.wikipedia.org/wiki/{}',
         'W'  : 'https://de.wikipedia.org/wiki/{}',
