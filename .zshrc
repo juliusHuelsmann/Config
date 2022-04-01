@@ -60,13 +60,8 @@ function stt() {
   st -e i3-msg floating toggle
 }
 
-<<<<<<< Updated upstream
 function compressPdf() { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1.pdf" "$1"}
- 
-=======
-
-function compress() { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$2" "$1" }
->>>>>>> Stashed changes
+function compress()    { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$2" "$1" }
 alias mergePdfs="qpdf --empty --pages *.pdf -- out.pdf"
 alias cpwd="pwd | clipcopy"
 alias cppwd="echo -e \\\"`pwd`\\\" | clipcopy"
