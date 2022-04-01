@@ -1255,6 +1255,7 @@ c.url.searchengines = {
         #'DEFAULT': 'https://www.startpage.com/do/asearch?hmb=1&cat=web&cmd=process_search&language=english&engine0=v1all&query={}&abp=-1&t=black&nj=0&pg=0',
         #'DEFAULT': 'https://www.startpage.com/do/search?query={}&cat=web&cmd=process_search&language=english&engine0=v1all&pg=0&abp=-1&t=black',
         'DEFAULT': 'https://www.google.com/search?hl=en&q={}',
+        'p'  : 'https://www.mendeley.com/search/?page=1&query={}&sortBy=relevance',
         'm'  : 'https://www.google.de/maps/search/{}/',
         'w'  : 'https://www.wikipedia.org/wiki/{}',
         'W'  : 'https://de.wikipedia.org/wiki/{}',
