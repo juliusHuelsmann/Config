@@ -13,8 +13,8 @@ home = expanduser("~")
 path= home + "/.stats/st.csv"
 k=np.genfromtxt(path, dtype=str, delimiter=',')
 
-vimIdxs = 2+np.array([4, 5, 6, 10, 15, 16, 20, 29, 30, 31, 32])
-alpIdxs = 2+np.array([21, 22, 23, 24, 25, 26, 27, 28])
+vimIdxs = np.hstack(((2+np.array([0, 1])), (4+np.array([4, 5, 6, 10, 15, 16, 20, 29, 30, 31, 32]))))
+alpIdxs = 4+np.array([21, 22, 23, 24, 25, 26, 27, 28])
 
 times = k[:,1].astype("int")
 vim = k[:, vimIdxs].astype("int")

@@ -59,6 +59,8 @@ function stt() {
   st -e i3-msg floating toggle
 }
 
+function compressPdf() { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1.pdf" "$1"}
+ 
 alias mergePdfs="qpdf --empty --pages *.pdf -- out.pdf"
 alias cpwd="pwd | clipcopy"
 alias hcat=highlight --out-format=ansi

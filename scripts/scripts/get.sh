@@ -1,2 +1,2 @@
 operation=$1
-more ~/$operation
+less ~/$operation
