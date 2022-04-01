@@ -4,13 +4,12 @@ export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle
 
 # CHecks if already sourced ( I have to link the zshenv, and that is sourced after zshrc)
 if [ "$SOURCED_ZSHRC" -eq 1 ]; then
-  return;
 fi
 
 SOURCED_ZSHRC="1"
 
 ZSH_THEME="agnoster"
-plugins=(git git-extras github zsh-syntax-highlighting)
+plugins=(git git-extras github zsh-syntax-highlighting command-not-found)
 export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -31,6 +30,8 @@ export PATH=$PATH:/usr/local/spark/bin
 export PATH=$PATH:/usr/local/gcc-10.0/bin/
 export PATH=$PATH:/snap/bin
 export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
+export SSH_AUTH_SOCK=/run/user/$(id -u)/keyring/ssh
+
 
 # I cloned a repository which prints error output in a different format. 
 if [[ -a /mnt/data/online/repos/stderred/build/libstderred.so ]]; then
@@ -59,20 +60,26 @@ function stt() {
   st -e i3-msg floating toggle
 }
 
+<<<<<<< Updated upstream
 function compressPdf() { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1.pdf" "$1"}
  
+=======
+
+function compress() { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$2" "$1" }
+>>>>>>> Stashed changes
 alias mergePdfs="qpdf --empty --pages *.pdf -- out.pdf"
 alias cpwd="pwd | clipcopy"
+alias cppwd="echo -e \\\"`pwd`\\\" | clipcopy"
 alias hcat=highlight --out-format=ansi
 alias day="killall redshift -1; xrandr --output eDP-1 --auto --brightness 2; redshift -O 25000"
-alias normal="killall redshift -1; xrandr --output eDP-1 --auto --brightness 1"
+alias normal="killall redshift -1; xrandr --output HDMI-1 --brightness 1; xrandr --output HDMI-2 --brightness 1; xrandr --output eDP-1 --brightness 1"
 alias night0="dawn 25000"
 alias night1="dawn 2700"
 alias night2="dawn 2250"
 alias night3="dawn 2000"
 alias night4="dawn 1700"
 alias night5="dawn 1000"
-alias dawn="killall redshift -1; xrandr --output eDP-1 --auto --brightness 1; redshift -O $1"
+alias dawn="normal; redshift -O $1"
 # Ranger
 alias stranger="source ranger"
 alias strange=stranger
@@ -221,7 +228,7 @@ function record() {
 }
 
 
-function mplayer() { command mplayer -af scaletempo $@ }
+function mplayer() { command mplayer -af scaletempo $@ -framedrop -cache 8192}
 
 function ssh() {
 

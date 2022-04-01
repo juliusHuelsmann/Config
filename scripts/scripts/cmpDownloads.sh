@@ -1,4 +1,4 @@
-
+#!/bin/bash
 set -e
 
 statsDir=$HOME/.stats

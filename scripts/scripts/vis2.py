@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import matplotlib.pyplot as plt
 import numpy as np
 from os.path import expanduser

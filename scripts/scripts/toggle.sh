@@ -20,6 +20,7 @@ for (( j=1; j<$amount_values; j++ )); do
   fi
 done
 
-echo "setting '$selected_value' from old value '$current_value'."
 set.sh $operation $selected_value
-
+vol=`pacmd list-sinks|grep -A 15 '* index'| awk '/volume: front/{ print $5 }' | sed 's/[%|,]//g'`
+muted=`pacmd list-sinks|grep -A 15 '* index'|awk '/muted:/{ print $2 }'`
+echo "setting '$selected_value' from old value '$current_value'. Current volume: $vol``. Muted: $muted"

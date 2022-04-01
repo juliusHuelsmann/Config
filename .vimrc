@@ -450,7 +450,7 @@ set number
 
 " 
 " max line width
-set colorcolumn=100
+set colorcolumn=120
 "match ErrorMsg '\%>80v.\+'
 
 
@@ -795,9 +795,6 @@ endfunction
   nnoremap <space> za
   "
   set showmatch
-
-  " wrap the displaying of lines
-  set wrap 
 
   noremap <Leader>- ddp
   noremap <Leader>_ ddkP 
