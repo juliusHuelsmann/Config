@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Create a screenshot that captures a selectable rectangle of the screen.
+# In my i3-wm, scrot -s does not correctly remove the borders of the rectangle selection, otherwise
+# scrot -s could be used directly.
+
+read -r x y w h G ID < <(slop -f "%x %y %w %h %g %i")
+scrot -a $x,$y,$w,$h
+
+
+
+
