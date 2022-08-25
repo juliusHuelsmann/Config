@@ -526,6 +526,14 @@ endfunction
         endif
       endif
 
+      if ending == "ly" 
+        execute '!set -e;lilypond ' . file
+
+        if v:shell_error == 0
+          return
+        endif
+      endif
+
       
       if executable(file)
         execute "!" . file
