@@ -62,6 +62,7 @@ function stt() {
 
 function compressPdf() { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1.pdf" "$1"}
 function compress()    { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$2" "$1" }
+alias vlogin="tsh login --proxy=teleport.data-spree.com --user julius.huelmann; tsh ssh -N -L 6716:localhost:6716 -L 20023:localhost:20023 dataspree@vulpus"
 alias mergePdfs="qpdf --empty --pages *.pdf -- out.pdf"
 alias cpwd="pwd | clipcopy"
 alias cppwd="echo -e \\\"`pwd`\\\" | clipcopy"
@@ -741,3 +742,7 @@ parse_git_branch() {
 alias screenkey="cd /mnt/data/online/repos/screenkey; python2 main.py"
 
 shd() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
+
+#export PATH=/mnt/data/local/programs/:/home/x/scripts/:/home/x/scripts/scripts/:/usr/local/cuda-11.7/bin${PATH:+:${PATH}}
+#export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+#
