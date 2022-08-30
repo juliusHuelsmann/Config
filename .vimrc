@@ -87,7 +87,9 @@ Plugin 'tomlion/vim-solidity'
 " Plugin 'honza/vim-snippets'
 
 " assuming you want to use snipmate snippet engine
+"
 
+let g:snipMate = { 'snippet_version' : 1 }
 "
 " Information on how to add plugins:
 "
