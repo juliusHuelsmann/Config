@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import click
 import os
 from typing import *
@@ -19,15 +20,28 @@ def read_max(path: str) -> int:
     return read(path=path, file='max_brightness')
 
 @cli.command('write')
-@click.option('--change', '-c', required=False, type=int, default=5)
+@click.option('--change', '-c', required=True, type=int)
 @click.option('--path', '-p', required=False, type=str, default=default_path)
 def c_write(change: int, path: str):
-    value: int = int(read_brightness(path=path)) + change
-    max_value: int = max(int(read_max(path)) + change, 1)
+    value: int = read_brightness(path=path) + change
+    max_value: int = read_max(path)
     value = min(max(value, 1), max_value)
     with open(os.path.join(path, 'brightness'), 'w') as f:
         f.write(str(value))
     print(value)
+
+
+@cli.command('set')
+@click.option('--value', '-v', required=False, type=int, default=5)
+@click.option('--path', '-p', required=False, type=str, default=default_path)
+def c_set(value: int, path: str):
+    max_value: int = read_max(path)
+    value = min(max(value, 1), max_value)
+    with open(os.path.join(path, 'brightness'), 'w') as f:
+        f.write(str(value))
+    print(value)
+
+
 
 
 @cli.command('read')
