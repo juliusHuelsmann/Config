@@ -1,0 +1,7 @@
+
+#ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", GROUP="video", MODE="0664"
+#ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", GROUP="video", MODE="0664"
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="nvidia_wmi_ec_backlight", GROUP="video", MODE="0664"
+RUN+="/bin/chgrp video /sys/class/backlight/nvidia_wmi_ec_backlight/brightness"
+RUN+="/bin/chmod g+w /sys/class/backlight/nvidia_wmi_ec_backlight/brightness"
+
