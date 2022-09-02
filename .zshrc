@@ -740,6 +740,7 @@ parse_git_branch() {
 }
 
 alias screenkey="cd /mnt/data/online/repos/screenkey; python2 main.py"
+alias lock="i3lock -i /home/x/.config/i3/lock.png"
 
 shd() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
 
