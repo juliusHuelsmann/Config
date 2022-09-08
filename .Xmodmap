@@ -5,9 +5,11 @@ keycode 44 = j J Down
 keycode 45 = k K Up
 keycode 46 = l L Right
 
-keycode 30 = u U BackSpace udiaeresis 
+!keycode 30 = u U BackSpace udiaeresis 
+keycode 30 = u U udiaeresis Udiaeresis 
 keycode 31 = i I plus
-keycode 32 = o O asterisk odiaeresis 
+!keycode 32 = o O asterisk odiaeresis 
+keycode 32 = o O odiaeresis Odiaeresis 
 
 keycode 38 = a A adiaeresis Adiaeresis 
 keycode 39 = s S ssharp
