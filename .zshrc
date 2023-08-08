@@ -3,14 +3,10 @@ export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle
 
 # CHecks if already sourced ( I have to link the zshenv, and that is sourced after zshrc)
 if [ "$SOURCED_ZSHRC" -eq 1 ]; then
-
-else
-
-
-  SOURCED_ZSHRC="1"
+  SOURCED_ZSHRC="2"
 
   ZSH_THEME="agnoster"
-  #plugins=(git git-extras github zsh-syntax-highlighting command-not-found)
+  plugins=(git git-extras github zsh-syntax-highlighting command-not-found)
   export ZSH=~/.oh-my-zsh
   source $ZSH/oh-my-zsh.sh
 
@@ -715,7 +711,12 @@ else
   #export NVM_DIR="$HOME/.nvm"
   #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  #
 
 
-
+else
+  SOURCED_ZSHRC="1"
 fi
+
+
+
