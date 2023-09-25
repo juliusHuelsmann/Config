@@ -238,7 +238,7 @@ noremap <leader>c :noh<CR>
 
 " Tabs:		move between tabs 
 "		by pressing <Ctrl>+nm
-noremap <c-n> <esc>:tabprevious<CR>
+noremap <c-n> <esc>:tabprev<CR>
 noremap <c-m> <esc>:tabnext<CR>
 
 " TODO: open tab :newtab
@@ -520,8 +520,8 @@ endfunction
       endif
 
       if ending == "cc" 
-        echom "build'n'run: " .'g++ -std=c++-20 ' . file . '; ./a.out'
-        execute '!set -e;g++ -std=c++2a ' . file . '; ./a.out'
+        echom "build'n'run: " .'clang++ -std=c++-20 -O0' . file . '; ./a.out'
+        execute '!set -e;clang++ -std=c++2a ' . file . '; ./a.out'
 
         if v:shell_error == 0
           return
