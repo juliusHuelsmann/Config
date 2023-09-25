@@ -21,15 +21,15 @@ if [ "$SOURCED_ZSHRC" -eq 1 ]; then
   # Path to your oh-my-zsh installation.
   export EDITOR='vim'
   export VISUAL='vim'
-  export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/
+  export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/:~/.miniconda/bin
   export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
   export TERM=xterm
   export TERM=xterm-256color
-  export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
+  #export PATH="$PATH:/home/juli/.gem/ruby/2.6.0/bin"
   export PATH="$PATH:/mnt/data/local/programs"
   export PATH=$PATH:/home/x/.gem/ruby/2.4.0/bin
   export PATH=$PATH:/usr/local/spark/bin
-  export PATH=$PATH:/usr/local/gcc-10.0/bin/
+  #export PATH=$PATH:/usr/local/gcc-10.0/bin/
   export PATH=$PATH:/snap/bin
   export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
   export SSH_AUTH_SOCK=/run/user/$(id -u)/keyring/ssh
@@ -718,5 +718,20 @@ else
   SOURCED_ZSHRC="1"
 fi
 
+export CC=clang
+export CXX=clang++
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/x/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/x/.miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/x/.miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/x/.miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 
