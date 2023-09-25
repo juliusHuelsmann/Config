@@ -1,0 +1,17 @@
+#!/bin/bash
+
+wd=/home/x/.dataspree/inference/spop_data
+dest=dmExtern:/
+for abs_path in $(find "$wd" -name "*tar.xz"); 
+do
+
+  rel_path=$(realpath --relative-to="$wd" "$abs_path")
+  target_path="$dest/$rel_path"
+  echo "uploading $abs_path to $target_path"
+  rclone copyto "$abs_path" "$target_path" --log-level DEBUG
+done
+
+
+
+
+

@@ -5,7 +5,13 @@
 # scrot -s could be used directly.
 
 read -r x y w h G ID < <(slop -f "%x %y %w %h %g %i")
-scrot -a $x,$y,$w,$h
+sleep 2
+mkdir -p ~/Screenshots/
+filename=~/Screenshots/"$(date '+%Y-%m-%d-%H%M%S').png"
+scrot -a $x,$y,$w,$h -f $filename
+
+xclip -selection clipboard -t image/png -i $filename
+
 
 
 

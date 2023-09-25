@@ -1,0 +1,18 @@
+#!/bin/bash
+
+wd=/home/x/.dataspree/inference/spop_data
+#wd=$(pwd)
+dest=dmExtern:/
+
+for path_remote in $(rclone lsf -R dmExtern:/ --files-only | egrep ".tar.xz|zip"); 
+do
+  abs_path_remote="$dest$path_remote"
+  target_path="$wd/$path_remote"
+  echo "Downloading from $abs_path_remote to $target_path"
+  rclone copyto "$abs_path_remote" "$target_path" --log-level INFO
+done
+
+
+
+
+
