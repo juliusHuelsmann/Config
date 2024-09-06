@@ -21,7 +21,8 @@ if [ "$SOURCED_ZSHRC" -eq 1 ]; then
   # Path to your oh-my-zsh installation.
   export EDITOR='vim'
   export VISUAL='vim'
-  export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/:~/.miniconda/bin
+  export PATH=$PATH:~/.local/bin/:/mnt/data/local/programs/:~/scripts/scripts/:~/.miniconda/bin:/home/x/adb-fastboot/platform-tools
+
   export BEEP=/usr/share/sounds/ubuntu/ringtones/Harmonics.ogg
   export TERM=xterm
   export TERM=xterm-256color
@@ -31,6 +32,10 @@ if [ "$SOURCED_ZSHRC" -eq 1 ]; then
   export PATH=$PATH:/usr/local/spark/bin
   #export PATH=$PATH:/usr/local/gcc-10.0/bin/
   export PATH=$PATH:/snap/bin
+  export PATH=$PATH:/home/x/.local/share/renesas/e2_studio/eclipse
+
+
+
   export SPARK_HOME=/usr/lib/python3.6/site-packages/pyspark
   export SSH_AUTH_SOCK=/run/user/$(id -u)/keyring/ssh
 
@@ -83,13 +88,14 @@ if [ "$SOURCED_ZSHRC" -eq 1 ]; then
   function xx() { daemonize $(ls $1 | awk '{print "xdg-open " $0}' | rofi -dmenu) 2> /dev/null }
   function compressPdf() { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$1.pdf" "$1"}
   function compress()    { gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -q -o "$2" "$1" }
+  alias fix_pycharm="ibus-daemon --replace -d"
   alias vlogin="tsh login --proxy=teleport.data-spree.com --user julius.huelmann; tsh ssh -N -L 6716:localhost:6716 -L 20023:localhost:20023 dataspree@vulpus"
   alias mergePdfs="qpdf --empty --pages *.pdf -- out.pdf"
   alias cpwd="pwd | clipcopy"
   alias cppwd="echo -e \\\"`pwd`\\\" | clipcopy"
   alias hcat=highlight --out-format=ansi
   alias day="killall redshift -1; xrandr --output eDP-1 --auto --brightness 2; redshift -O 25000"
-  alias normal="killall redshift -1; xrandr --output HDMI-1 --brightness 1; xrandr --output HDMI-2 --brightness 1; xrandr --output eDP-1 --brightness 1"
+  alias normal="killall redshift -1; xrandr --output HDMI-1-0 --brightness 1; xrandr --output HDMI-2 --brightness 1; xrandr --output eDP-1 --brightness 1"
   alias night0="dawn 25000"
   alias night1="dawn 2700"
   alias night2="dawn 2250"
@@ -117,7 +123,7 @@ if [ "$SOURCED_ZSHRC" -eq 1 ]; then
   alias yv="youtube-dl --add-metadata -ic"
   alias ya="youtube-dl --add-metadata -ixc"
   function yay() { k=$(pwd); cdmu; ya "$(clippaste)"; cd $k}
-  function yayy() { ya "$(clippaste)"; }
+  alias yayy='ya "$(clippaste)"'
   alias lsswp="find -name '*.swp'"
 
   # Use case: e.g. for_each 'ffmpeg -i "$i" "$i.mp4"'
@@ -735,3 +741,19 @@ else
 fi
 unset __conda_setup
 
+. "$HOME/.cargo/env"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+ 
+# Restart your shell for the changes to take effect.
+ 
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+ 
+eval "$(pyenv virtualenv-init -)"
+
+
+# Created by `pipx` on 2024-05-24 14:56:32
+export PATH="$PATH:/home/x/.local/bin"

@@ -1,2 +1,2 @@
-sudo mount -t cifs -o username=$(secret-tool lookup nas user),password=$(secret-tool lookup nas pass) "//rubeus/engineering" /media/nas/engineering
+sudo mount -t cifs -o username=$(secret-tool lookup nas user),password=$(secret-tool lookup nas pass),gid=`id -g`,uid=`id -u` "//rubeus/engineering" /media/nas/engineering
 

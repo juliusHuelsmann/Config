@@ -1,10 +1,10 @@
 #!/bin/bash
 
-wd=/home/x/.dataspree/inference/spop_data
+wd=/media/usb_data/spop_data/
 #wd=$(pwd)
 dest=dmExtern:/
 
-for path_remote in $(rclone lsf -R dmExtern:/ --files-only | egrep ".tar.xz|zip"); 
+for path_remote in $(rclone lsf -R dmExtern:/ --files-only | egrep ".tar.xz|zip|tar.gz"); 
 do
   abs_path_remote="$dest$path_remote"
   target_path="$wd/$path_remote"
